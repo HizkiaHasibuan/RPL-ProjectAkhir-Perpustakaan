@@ -15,7 +15,8 @@ public class Sistem_informasi_perpustakaan {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Main_menu main_menu = new Main_menu();
+        main_menu.setVisible(true);
     }
     
 }
