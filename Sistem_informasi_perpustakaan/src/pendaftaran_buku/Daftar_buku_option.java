@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistem_informasi_perpustakaan;
+package pendaftaran_buku;
 
 /**
  *
