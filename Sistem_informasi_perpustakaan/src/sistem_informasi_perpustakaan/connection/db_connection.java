@@ -14,6 +14,7 @@ import java.util.logging.Logger;
  *
  * @author Daniel
  */
+//Class untuk melakukan koneksi dengan database
 public class db_connection {
     static final String db = "jdbc:mysql://localhost:3306/perpustakaan";
     static final String user = "root";
