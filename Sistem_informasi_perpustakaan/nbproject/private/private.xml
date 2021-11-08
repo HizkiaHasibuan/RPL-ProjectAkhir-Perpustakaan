@@ -5,7 +5,9 @@
         <group>
             <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/sistem_informasi_perpustakaan/Main_menu.java</file>
             <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/sistem_informasi_perpustakaan/Sistem_informasi_perpustakaan.java</file>
-            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/sistem_informasi_perpustakaan/Daftar_buku_option.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/pendaftaran_buku/Daftar_buku_option.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/Tag/Tag_list.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/pendaftaran_buku/Daftar_buku.java</file>
             <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/Sistem_informasi_perpustakaan/src/sistem_informasi_perpustakaan/connection/db_connection.java</file>
         </group>
     </open-files>

@@ -5,10 +5,15 @@
  */
 package pendaftaran_buku;
 
+import java.awt.Cursor;
+import pencarian_buku.Searching;
+import sistem_informasi_perpustakaan.Main_menu;
+
 /**
  *
  * @author Daniel
  */
+//Class yang berisi pilihan menu pada saat melakukan pendaftaran buku
 public class Daftar_buku_option extends javax.swing.JFrame {
 
     /**
@@ -16,6 +21,8 @@ public class Daftar_buku_option extends javax.swing.JFrame {
      */
     public Daftar_buku_option() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -27,20 +34,53 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btn_daftar_buku = new javax.swing.JLabel();
+        btn_edit_buku = new javax.swing.JLabel();
+        btn_back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Daftar Buku");
+        btn_daftar_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_daftar_buku.setText("Daftar Buku");
+        btn_daftar_buku.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_daftar_bukuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_daftar_bukuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_daftar_bukuMouseExited(evt);
+            }
+        });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Edit Data Buku");
+        btn_edit_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_edit_buku.setText("Edit Data Buku");
+        btn_edit_buku.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_edit_bukuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_edit_bukuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_edit_bukuMouseExited(evt);
+            }
+        });
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Back");
+        btn_back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_back.setText("Back");
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_backMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -49,25 +89,67 @@ public class Daftar_buku_option extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_daftar_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_edit_buku))
                 .addContainerGap(165, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jLabel1)
+                .addComponent(btn_daftar_buku)
                 .addGap(67, 67, 67)
-                .addComponent(jLabel2)
+                .addComponent(btn_edit_buku)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(btn_back)
                 .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_daftar_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseClicked
+        this.dispose();
+        Daftar_buku daftar_buku = new Daftar_buku();
+        daftar_buku.setVisible(true);
+    }//GEN-LAST:event_btn_daftar_bukuMouseClicked
+
+    private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
+        this.dispose();
+        Main_menu main_menu = new Main_menu();
+        main_menu.setVisible(true);
+    }//GEN-LAST:event_btn_backMouseClicked
+
+    private void btn_edit_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_edit_bukuMouseClicked
+        this.dispose();
+        Searching search = new Searching(true);
+        search.setVisible(true);
+    }//GEN-LAST:event_btn_edit_bukuMouseClicked
+
+    private void btn_daftar_bukuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_daftar_bukuMouseEntered
+
+    private void btn_daftar_bukuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_daftar_bukuMouseExited
+
+    private void btn_edit_bukuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_edit_bukuMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_edit_bukuMouseEntered
+
+    private void btn_edit_bukuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_edit_bukuMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_edit_bukuMouseExited
+
+    private void btn_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_backMouseEntered
+
+    private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_backMouseExited
 
     /**
      * @param args the command line arguments
@@ -99,8 +181,8 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel btn_back;
+    private javax.swing.JLabel btn_daftar_buku;
+    private javax.swing.JLabel btn_edit_buku;
     // End of variables declaration//GEN-END:variables
 }

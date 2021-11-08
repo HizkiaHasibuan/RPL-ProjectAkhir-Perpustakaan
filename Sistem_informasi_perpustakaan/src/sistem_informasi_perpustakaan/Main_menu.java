@@ -5,12 +5,15 @@
  */
 package sistem_informasi_perpustakaan;
 
+import java.awt.Cursor;
+import pencarian_buku.Pencarian_buku_option;
 import pendaftaran_buku.Daftar_buku_option;
 
 /**
  *
  * @author Daniel
  */
+//Class untuk Menu Utama
 public class Main_menu extends javax.swing.JFrame {
 
     /**
@@ -18,6 +21,8 @@ public class Main_menu extends javax.swing.JFrame {
      */
     public Main_menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -30,6 +35,7 @@ public class Main_menu extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_pendaftaran_buku = new javax.swing.JLabel();
+        btn_pencarian_buku = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,6 +45,26 @@ public class Main_menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_pendaftaran_bukuMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_pendaftaran_bukuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_pendaftaran_bukuMouseExited(evt);
+            }
+        });
+
+        btn_pencarian_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_pencarian_buku.setText("Pencarian Buku");
+        btn_pencarian_buku.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pencarian_bukuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_pencarian_bukuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_pencarian_bukuMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -47,7 +73,9 @@ public class Main_menu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(166, Short.MAX_VALUE)
-                .addComponent(btn_pendaftaran_buku)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_pendaftaran_buku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_pencarian_buku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(148, 148, 148))
         );
         layout.setVerticalGroup(
@@ -55,7 +83,9 @@ public class Main_menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(120, 120, 120)
                 .addComponent(btn_pendaftaran_buku)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(38, 38, 38)
+                .addComponent(btn_pencarian_buku)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
@@ -66,6 +96,28 @@ public class Main_menu extends javax.swing.JFrame {
         Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
         daftar_buku_option.setVisible(true);
     }//GEN-LAST:event_btn_pendaftaran_bukuMouseClicked
+
+    private void btn_pencarian_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pencarian_bukuMouseClicked
+        this.dispose();
+        Pencarian_buku_option pencarian_buku_option = new Pencarian_buku_option();
+        pencarian_buku_option.setVisible(true);
+    }//GEN-LAST:event_btn_pencarian_bukuMouseClicked
+
+    private void btn_pendaftaran_bukuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pendaftaran_bukuMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_pendaftaran_bukuMouseEntered
+
+    private void btn_pendaftaran_bukuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pendaftaran_bukuMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_pendaftaran_bukuMouseExited
+
+    private void btn_pencarian_bukuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pencarian_bukuMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_pencarian_bukuMouseEntered
+
+    private void btn_pencarian_bukuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pencarian_bukuMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_pencarian_bukuMouseExited
 
     /**
      * @param args the command line arguments
@@ -103,6 +155,7 @@ public class Main_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_pencarian_buku;
     private javax.swing.JLabel btn_pendaftaran_buku;
     // End of variables declaration//GEN-END:variables
 }
