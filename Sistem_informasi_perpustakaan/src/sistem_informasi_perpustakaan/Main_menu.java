@@ -6,8 +6,10 @@
 package sistem_informasi_perpustakaan;
 
 import java.awt.Cursor;
+import login_admin.login_admin;
 import pencarian_buku.Pencarian_buku_option;
 import pendaftaran_buku.Daftar_buku_option;
+import pendaftaran_member.daftar_member;
 
 /**
  *
@@ -36,6 +38,7 @@ public class Main_menu extends javax.swing.JFrame {
 
         btn_pendaftaran_buku = new javax.swing.JLabel();
         btn_pencarian_buku = new javax.swing.JLabel();
+        btn_daftar_member = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,25 +70,37 @@ public class Main_menu extends javax.swing.JFrame {
             }
         });
 
+        btn_daftar_member.setText("Daftar Member");
+        btn_daftar_member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_daftar_member.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_daftar_memberMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_pendaftaran_buku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_pencarian_buku, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(148, 148, 148))
+                .addContainerGap(129, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_pencarian_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_pendaftaran_buku)
+                        .addComponent(btn_daftar_member)))
+                .addGap(177, 177, 177))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(84, 84, 84)
                 .addComponent(btn_pendaftaran_buku)
                 .addGap(38, 38, 38)
                 .addComponent(btn_pencarian_buku)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(btn_daftar_member)
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,8 +108,8 @@ public class Main_menu extends javax.swing.JFrame {
 
     private void btn_pendaftaran_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pendaftaran_bukuMouseClicked
         this.dispose();
-        Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
-        daftar_buku_option.setVisible(true);
+        login_admin lg_admin = new login_admin();
+        lg_admin.setVisible(true);
     }//GEN-LAST:event_btn_pendaftaran_bukuMouseClicked
 
     private void btn_pencarian_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pencarian_bukuMouseClicked
@@ -118,6 +133,13 @@ public class Main_menu extends javax.swing.JFrame {
     private void btn_pencarian_bukuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pencarian_bukuMouseExited
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_btn_pencarian_bukuMouseExited
+
+    private void btn_daftar_memberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_memberMouseClicked
+        // TODO add your handling code here:
+        daftar_member df_member = new daftar_member();
+        df_member.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_daftar_memberMouseClicked
 
     /**
      * @param args the command line arguments
@@ -155,6 +177,7 @@ public class Main_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_daftar_member;
     private javax.swing.JLabel btn_pencarian_buku;
     private javax.swing.JLabel btn_pendaftaran_buku;
     // End of variables declaration//GEN-END:variables

@@ -23,14 +23,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_back" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Component id="btn_peminjaman" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_pengembalian" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="btn_daftar_denda" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btn_daftar_buku" min="-2" pref="70" max="-2" attributes="0"/>
                   <Component id="btn_edit_buku" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_back" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="165" max="32767" attributes="0"/>
+              <EmptySpace pref="104" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,11 +47,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-              <Component id="btn_daftar_buku" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_daftar_buku" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_daftar_denda" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-              <Component id="btn_edit_buku" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_edit_buku" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_pengembalian" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="77" max="32767" attributes="0"/>
-              <Component id="btn_back" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_back" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_peminjaman" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -80,6 +98,39 @@
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_backMouseClicked"/>
         <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_backMouseEntered"/>
         <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_backMouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_peminjaman">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Peminjaman Buku"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_peminjamanMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_pengembalian">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pengembalian Buku"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_pengembalianMouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_daftar_denda">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Daftar Denda"/>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_daftar_dendaMouseClicked"/>
       </Events>
     </Component>
   </SubComponents>
