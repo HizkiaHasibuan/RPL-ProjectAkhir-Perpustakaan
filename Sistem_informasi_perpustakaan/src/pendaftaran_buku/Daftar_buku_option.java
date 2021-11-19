@@ -5,9 +5,25 @@
  */
 package pendaftaran_buku;
 
+import denda_buku.daftar_denda;
+import denda_buku.daftar_pengembalian_telat;
 import java.awt.Cursor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import peminjaman_pengembalian_buku.peminjaman_buku;
+import peminjaman_pengembalian_buku.pengembalian_buku;
 import pencarian_buku.Searching;
 import sistem_informasi_perpustakaan.Main_menu;
+import sistem_informasi_perpustakaan.connection.db_connection;
 
 /**
  *
@@ -20,6 +36,13 @@ public class Daftar_buku_option extends javax.swing.JFrame {
      * Creates new form Daftar_buku_option
      */
     public Daftar_buku_option() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+    }
+    
+    //parameter id isinya id pegawai yang login, nnti bisa dipake untuk yang peminjaman sama pengembalian 
+    public Daftar_buku_option(int id) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -37,6 +60,9 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         btn_daftar_buku = new javax.swing.JLabel();
         btn_edit_buku = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
+        btn_peminjaman = new javax.swing.JLabel();
+        btn_pengembalian = new javax.swing.JLabel();
+        btn_daftar_denda = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,33 +108,123 @@ public class Daftar_buku_option extends javax.swing.JFrame {
             }
         });
 
+        btn_peminjaman.setText("Peminjaman Buku");
+        btn_peminjaman.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_peminjaman.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_peminjamanMouseClicked(evt);
+            }
+        });
+
+        btn_pengembalian.setText("Pengembalian Buku");
+        btn_pengembalian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_pengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_pengembalianMouseClicked(evt);
+            }
+        });
+
+        btn_daftar_denda.setText("Daftar Denda");
+        btn_daftar_denda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_daftar_denda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_daftar_dendaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_peminjaman)
+                    .addComponent(btn_pengembalian)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_daftar_denda)))
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_daftar_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_edit_buku))
-                .addContainerGap(165, Short.MAX_VALUE))
+                    .addComponent(btn_edit_buku)
+                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(btn_daftar_buku)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_daftar_buku)
+                    .addComponent(btn_daftar_denda))
                 .addGap(67, 67, 67)
-                .addComponent(btn_edit_buku)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_edit_buku)
+                    .addComponent(btn_pengembalian))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(btn_back)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_back)
+                    .addComponent(btn_peminjaman))
                 .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tampil_notif(){
+        String tgl = null;
+        LocalDate tgl_kembali;
+        LocalDate tgl_sekarang;
+        int jml_telat = 0;
+        
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql;
+        
+        sql ="SELECT tb_peminjaman.tgl_kembali FROM tb_peminjaman\n" +
+                "INNER JOIN tb_member ON tb_peminjaman.`member_id`=tb_member.`id`\n" +
+                "WHERE NOT EXISTS (SELECT tb_pengembalian.`id` FROM tb_pengembalian\n" +
+                "WHERE tb_peminjaman.`id` = tb_pengembalian.`id`);";
+        
+        Date tanggal = new Date();
+        SimpleDateFormat dateNow = new SimpleDateFormat("yyy-MM-dd");//menentukan format tanggal (tahun-bulan-hari)
+        String nowDate = dateNow.format(tanggal);// menyimpan tanggal sekarang ke dalam variabel yg bertipe string
+        
+        try {
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                tgl= rs.getString(1);
+                tgl_kembali = LocalDate.parse(tgl, DateTimeFormatter.ISO_DATE);
+                tgl_sekarang = LocalDate.parse(nowDate, DateTimeFormatter.ISO_DATE);
+                if (tgl_sekarang.isAfter(tgl_kembali)) {
+                    jml_telat++;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(daftar_denda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(jml_telat>0){
+            int respon = JOptionPane.showConfirmDialog(this, "Ada "+ jml_telat +" pengembalian pinjaman yang terlambat.\nMau lihat?", "Pengembalian Terlambat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            
+            if(respon==JOptionPane.YES_OPTION){
+                daftar_pengembalian_telat kembali = new daftar_pengembalian_telat();
+                kembali.setVisible(true);
+                this.dispose();
+            }
+            
+            if(respon==JOptionPane.NO_OPTION){
+                //code untuk ke jFrame pengembalian
+                pengembalian_buku Pengembalian = new pengembalian_buku();
+                Pengembalian.setVisible(true);
+                this.dispose();
+            }
+        }
+        jml_telat=0;
+    }
+    
     private void btn_daftar_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseClicked
         this.dispose();
         Daftar_buku daftar_buku = new Daftar_buku();
@@ -151,6 +267,24 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_btn_backMouseExited
 
+    private void btn_peminjamanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_peminjamanMouseClicked
+        peminjaman_buku pinjam = new peminjaman_buku();
+        pinjam.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_peminjamanMouseClicked
+
+    private void btn_daftar_dendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_dendaMouseClicked
+        // TODO add your handling code here:
+        daftar_denda daftarDenda = new daftar_denda();
+        daftarDenda.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_daftar_dendaMouseClicked
+
+    private void btn_pengembalianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pengembalianMouseClicked
+        // TODO add your handling code here:
+        tampil_notif();
+    }//GEN-LAST:event_btn_pengembalianMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -183,6 +317,9 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_daftar_buku;
+    private javax.swing.JLabel btn_daftar_denda;
     private javax.swing.JLabel btn_edit_buku;
+    private javax.swing.JLabel btn_peminjaman;
+    private javax.swing.JLabel btn_pengembalian;
     // End of variables declaration//GEN-END:variables
 }

@@ -84,9 +84,13 @@ public class Daftar_buku extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setText("Judul Buku");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jLabel2.setText("Penulis");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 79, -1, -1));
 
         btn_addTag1.setText("Add Tag");
         btn_addTag1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,25 +104,32 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag1MouseExited(evt);
             }
         });
+        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 363, -1, -1));
 
         textbox_judul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textbox_judulActionPerformed(evt);
             }
         });
+        jPanel1.add(textbox_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 33, 241, -1));
 
         textbox_penulis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textbox_penulisActionPerformed(evt);
             }
         });
+        jPanel1.add(textbox_penulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 99, 241, -1));
 
         jLabel3.setText("Penerbit");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 141, -1, -1));
+        jPanel1.add(textbox_penerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 161, 241, -1));
 
         Spinner_jumlah.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ((javax.swing.JSpinner.DefaultEditor)Spinner_jumlah.getEditor()).getTextField().setEditable(false);
+        jPanel1.add(Spinner_jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
 
         jLabel6.setText("No.Rak");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 277, -1, -1));
 
         btn_submit.setText("Submit");
         btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -137,6 +148,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_submitKeyPressed(evt);
             }
         });
+        jPanel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 543, -1, -1));
 
         btn_back.setText("Back");
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,10 +162,13 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
+        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 543, -1, -1));
 
         jLabel7.setText("Tag Buku");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 343, -1, -1));
 
         jLabel8.setText("Tag 1");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 363, -1, -1));
 
         textbox_tag1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textbox_tag1.setEnabled(false);
@@ -162,8 +177,10 @@ public class Daftar_buku extends javax.swing.JFrame {
                 textbox_tag1ActionPerformed(evt);
             }
         });
+        jPanel1.add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 383, 243, -1));
 
         jLabel9.setText("Tag 2");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 409, -1, -1));
 
         textbox_tag2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textbox_tag2.setEnabled(false);
@@ -172,11 +189,14 @@ public class Daftar_buku extends javax.swing.JFrame {
                 textbox_tag2ActionPerformed(evt);
             }
         });
+        jPanel1.add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 434, 243, -1));
 
         jLabel10.setText("Tag 3");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 472, -1, -1));
 
         textbox_tag3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textbox_tag3.setEnabled(false);
+        jPanel1.add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 492, 243, -1));
 
         btn_addTag2.setText("Add Tag");
         btn_addTag2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,6 +210,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag2MouseExited(evt);
             }
         });
+        jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 409, -1, -1));
 
         btn_addTag3.setText("Add Tag");
         btn_addTag3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,165 +224,48 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag3MouseExited(evt);
             }
         });
+        jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 472, -1, -1));
 
         validasi_tag.setText("Warning!");
         validasi_tag.setVisible(false);
+        jPanel1.add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 518, -1, -1));
 
         validasi_judul.setText("Validasi Judul");
         validasi_judul.setVisible(false);
+        jPanel1.add(validasi_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, -1, -1));
 
         validasi_penulis.setText("Validasi Penulis");
         validasi_penulis.setVisible(false);
+        jPanel1.add(validasi_penulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, -1, -1));
 
         spinner_thn_terbit.setModel(new javax.swing.SpinnerNumberModel(2021, 0, null, 1));
         spinner_thn_terbit.setEditor(new javax.swing.JSpinner.NumberEditor(spinner_thn_terbit,"0"));
         ((javax.swing.JSpinner.DefaultEditor)spinner_thn_terbit.getEditor()).getTextField().setEditable(false);
         spinner_thn_terbit.setRequestFocusEnabled(false);
         spinner_thn_terbit.setValue(2021);
+        jPanel1.add(spinner_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 207, 162, -1));
 
         validasi_thn_terbit.setText("Validasi Tahun Terbit");
         validasi_thn_terbit.setVisible(false);
+        jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 231, -1, -1));
 
         validasi_no_rak.setText("Validasi No.Rak");
         validasi_no_rak.setVisible(false);
+        jPanel1.add(validasi_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 323, -1, -1));
 
         validasi_penerbit.setText("Validasi Penerbit");
         validasi_penerbit.setVisible(false);
+        jPanel1.add(validasi_penerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 187, -1, -1));
 
         jLabel4.setText("Tahun Terbit");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jLabel5.setText("Jumlah");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, -1, -1));
 
         Spinner_no_rak.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ((javax.swing.JSpinner.DefaultEditor)Spinner_no_rak.getEditor()).getTextField().setEditable(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textbox_tag2)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                                .addComponent(btn_addTag1))
-                            .addComponent(textbox_tag1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btn_back)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_submit))
-                            .addComponent(textbox_tag3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(validasi_no_rak, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_addTag2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btn_addTag3, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(354, 354, 354))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Spinner_no_rak, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel10)
-                                .addComponent(validasi_tag)
-                                .addComponent(validasi_judul)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(validasi_penulis)
-                                            .addComponent(textbox_penulis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                                            .addComponent(jLabel1)
-                                            .addComponent(textbox_judul, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(textbox_penerbit))
-                                        .addComponent(jLabel3)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel4)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(spinner_thn_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(validasi_penerbit)
-                                        .addComponent(validasi_thn_terbit))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(175, 175, 175)
-                                        .addComponent(Spinner_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addComponent(textbox_judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validasi_judul)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textbox_penulis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validasi_penulis)
-                .addGap(2, 2, 2)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textbox_penerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validasi_penerbit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(spinner_thn_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addComponent(validasi_thn_terbit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(Spinner_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Spinner_no_rak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validasi_no_rak)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(btn_addTag1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textbox_tag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(btn_addTag2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textbox_tag2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(btn_addTag3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textbox_tag3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(validasi_tag)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_back)
-                    .addComponent(btn_submit))
-                .addGap(8, 8, 8))
-        );
+        jPanel1.add(Spinner_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 297, 242, -1));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -369,11 +273,17 @@ public class Daftar_buku extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
