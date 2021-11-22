@@ -17,7 +17,7 @@ import pendaftaran_member.daftar_member;
  */
 //Class untuk Menu Utama
 public class Main_menu extends javax.swing.JFrame {
-
+    public static boolean isLoggedIn = false;
     /**
      * Creates new form Main_menu
      */
@@ -108,8 +108,14 @@ public class Main_menu extends javax.swing.JFrame {
 
     private void btn_pendaftaran_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pendaftaran_bukuMouseClicked
         this.dispose();
-        login_admin lg_admin = new login_admin();
-        lg_admin.setVisible(true);
+        if(isLoggedIn){
+            Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+            daftar_buku_option.setVisible(true);
+        }
+        else{
+            login_admin lg_admin = new login_admin();
+            lg_admin.setVisible(true);
+        }
     }//GEN-LAST:event_btn_pendaftaran_bukuMouseClicked
 
     private void btn_pencarian_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pencarian_bukuMouseClicked

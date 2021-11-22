@@ -118,33 +118,27 @@ public class login_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = jTextFieldUsername.getText();
         String pass = String.valueOf(jPasswordFieldPass.getPassword());
-        int id_pegawai;
-        String user_pegawai = null;
-        int id = 0;
-        String pass_pegawai = null;
+        int id_pegawai = 0;
         Connection conn = db_connection.getConnection();
         PreparedStatement ps;
         ResultSet rs;
         String sql;
-        sql = "SELECT id, username, password FROM tb_pegawai;";
+        sql = "SELECT id FROM tb_pegawai WHERE tb_pegawai.username = ? AND tb_pegawai.password = PASSWORD(?);";
         try {
             ps = conn.prepareStatement(sql);
+            ps.setString(1,username);
+            ps.setString(2,pass);
             rs = ps.executeQuery();
-            while(rs.next()){
+            if(rs.next()){
                  id_pegawai = rs.getInt(1);
-                 user_pegawai = rs.getString(2);
-                 pass_pegawai = rs.getString(3);
-                 
-                 if (username.equals(user_pegawai) && pass.equals(pass_pegawai)) {
-                    id=id_pegawai;
-                }
             }
             
             if(jTextFieldUsername.getText().equals("") || jPasswordFieldPass.getPassword().equals("")){
                 JOptionPane.showMessageDialog(this,"Username atau Password \nTidak Boleh Kosong");
             } else {
-                if(id!=0){
-                    Daftar_buku_option option_admin = new Daftar_buku_option(id);
+                if(id_pegawai != 0){
+                    Main_menu.isLoggedIn = true;
+                    Daftar_buku_option option_admin = new Daftar_buku_option(id_pegawai);
                     option_admin.setVisible(true);
                     this.dispose();
                 } else {
