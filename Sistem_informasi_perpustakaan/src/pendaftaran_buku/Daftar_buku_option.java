@@ -63,9 +63,14 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         btn_peminjaman = new javax.swing.JLabel();
         btn_pengembalian = new javax.swing.JLabel();
         btn_daftar_denda = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_daftar_buku.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_daftar_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_daftar_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_daftar_buku.setText("Daftar Buku");
         btn_daftar_buku.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -79,7 +84,10 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_daftar_bukuMouseExited(evt);
             }
         });
+        getContentPane().add(btn_daftar_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 90, -1));
 
+        btn_edit_buku.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_edit_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_edit_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_edit_buku.setText("Edit Data Buku");
         btn_edit_buku.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -93,7 +101,10 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_edit_bukuMouseExited(evt);
             }
         });
+        getContentPane().add(btn_edit_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
 
+        btn_back.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
         btn_back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_back.setText("Back");
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,7 +118,10 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 70, -1));
 
+        btn_peminjaman.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_peminjaman.setForeground(new java.awt.Color(255, 255, 255));
         btn_peminjaman.setText("Peminjaman Buku");
         btn_peminjaman.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_peminjaman.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -115,7 +129,10 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_peminjamanMouseClicked(evt);
             }
         });
+        getContentPane().add(btn_peminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 237, -1, -1));
 
+        btn_pengembalian.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_pengembalian.setForeground(new java.awt.Color(255, 255, 255));
         btn_pengembalian.setText("Pengembalian Buku");
         btn_pengembalian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_pengembalian.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,7 +140,10 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_pengembalianMouseClicked(evt);
             }
         });
+        getContentPane().add(btn_pengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 165, -1, -1));
 
+        btn_daftar_denda.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_daftar_denda.setForeground(new java.awt.Color(255, 255, 255));
         btn_daftar_denda.setText("Daftar Denda");
         btn_daftar_denda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_daftar_denda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,43 +151,14 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_daftar_dendaMouseClicked(evt);
             }
         });
+        getContentPane().add(btn_daftar_denda, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 82, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_peminjaman)
-                    .addComponent(btn_pengembalian)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btn_daftar_denda)))
-                .addGap(91, 91, 91)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_daftar_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_edit_buku)
-                    .addComponent(btn_back, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_daftar_buku)
-                    .addComponent(btn_daftar_denda))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_edit_buku)
-                    .addComponent(btn_pengembalian))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_back)
-                    .addComponent(btn_peminjaman))
-                .addGap(47, 47, 47))
-        );
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Menu Pegawai");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 24, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -321,5 +312,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     private javax.swing.JLabel btn_edit_buku;
     private javax.swing.JLabel btn_peminjaman;
     private javax.swing.JLabel btn_pengembalian;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,11 +39,21 @@ public class Main_menu extends javax.swing.JFrame {
         btn_pendaftaran_buku = new javax.swing.JLabel();
         btn_pencarian_buku = new javax.swing.JLabel();
         btn_daftar_member = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 300));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        btn_pendaftaran_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_pendaftaran_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_pendaftaran_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_pendaftaran_buku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tbh_buku.jpg"))); // NOI18N
         btn_pendaftaran_buku.setText("Pendaftaran Buku");
+        btn_pendaftaran_buku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_pendaftaran_buku.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_pendaftaran_buku.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_pendaftaran_bukuMouseClicked(evt);
@@ -55,9 +65,17 @@ public class Main_menu extends javax.swing.JFrame {
                 btn_pendaftaran_bukuMouseExited(evt);
             }
         });
+        getContentPane().add(btn_pendaftaran_buku);
+        btn_pendaftaran_buku.setBounds(30, 150, 110, 70);
 
+        btn_pencarian_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_pencarian_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_pencarian_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_pencarian_buku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_cari_buku_50.png"))); // NOI18N
         btn_pencarian_buku.setText("Pencarian Buku");
+        btn_pencarian_buku.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_pencarian_buku.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_pencarian_buku.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_pencarian_buku.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_pencarian_bukuMouseClicked(evt);
@@ -69,39 +87,35 @@ public class Main_menu extends javax.swing.JFrame {
                 btn_pencarian_bukuMouseExited(evt);
             }
         });
+        getContentPane().add(btn_pencarian_buku);
+        btn_pencarian_buku.setBounds(250, 150, 110, 70);
 
+        btn_daftar_member.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_daftar_member.setForeground(new java.awt.Color(255, 255, 255));
+        btn_daftar_member.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_daftar_member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/daftar_member_50.png"))); // NOI18N
         btn_daftar_member.setText("Daftar Member");
+        btn_daftar_member.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_daftar_member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_daftar_member.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_daftar_member.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_daftar_member.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_daftar_memberMouseClicked(evt);
             }
         });
+        getContentPane().add(btn_daftar_member);
+        btn_daftar_member.setBounds(150, 150, 100, 70);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(129, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_pencarian_buku, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btn_pendaftaran_buku)
-                        .addComponent(btn_daftar_member)))
-                .addGap(177, 177, 177))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addComponent(btn_pendaftaran_buku)
-                .addGap(38, 38, 38)
-                .addComponent(btn_pencarian_buku)
-                .addGap(26, 26, 26)
-                .addComponent(btn_daftar_member)
-                .addContainerGap(110, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Yellowtail", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Home");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(180, 50, 70, 24);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 400, 300);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,5 +200,7 @@ public class Main_menu extends javax.swing.JFrame {
     private javax.swing.JLabel btn_daftar_member;
     private javax.swing.JLabel btn_pencarian_buku;
     private javax.swing.JLabel btn_pendaftaran_buku;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
