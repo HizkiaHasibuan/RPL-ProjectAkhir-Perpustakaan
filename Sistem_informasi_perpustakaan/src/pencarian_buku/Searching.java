@@ -67,9 +67,14 @@ public class Searching extends javax.swing.JFrame {
         tabel_buku = new javax.swing.JTable();
         validasi = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        keterangan.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        keterangan.setForeground(new java.awt.Color(255, 255, 255));
         keterangan.setText("Keterangan");
         if(mode == 0){
             keterangan.setText("Judul");
@@ -80,7 +85,13 @@ public class Searching extends javax.swing.JFrame {
         else if(mode == 2){
             keterangan.setText("Penerbit");
         }
+        getContentPane().add(keterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 80, -1));
 
+        textbox_search.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(textbox_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 45, 269, -1));
+
+        btn_search.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_search.setForeground(new java.awt.Color(255, 255, 255));
         btn_search.setText("Search");
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -93,7 +104,9 @@ public class Searching extends javax.swing.JFrame {
                 btn_searchMouseExited(evt);
             }
         });
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 76, 60, -1));
 
+        tabel_buku.setBackground(new java.awt.Color(204, 204, 204));
         tabel_buku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -117,10 +130,17 @@ public class Searching extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_buku);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 108, 375, 134));
+
+        validasi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi.setForeground(new java.awt.Color(255, 0, 0));
         validasi.setText("Validasi");
         validasi.setVisible(false);
+        getContentPane().add(validasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 25, 60, -1));
 
-        btn_back.setText("back");
+        btn_back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
+        btn_back.setText("Back");
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
@@ -132,47 +152,15 @@ public class Searching extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 76, 30, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_back)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_search))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(keterangan)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(validasi)
-                            .addComponent(textbox_search, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(validasi)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(keterangan)
-                    .addComponent(textbox_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_search)
-                    .addComponent(btn_back))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Pencarian");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 120, 20));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_pencarian_op.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -386,6 +374,8 @@ public class Searching extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_search;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel keterangan;
     private javax.swing.JTable tabel_buku;
