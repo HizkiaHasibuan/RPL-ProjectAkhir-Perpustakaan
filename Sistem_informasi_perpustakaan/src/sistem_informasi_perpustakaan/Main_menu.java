@@ -44,6 +44,7 @@ public class Main_menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(400, 300));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         btn_pendaftaran_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

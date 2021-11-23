@@ -38,6 +38,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -65,7 +66,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
                 jButtonDendaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 252, 110, -1));
+        getContentPane().add(jButtonDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 252, 120, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));

@@ -136,7 +136,7 @@ public class Searching extends javax.swing.JFrame {
         validasi.setForeground(new java.awt.Color(255, 0, 0));
         validasi.setText("Validasi");
         validasi.setVisible(false);
-        getContentPane().add(validasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 25, 60, -1));
+        getContentPane().add(validasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 200, -1));
 
         btn_back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
