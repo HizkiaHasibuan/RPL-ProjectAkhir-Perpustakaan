@@ -197,8 +197,8 @@ public class daftar_member extends javax.swing.JFrame {
                 ps.setString(1,nama);
                 ps.setString(2,gender);
                 ps.setString(3,birth);
-                ps.setString(4,email);
-                ps.setString(5,phone);
+                ps.setString(4,phone);
+                ps.setString(5,email);
                 ps.setString(6,address);
                 ps.setString(7,nowDate);
                 ps.executeUpdate();
