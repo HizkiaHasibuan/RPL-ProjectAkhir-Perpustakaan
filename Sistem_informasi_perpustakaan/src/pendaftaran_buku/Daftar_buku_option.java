@@ -218,8 +218,8 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     
     private void btn_daftar_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseClicked
         this.dispose();
-        Daftar_buku daftar_buku = new Daftar_buku();
-        daftar_buku.setVisible(true);
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option();
+        tipe_buku_option.setVisible(true);
     }//GEN-LAST:event_btn_daftar_bukuMouseClicked
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked

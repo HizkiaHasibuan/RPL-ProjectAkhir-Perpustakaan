@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -48,6 +49,7 @@ public class Daftar_buku extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -80,8 +82,20 @@ public class Daftar_buku extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Spinner_no_rak = new javax.swing.JSpinner();
+        jLabel14 = new javax.swing.JLabel();
+        textbox_kota_terbit = new javax.swing.JTextField();
+        validasi_kota_terbit = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        textbox_isbn = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        textbox_volume = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        textbox_edisi = new javax.swing.JTextField();
+        validasi_isbn = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+
+        jLabel13.setText("jLabel13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,7 +123,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag1MouseExited(evt);
             }
         });
-        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 363, -1, -1));
+        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, -1, -1));
 
         textbox_judul.setBackground(new java.awt.Color(204, 204, 204));
         textbox_judul.addActionListener(new java.awt.event.ActionListener() {
@@ -135,10 +149,10 @@ public class Daftar_buku extends javax.swing.JFrame {
 
         Spinner_jumlah.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ((javax.swing.JSpinner.DefaultEditor)Spinner_jumlah.getEditor()).getTextField().setEditable(false);
-        jPanel1.add(Spinner_jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, -1, -1));
+        jPanel1.add(Spinner_jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, -1, -1));
 
         jLabel6.setText("No.Rak");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 277, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
 
         btn_submit.setText("Submit");
         btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,7 +171,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_submitKeyPressed(evt);
             }
         });
-        jPanel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 543, -1, -1));
+        jPanel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 710, -1, -1));
 
         btn_back.setText("Back");
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,13 +185,13 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
-        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 543, -1, -1));
+        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, -1, -1));
 
         jLabel7.setText("Tag Buku");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 343, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
 
         jLabel8.setText("Tag 1");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 363, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
 
         textbox_tag1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textbox_tag1.setEnabled(false);
@@ -186,10 +200,10 @@ public class Daftar_buku extends javax.swing.JFrame {
                 textbox_tag1ActionPerformed(evt);
             }
         });
-        jPanel1.add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 383, 243, -1));
+        jPanel1.add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 243, -1));
 
         jLabel9.setText("Tag 2");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 409, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, -1, -1));
 
         textbox_tag2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textbox_tag2.setEnabled(false);
@@ -198,14 +212,14 @@ public class Daftar_buku extends javax.swing.JFrame {
                 textbox_tag2ActionPerformed(evt);
             }
         });
-        jPanel1.add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 434, 243, -1));
+        jPanel1.add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 243, -1));
 
         jLabel10.setText("Tag 3");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 472, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 650, -1, -1));
 
         textbox_tag3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         textbox_tag3.setEnabled(false);
-        jPanel1.add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 492, 243, -1));
+        jPanel1.add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 243, -1));
 
         btn_addTag2.setText("Add Tag");
         btn_addTag2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -219,7 +233,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag2MouseExited(evt);
             }
         });
-        jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 409, -1, -1));
+        jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, -1, -1));
 
         btn_addTag3.setText("Add Tag");
         btn_addTag3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -233,11 +247,11 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag3MouseExited(evt);
             }
         });
-        jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 472, -1, -1));
+        jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, -1, -1));
 
         validasi_tag.setText("Warning!");
         validasi_tag.setVisible(false);
-        jPanel1.add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 518, -1, -1));
+        jPanel1.add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, -1, -1));
 
         validasi_judul.setText("Validasi Judul");
         validasi_judul.setVisible(false);
@@ -256,11 +270,11 @@ public class Daftar_buku extends javax.swing.JFrame {
 
         validasi_thn_terbit.setText("Validasi Tahun Terbit");
         validasi_thn_terbit.setVisible(false);
-        jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 231, -1, -1));
+        jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         validasi_no_rak.setText("Validasi No.Rak");
         validasi_no_rak.setVisible(false);
-        jPanel1.add(validasi_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 323, -1, -1));
+        jPanel1.add(validasi_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
 
         validasi_penerbit.setText("Validasi Penerbit");
         validasi_penerbit.setVisible(false);
@@ -270,11 +284,41 @@ public class Daftar_buku extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jLabel5.setText("Jumlah");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 254, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
 
         Spinner_no_rak.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         ((javax.swing.JSpinner.DefaultEditor)Spinner_no_rak.getEditor()).getTextField().setEditable(false);
-        jPanel1.add(Spinner_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 297, 242, -1));
+        jPanel1.add(Spinner_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 242, -1));
+
+        jLabel14.setText("Kota Terbit");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jPanel1.add(textbox_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 240, -1));
+
+        validasi_kota_terbit.setText("Validasi Kota Terbit");
+        validasi_kota_terbit.setVisible(false);
+        jPanel1.add(validasi_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        jLabel15.setText("ISBN");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        jPanel1.add(textbox_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 240, -1));
+
+        jLabel16.setText("Volume");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
+        jPanel1.add(textbox_volume, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 240, -1));
+
+        jLabel17.setText("Edisi");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
+
+        textbox_edisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textbox_edisiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(textbox_edisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, -1));
+
+        validasi_isbn.setText("Validasi ISBN");
+        validasi_isbn.setVisible(false);
+        jPanel1.add(validasi_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -331,6 +375,8 @@ public class Daftar_buku extends javax.swing.JFrame {
         boolean penerbitIsValid = textBoxValidation(textbox_penerbit);
         boolean tagIsValid = tagValidation();
         boolean yearIsValid = yearValidation();
+        boolean kotaTerbitIsValid = textBoxValidation(textbox_kota_terbit);
+        boolean isbnIsValid = textBoxValidation(textbox_isbn);
         //validasi
         if(!judulIsValid){
             validasi_judul.setVisible(true);
@@ -359,13 +405,23 @@ public class Daftar_buku extends javax.swing.JFrame {
         else{
             validasi_tag.setVisible(false);
         }
+        if(!kotaTerbitIsValid){
+            validasi_kota_terbit.setText("Kota Terbit tidak boleh kosong");
+            validasi_kota_terbit.setVisible(true);
+        }
+        if(!isbnIsValid){
+            validasi_isbn.setText("ISBN tidak boleh kosong");
+            validasi_isbn.setVisible(true);
+        }
         //Disubmit kalau isian sudah valid semua
-        if(judulIsValid == true && penulisIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true){
+        if(judulIsValid == true && penulisIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true && kotaTerbitIsValid == true && isbnIsValid == true){
             validasi_judul.setVisible(false);
             validasi_penulis.setVisible(false);
             validasi_penerbit.setVisible(false);
             validasi_tag.setVisible(false);
             validasi_thn_terbit.setVisible(false);
+            validasi_kota_terbit.setVisible(false);
+            validasi_isbn.setVisible(false);
             submitPenulis();
             submitPenerbit();
             submitRak();
@@ -445,6 +501,11 @@ public class Daftar_buku extends javax.swing.JFrame {
     private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_btn_backMouseExited
+
+    private void textbox_edisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textbox_edisiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textbox_edisiActionPerformed
+
     private boolean textBoxValidation(javax.swing.JTextField textbox){
         String text = textbox.getText();
         if(text.equals("")){
@@ -534,6 +595,75 @@ public class Daftar_buku extends javax.swing.JFrame {
             }
             return true;
         } 
+    }
+    private void submitKota(){
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String kota = textbox_kota_terbit.getText().toLowerCase();
+        int db_id_kota = 0;
+        String sql = "SELECT id FROM tb_kota_terbit WHERE nama_kota = ?;";
+        try {            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,kota);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                db_id_kota = rs.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        if(db_id_kota == 0){
+            sql = "INSERT INTO tb_kota_terbit (nama_kota) VALUES (?);";
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,kota);
+                ps.executeUpdate();
+            } 
+            catch (SQLException e) {
+            }
+            finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        }
     }
     /*untuk fungsi submit penulis,penerbit atau nomor rak akan dilakukan pengecekan terlebih dahulu
       Kalau belum ada datanya akan ditambahkan dahulu ke tabelnya
@@ -750,17 +880,32 @@ public class Daftar_buku extends javax.swing.JFrame {
         String judul = textbox_judul.getText().toLowerCase();
         String penulis = textbox_penulis.getText().toLowerCase();
         String penerbit = textbox_penerbit.getText().toLowerCase();
+        String kota = textbox_kota_terbit.getText().toLowerCase();
+        String isbn = textbox_isbn.getText();
+        String volume = textbox_volume.getText();
+        String edisi = textbox_edisi.getText();
         int thn_terbit = (int) spinner_thn_terbit.getValue();
         int jumlah = (int) Spinner_jumlah.getValue();
         int no_rak = (int) Spinner_no_rak.getValue();
+        int id_kota = 0;
         int id_penulis = 0;
         int id_penerbit = 0;
         int id_no_rak = 0;
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        //dilakukan select terlebih dahulu untuk mengisi variabel id_penulis,id_penerbit dan id_no_rak
-        String sql = "SELECT id FROM tb_penulis WHERE nama = ?;";
+        //dilakukan select terlebih dahulu untuk mengisi variabel id_penulis,id_penerbit dan id_no_rak,id_kota_terbit
+        String sql = "SELECT id FROM tb_kota_terbit WHERE nama_kota = ?;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,kota);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_kota = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+        }
+        sql = "SELECT id FROM tb_penulis WHERE nama = ?;";
         try {
             ps = conn.prepareStatement(sql);
             ps.setString(1,penulis);
@@ -792,7 +937,7 @@ public class Daftar_buku extends javax.swing.JFrame {
         }
         //kalau tidak update data langsung diinsert ke tabel kalau dilakukan perubahan data maka akan menggunakan update
         if(!update){
-            sql = "INSERT INTO tb_buku (judul,penulis_id,penerbit_id,tahun_terbit,jumlah,tgl_pendaftaran,rak_id) VALUES (?,?,?,?,?,CURDATE(),?);";
+            sql = "INSERT INTO tb_buku (judul,penulis_id,penerbit_id,tahun_terbit,jumlah,tgl_pendaftaran,rak_id,kota_terbit_id,isbn_issn,volume,edisi,tipe_buku_id) VALUES (?,?,?,?,?,CURDATE(),?,?,?,?,?,?);";
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
@@ -801,6 +946,21 @@ public class Daftar_buku extends javax.swing.JFrame {
                 ps.setInt(4,thn_terbit);
                 ps.setInt(5,jumlah);
                 ps.setInt(6,id_no_rak);
+                ps.setInt(7,id_kota);
+                ps.setString(8,isbn);
+                if(volume.equals("")){
+                    ps.setNull(9,Types.NULL);
+                }
+                else{
+                    ps.setString(9,volume);
+                }
+                if(edisi.equals("")){
+                    ps.setNull(10,Types.NULL);
+                }
+                else{
+                    ps.setString(10,edisi);
+                }
+                ps.setInt(11,1);
                 ps.executeUpdate();
             }
             catch (SQLException e) {
@@ -1092,6 +1252,11 @@ public class Daftar_buku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1103,13 +1268,19 @@ public class Daftar_buku extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spinner_thn_terbit;
+    private javax.swing.JTextField textbox_edisi;
+    private javax.swing.JTextField textbox_isbn;
     private javax.swing.JTextField textbox_judul;
+    private javax.swing.JTextField textbox_kota_terbit;
     private javax.swing.JTextField textbox_penerbit;
     private javax.swing.JTextField textbox_penulis;
     public javax.swing.JTextField textbox_tag1;
     public javax.swing.JTextField textbox_tag2;
     public javax.swing.JTextField textbox_tag3;
+    private javax.swing.JTextField textbox_volume;
+    private javax.swing.JLabel validasi_isbn;
     private javax.swing.JLabel validasi_judul;
+    private javax.swing.JLabel validasi_kota_terbit;
     private javax.swing.JLabel validasi_no_rak;
     private javax.swing.JLabel validasi_penerbit;
     private javax.swing.JLabel validasi_penulis;
