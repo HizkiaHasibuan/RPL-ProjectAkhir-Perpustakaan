@@ -5,17 +5,37 @@
  */
 package pendaftaran_buku;
 
+import Tag.Tag_list;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Types;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import sistem_informasi_perpustakaan.connection.db_connection;
+
 /**
  *
  * @author Daniel
  */
 public class Daftar_journal extends javax.swing.JFrame {
-
+    public boolean isTagListOpen = false;//variabel yang membantu agar tag list tidak dibuka lebih dari 1 sebelum menutupnya
+    private boolean update = false;//Kalau digunakan untuk update data buku akan benilai true
+    private int id_buku = 0;
+    public int idTag1 = 0;
+    public int idTag2 = 0;
+    public int idTag3 = 0;
     /**
      * Creates new form Daftar_journal
      */
     public Daftar_journal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -38,7 +58,7 @@ public class Daftar_journal extends javax.swing.JFrame {
         validasi_penerbit = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         spinner_thn_terbit = new javax.swing.JSpinner();
-        jLabel5 = new javax.swing.JLabel();
+        validasi_thn_terbit = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         textbox_kota_terbit = new javax.swing.JTextField();
         validasi_kota_terbit = new javax.swing.JLabel();
@@ -74,26 +94,32 @@ public class Daftar_journal extends javax.swing.JFrame {
         jLabel3.setText("Penerbit");
 
         validasi_judul.setText("Validasi judul");
+        validasi_judul.setVisible(false);
 
         validasi_penerbit.setText("Validasi_penerbit");
+        validasi_penerbit.setVisible(false);
 
         jLabel4.setText("Tahun Terbit");
 
         spinner_thn_terbit.setModel(new javax.swing.SpinnerNumberModel(2021, 0, null, 1));
 
-        jLabel5.setText("Validasi tahun terbit");
+        validasi_thn_terbit.setText("Validasi tahun terbit");
+        validasi_thn_terbit.setVisible(false);
 
         jLabel6.setText("Kota Terbit");
 
         validasi_kota_terbit.setText("Validasi Kota Terbit");
+        validasi_kota_terbit.setVisible(false);
 
         jLabel7.setText("ISSN");
 
         validasi_issn.setText("Validasi ISSN");
+        validasi_issn.setVisible(false);
 
         jLabel8.setText("Volume");
 
         validasi_volume.setText("Validasi volume");
+        validasi_volume.setVisible(false);
 
         jLabel9.setText("Jumlah");
 
@@ -107,21 +133,53 @@ public class Daftar_journal extends javax.swing.JFrame {
 
         jLabel12.setText("Tag 1");
 
+        textbox_tag1.setEditable(false);
+
         btn_addTag1.setText("Add Tag");
+        btn_addTag1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_addTag1MouseClicked(evt);
+            }
+        });
 
         jLabel13.setText("Tag 2");
 
+        textbox_tag2.setEditable(false);
+
         btn_addTag2.setText("Add Tag");
+        btn_addTag2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_addTag2MouseClicked(evt);
+            }
+        });
 
         jLabel14.setText("Tag 3");
 
+        textbox_tag3.setEditable(false);
+
         btn_addTag3.setText("Add Tag");
+        btn_addTag3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_addTag3MouseClicked(evt);
+            }
+        });
 
         validasi_tag.setText("Warning !");
+        validasi_tag.setVisible(false);
 
         btn_back.setText("Back");
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_backMouseClicked(evt);
+            }
+        });
 
         btn_submit.setText("Submit");
+        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_submitMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -145,6 +203,7 @@ public class Daftar_journal extends javax.swing.JFrame {
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_addTag3))
+                    .addComponent(textbox_tag3)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -162,7 +221,7 @@ public class Daftar_journal extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel3)
                                 .addComponent(textbox_penerbit)
-                                .addComponent(jLabel5)
+                                .addComponent(validasi_thn_terbit)
                                 .addComponent(jLabel6)
                                 .addComponent(textbox_judul)
                                 .addComponent(validasi_kota_terbit)
@@ -176,17 +235,12 @@ public class Daftar_journal extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(validasi_tag)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btn_back)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btn_submit)))))
-                            .addComponent(jLabel11))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(textbox_tag3))
+                                    .addComponent(btn_back)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_submit)))
+                            .addComponent(jLabel11)
+                            .addComponent(validasi_tag))
+                        .addGap(0, 4, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -209,7 +263,7 @@ public class Daftar_journal extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(spinner_thn_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(validasi_thn_terbit)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -297,6 +351,712 @@ public class Daftar_journal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
+        this.dispose();
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option();
+        tipe_buku_option.setVisible(true);
+    }//GEN-LAST:event_btn_backMouseClicked
+
+    private void btn_addTag3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag3MouseClicked
+        if(!isTagListOpen){
+            Tag_list tag = new Tag_list(this,3);
+            tag.setVisible(true);
+            isTagListOpen = true;
+        }
+    }//GEN-LAST:event_btn_addTag3MouseClicked
+
+    private void btn_addTag2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag2MouseClicked
+        if(!isTagListOpen){
+            Tag_list tag = new Tag_list(this,2);
+            tag.setVisible(true);
+            isTagListOpen = true;
+        }
+    }//GEN-LAST:event_btn_addTag2MouseClicked
+
+    private void btn_addTag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag1MouseClicked
+        if(!isTagListOpen){
+            Tag_list tag = new Tag_list(this,1);
+            tag.setVisible(true);
+            isTagListOpen = true;
+        }
+    }//GEN-LAST:event_btn_addTag1MouseClicked
+
+    private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
+        boolean judulIsValid = titleValidation();
+        boolean penerbitIsValid = textBoxValidation(textbox_penerbit);
+        boolean tagIsValid = tagValidation();
+        boolean yearIsValid = yearValidation();
+        boolean kotaTerbitIsValid = textBoxValidation(textbox_kota_terbit);
+        boolean issnIsValid = textBoxValidation(textbox_issn);
+        boolean volumeIsValid = textBoxValidation(textbox_volume);
+        //validasi
+        if(!judulIsValid){
+            validasi_judul.setVisible(true);
+        }
+        if(!penerbitIsValid){
+            validasi_penerbit.setText("Penerbit tidak boleh kosong");
+            validasi_penerbit.setVisible(true);
+        }
+        if(!yearIsValid){
+            validasi_thn_terbit.setText("Tahun terbit tidak bisa melebihi tahun sekarang");
+            validasi_thn_terbit.setVisible(true);
+        }
+        if(!tagIsValid){
+            if(idTag1 == 0 && idTag2 == 0 && idTag3 == 0){
+                validasi_tag.setText("Tag minimal ada 1");
+            }
+            else{
+                validasi_tag.setText("Tag tidak boleh sama");
+            }
+            validasi_tag.setVisible(true);
+        }
+        else{
+            validasi_tag.setVisible(false);
+        }
+        if(!kotaTerbitIsValid){
+            validasi_kota_terbit.setText("Kota Terbit tidak boleh kosong");
+            validasi_kota_terbit.setVisible(true);
+        }
+        if(!issnIsValid){
+            validasi_issn.setText("ISBN tidak boleh kosong");
+            validasi_issn.setVisible(true);
+        }
+        if(!volumeIsValid){
+            validasi_volume.setText("Volume tidak boleh kosong");
+            validasi_volume.setVisible(true);
+        }
+        //Disubmit kalau isian sudah valid semua
+        if(judulIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true && kotaTerbitIsValid == true && issnIsValid == true && volumeIsValid == true){
+            validasi_judul.setVisible(false);
+            validasi_penerbit.setVisible(false);
+            validasi_tag.setVisible(false);
+            validasi_thn_terbit.setVisible(false);
+            validasi_kota_terbit.setVisible(false);
+            validasi_issn.setVisible(false);
+            validasi_volume.setVisible(false);
+            submitPenerbit();
+            submitRak();
+            submitKota();
+            submitDataBuku();
+            if(update){
+                updateTag();
+            }
+            else{
+                submitTag();
+            }
+            int ok = JOptionPane.showConfirmDialog(this,"Data Berhasil Diinputkan !","",JOptionPane.DEFAULT_OPTION);
+            if(ok == 0 && update == false){
+                this.dispose();
+                Daftar_journal daftar_journal = new Daftar_journal();
+                daftar_journal.setVisible(true);
+            }
+            else if(ok == 0 && update == true){
+                this.dispose();
+                Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+                daftar_buku_option.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_btn_submitMouseClicked
+    private boolean textBoxValidation(javax.swing.JTextField textbox){
+        String text = textbox.getText();
+        if(text.equals("")){
+            return false;
+        }
+        else return true;
+    }
+    private boolean yearValidation(){
+        LocalDate localDate = LocalDate.now();
+        int currentYear = localDate.getYear();
+        int year = (int) spinner_thn_terbit.getValue();
+        if(year > currentYear){
+            return false;
+        }
+        else return true;
+    }
+    private boolean tagValidation(){
+        if(((idTag1 != idTag2)&&(idTag1 != 0 && idTag2 != 0)) || 
+           ((idTag1 != idTag3)&&(idTag1 != 0 && idTag3 != 0)) || 
+           ((idTag2 != idTag3)&&(idTag2 != 0 && idTag3 != 0))){
+            if((idTag1 != idTag2)&&(idTag1 == idTag3)||(idTag2 == idTag3)){
+                return false;
+            }
+            else if((idTag1 != idTag3)&&(idTag1 == idTag2)){
+                return false;
+            }
+            return true;
+        }
+        else if(idTag1 != 0 && (idTag2 == 0 && idTag3 == 0)){
+            return true;
+        }
+        else if(idTag2 != 0 && (idTag1 == 0 && idTag3 == 0)){
+            return true;
+        }
+        else if(idTag3 != 0 && (idTag1 == 0 && idTag2 == 0)){
+            return true;
+        }
+        else{
+            return false;
+        } 
+    }
+    private boolean titleValidation(){
+        String judul = textbox_judul.getText().toLowerCase();
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT id FROM tb_buku WHERE judul = ?;";
+        int db_id_buku = 0;
+        if(judul.equals("")){
+            validasi_judul.setText("Judul tidak boleh kosong");
+            return false;
+        }
+        else{
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,judul);
+                rs = ps.executeQuery();
+                if(rs.next()){
+                    db_id_buku = rs.getInt("id");
+            }
+            }
+            catch (SQLException e) {
+            }
+            finally{
+                if(rs != null){
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(ps != null){
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(conn != null){
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+            if(db_id_buku != 0){
+                validasi_judul.setText("Judul buku sudah terdaftar");
+                return false;
+            }
+            return true;
+        } 
+    }
+    private void submitKota(){
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String kota = textbox_kota_terbit.getText().toLowerCase();
+        int db_id_kota = 0;
+        String sql = "SELECT id FROM tb_kota_terbit WHERE nama_kota = ?;";
+        try {            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,kota);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                db_id_kota = rs.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        if(db_id_kota == 0){
+            sql = "INSERT INTO tb_kota_terbit (nama_kota) VALUES (?);";
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,kota);
+                ps.executeUpdate();
+            } 
+            catch (SQLException e) {
+            }
+            finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        }
+    }
+        private void submitRak(){
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int no_rak = (int) Spinner_no_rak.getValue();
+        int db_id_rak = 0;
+        String sql = "SELECT id FROM tb_rak WHERE no_rak = ?;";
+        try {            
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,no_rak);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                db_id_rak = rs.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        if(db_id_rak == 0){
+            sql = "INSERT INTO tb_rak (no_rak) VALUES (?);";
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,no_rak);
+                ps.executeUpdate();
+            } 
+            catch (SQLException e) {
+            }
+            finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        }
+    }
+    private void submitPenerbit(){
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String penerbit = textbox_penerbit.getText().toLowerCase();
+        int db_id_penerbit = 0;
+        String sql = "SELECT id FROM tb_penerbit WHERE nama = ?;";
+        try {            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,penerbit);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                db_id_penerbit = rs.getInt("id");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        if(db_id_penerbit == 0){
+            sql = "INSERT INTO tb_penerbit (nama) VALUES (?);";
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,penerbit);
+                ps.executeUpdate();
+            } 
+            catch (SQLException e) {
+            }
+            finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        }
+    }
+    //proses submit data buku
+    private void submitDataBuku(){
+        String judul = textbox_judul.getText().toLowerCase();
+        String penerbit = textbox_penerbit.getText().toLowerCase();
+        String kota = textbox_kota_terbit.getText().toLowerCase();
+        String issn = textbox_issn.getText();
+        String volume = textbox_volume.getText();
+        int thn_terbit = (int) spinner_thn_terbit.getValue();
+        int jumlah = (int) Spinner_jumlah.getValue();
+        int no_rak = (int) Spinner_no_rak.getValue();
+        int id_kota = 0;
+        int id_penerbit = 0;
+        int id_no_rak = 0;
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        //dilakukan select terlebih dahulu untuk mengisi variabel id_penulis,id_penerbit dan id_no_rak,id_kota_terbit
+        String sql = "SELECT id FROM tb_kota_terbit WHERE nama_kota = ?;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,kota);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_kota = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+        }
+        sql = "SELECT id FROM tb_penerbit WHERE nama = ?;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,penerbit);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_penerbit = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+        }
+        sql = "SELECT id FROM tb_rak WHERE no_rak = ?;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,no_rak);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_no_rak = rs.getInt("id");
+            }
+        } catch (SQLException e) {
+        }
+        //kalau tidak update data langsung diinsert ke tabel kalau dilakukan perubahan data maka akan menggunakan update
+        if(!update){
+            sql = "INSERT INTO tb_buku (judul,penerbit_id,tahun_terbit,jumlah,tgl_pendaftaran,rak_id,kota_terbit_id,isbn_issn,volume,tipe_buku_id) VALUES (?,?,?,?,CURDATE(),?,?,?,?,?);";
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,judul);
+                ps.setInt(2,id_penerbit);
+                ps.setInt(3,thn_terbit);
+                ps.setInt(4,jumlah);
+                ps.setInt(5,id_no_rak);
+                ps.setInt(6,id_kota);
+                ps.setString(7,issn);
+                ps.setString(8,volume);
+                ps.setInt(9,2);
+                ps.executeUpdate();
+            }
+            catch (SQLException e) {
+            }
+            finally{
+                if(rs != null){
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(ps != null){
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(conn != null){
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+        }
+        else if(update){
+            sql = "UPDATE tb_buku SET judul = ?,penulis_id = ?,penerbit_id = ?,tahun_terbit = ?,jumlah = ?,rak_id = ? WHERE id = ?;";
+            try {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,judul);
+                ps.setInt(3,id_penerbit);
+                ps.setInt(4,thn_terbit);
+                ps.setInt(5,jumlah);
+                ps.setInt(6,id_no_rak);
+                ps.setInt(7,id_buku);
+                ps.executeUpdate();
+            }
+            catch (SQLException e) {
+            }
+            finally{
+                if(rs != null){
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(ps != null){
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(conn != null){
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+        }
+        
+    }
+    //untuk submit data tag ke tabel tb_tag_buku
+    private void submitTag(){
+        ArrayList<Integer> tag_id = new ArrayList<Integer>();
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String judul = textbox_judul.getText().toLowerCase();
+        String sql = "SELECT id FROM tb_buku WHERE judul = ?;";
+        if(idTag1 != 0){
+            tag_id.add(idTag1);
+        }
+        if(idTag2 != 0){
+            tag_id.add(idTag2);
+        }
+        if(idTag3 != 0){
+            tag_id.add(idTag3);
+        }
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,judul);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_buku = rs.getInt("id");
+            }
+        } catch (Exception e) {
+        }
+        sql = "INSERT INTO tb_tag_buku (buku_id,tag_id) VALUES (?,?);";
+        try {
+            //dilakukan perulangan for each untuk memasukan semua data tag yang ada di array list ke database
+            for(int id_tag : tag_id){
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,id_buku);
+                ps.setInt(2,id_tag);
+                ps.executeUpdate();
+            }
+        } catch (Exception e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        
+    }
+    /*fungsi untuk mengisi semua isian kalau ada perubahan data buku
+    jadi data buku sudah langsung dapat terlihat dan tinggal diganti*/
+    public void prepareUpdate(String judul){
+        int iteration = 0;//menentukan sudah iterasi ke berapa untuk tag (karena jumlah max tag 3 max iterasi adalah 3 kali (bernilai max 2)
+        update = true;
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_buku.judul = ?;";
+        try {            
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,judul);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_buku = rs.getInt(1);
+                textbox_judul.setText(rs.getString(2));
+                textbox_penerbit.setText(rs.getString(4));
+                spinner_thn_terbit.setValue(rs.getInt(5));
+                Spinner_jumlah.setValue(rs.getInt(6));
+                Spinner_no_rak.setValue(rs.getInt(7));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //untuk mengisi data tag di form
+        try {
+            sql = "SELECT tb_tag.id,tb_tag.tag FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id INNER JOIN tb_tag ON tb_tag_buku.tag_id = tb_tag.id WHERE tb_tag_buku.buku_id = ?;";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_buku);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                if(iteration == 0){
+                    idTag1 = rs.getInt(1);
+                    textbox_tag1.setText(rs.getString(2));
+                }
+                else if(iteration == 1){
+                    idTag2 = rs.getInt(1);
+                    textbox_tag2.setText(rs.getString(2));
+                }
+                else if(iteration == 2){
+                    idTag3 = rs.getInt(1);
+                    textbox_tag3.setText(rs.getString(2));
+                }
+                iteration++;
+            }
+        } catch (SQLException e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+    //fungsi untuk melakukan perubahan data tag.Data tag yang lama dihapus dan diganti dengan data baru
+    private void updateTag(){
+        ArrayList<Integer> tag_id = new ArrayList<Integer>();
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "DELETE FROM tb_tag_buku WHERE buku_id = ?;";
+        if(idTag1 != 0){
+            tag_id.add(idTag1);
+        }
+        if(idTag2 != 0){
+            tag_id.add(idTag2);
+        }
+        if(idTag3 != 0){
+            tag_id.add(idTag3);
+        }
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_buku);
+            ps.execute();
+        } catch (Exception e) {
+        }
+        sql = "INSERT INTO tb_tag_buku (buku_id,tag_id) VALUES (?,?);";
+        try {
+            for(int id_tag : tag_id){
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,id_buku);
+                ps.setInt(2,id_tag);
+                ps.executeUpdate();
+            }
+        } catch (Exception e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -350,7 +1110,6 @@ public class Daftar_journal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -362,15 +1121,16 @@ public class Daftar_journal extends javax.swing.JFrame {
     private javax.swing.JTextField textbox_judul;
     private javax.swing.JTextField textbox_kota_terbit;
     private javax.swing.JTextField textbox_penerbit;
-    private javax.swing.JTextField textbox_tag1;
-    private javax.swing.JTextField textbox_tag2;
-    private javax.swing.JTextField textbox_tag3;
+    public javax.swing.JTextField textbox_tag1;
+    public javax.swing.JTextField textbox_tag2;
+    public javax.swing.JTextField textbox_tag3;
     private javax.swing.JTextField textbox_volume;
     private javax.swing.JLabel validasi_issn;
     private javax.swing.JLabel validasi_judul;
     private javax.swing.JLabel validasi_kota_terbit;
     private javax.swing.JLabel validasi_penerbit;
     private javax.swing.JLabel validasi_tag;
+    private javax.swing.JLabel validasi_thn_terbit;
     private javax.swing.JLabel validasi_volume;
     // End of variables declaration//GEN-END:variables
 }
