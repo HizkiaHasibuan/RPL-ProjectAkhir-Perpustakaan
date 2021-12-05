@@ -69,6 +69,7 @@ public class Tag_search extends javax.swing.JFrame {
         jLabel1.setText("Tag 1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 41, 46, -1));
 
+        textbox_tag1.setEditable(false);
         textbox_tag1.setBackground(new java.awt.Color(204, 204, 204));
         textbox_tag1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         getContentPane().add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 43, 105, -1));
@@ -78,6 +79,7 @@ public class Tag_search extends javax.swing.JFrame {
         jLabel2.setText("Tag 2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 74, 46, -1));
 
+        textbox_tag2.setEditable(false);
         textbox_tag2.setBackground(new java.awt.Color(204, 204, 204));
         textbox_tag2.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         textbox_tag2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,6 +94,7 @@ public class Tag_search extends javax.swing.JFrame {
         jLabel3.setText("Tag 3");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 107, 46, -1));
 
+        textbox_tag3.setEditable(false);
         textbox_tag3.setBackground(new java.awt.Color(204, 204, 204));
         textbox_tag3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         textbox_tag3.addMouseListener(new java.awt.event.MouseAdapter() {
