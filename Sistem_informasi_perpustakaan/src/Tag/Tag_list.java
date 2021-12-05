@@ -9,6 +9,8 @@ package Tag;
 import java.awt.Cursor;
 import pencarian_buku.Tag_search;
 import pendaftaran_buku.Daftar_buku;
+import pendaftaran_buku.Daftar_journal;
+import pendaftaran_buku.Daftar_majalah;
 
 /**
  *
@@ -18,6 +20,8 @@ import pendaftaran_buku.Daftar_buku;
 public class Tag_list extends javax.swing.JFrame {
     private Daftar_buku daftar_buku;
     private Tag_search tag_search;
+    private Daftar_journal daftar_journal;
+    private Daftar_majalah daftar_majalah;
     private int from;//variable untuk menandakan dari mana form ini dibuka (daftar_buku atau tag_search) daftar_buku : 0 tag_search : 1
     private int tag_num;//tag ke-berapa yang akan diganti valuenya
     /** Creates new form Tag_list
@@ -35,6 +39,22 @@ public class Tag_list extends javax.swing.JFrame {
     public Tag_list(Tag_search tag_search,int tag_num) {
         this.from = 1;
         this.tag_search = tag_search;
+        this.tag_num = tag_num;
+        initComponents();
+        this.setLocationRelativeTo(this.tag_search);
+        this.setResizable(false);
+    }
+    public Tag_list(Daftar_journal daftar_journal,int tag_num) {
+        this.from = 2;
+        this.daftar_journal = daftar_journal;
+        this.tag_num = tag_num;
+        initComponents();
+        this.setLocationRelativeTo(this.tag_search);
+        this.setResizable(false);
+    }
+    public Tag_list(Daftar_majalah daftar_majalah,int tag_num) {
+        this.from = 3;
+        this.daftar_majalah = daftar_majalah;
         this.tag_num = tag_num;
         initComponents();
         this.setLocationRelativeTo(this.tag_search);
@@ -159,6 +179,48 @@ public class Tag_list extends javax.swing.JFrame {
             }
             if(tag_search.isTagListOpen){
                 tag_search.isTagListOpen = false;
+            }
+        }
+        else if(from == 2){
+            switch (tag_num) {
+                case 1:
+                    daftar_journal.textbox_tag1.setText(tag);
+                    daftar_journal.idTag1 = tag_ID;
+                    break;
+                case 2:
+                    daftar_journal.textbox_tag2.setText(tag);
+                    daftar_journal.idTag2 = tag_ID;
+                    break;
+                case 3:
+                    daftar_journal.textbox_tag3.setText(tag);
+                    daftar_journal.idTag3 = tag_ID;
+                    break;
+                default:
+                    break;
+            }
+            if(daftar_journal.isTagListOpen){
+                daftar_journal.isTagListOpen = false;
+            }
+        }
+        else if(from == 3){
+            switch (tag_num) {
+                case 1:
+                    daftar_majalah.textbox_tag1.setText(tag);
+                    daftar_majalah.idTag1 = tag_ID;
+                    break;
+                case 2:
+                    daftar_majalah.textbox_tag2.setText(tag);
+                    daftar_majalah.idTag2 = tag_ID;
+                    break;
+                case 3:
+                    daftar_majalah.textbox_tag3.setText(tag);
+                    daftar_majalah.idTag3 = tag_ID;
+                    break;
+                default:
+                    break;
+            }
+            if(daftar_majalah.isTagListOpen){
+                daftar_majalah.isTagListOpen = false;
             }
         }
         this.dispose();
