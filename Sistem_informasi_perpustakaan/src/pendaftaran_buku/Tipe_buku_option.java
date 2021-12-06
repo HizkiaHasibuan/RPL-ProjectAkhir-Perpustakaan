@@ -16,6 +16,8 @@ public class Tipe_buku_option extends javax.swing.JFrame {
      */
     public Tipe_buku_option() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -31,6 +33,7 @@ public class Tipe_buku_option extends javax.swing.JFrame {
         btn_journal = new javax.swing.JLabel();
         btn_majalah = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btn_back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,12 +47,29 @@ public class Tipe_buku_option extends javax.swing.JFrame {
 
         btn_journal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_journal.setText("Journal");
+        btn_journal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_journalMouseClicked(evt);
+            }
+        });
 
         btn_majalah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_majalah.setText("Majalah");
+        btn_majalah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_majalahMouseClicked(evt);
+            }
+        });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Pilih Tipe Buku");
+
+        btn_back.setText("Back");
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_backMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,16 +77,20 @@ public class Tipe_buku_option extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(63, 63, 63)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_buku, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btn_journal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_majalah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_buku, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_journal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_majalah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(84, 84, 84)
+                        .addComponent(btn_back)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -80,7 +104,9 @@ public class Tipe_buku_option extends javax.swing.JFrame {
                 .addComponent(btn_journal)
                 .addGap(68, 68, 68)
                 .addComponent(btn_majalah)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(btn_back)
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -91,6 +117,24 @@ public class Tipe_buku_option extends javax.swing.JFrame {
         Daftar_buku daftar_buku = new Daftar_buku();
         daftar_buku.setVisible(true);
     }//GEN-LAST:event_btn_bukuMouseClicked
+
+    private void btn_journalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_journalMouseClicked
+        this.dispose();
+        Daftar_journal daftar_journal = new Daftar_journal();
+        daftar_journal.setVisible(true);
+    }//GEN-LAST:event_btn_journalMouseClicked
+
+    private void btn_majalahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_majalahMouseClicked
+        this.dispose();
+        Daftar_majalah daftar_majalah = new Daftar_majalah();
+        daftar_majalah.setVisible(true);
+    }//GEN-LAST:event_btn_majalahMouseClicked
+
+    private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
+        this.dispose();
+        Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+        daftar_buku_option.setVisible(true);
+    }//GEN-LAST:event_btn_backMouseClicked
 
     /**
      * @param args the command line arguments
@@ -128,6 +172,7 @@ public class Tipe_buku_option extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_buku;
     private javax.swing.JLabel btn_journal;
     private javax.swing.JLabel btn_majalah;

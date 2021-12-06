@@ -6,12 +6,10 @@
 package pendaftaran_buku;
 
 import Tag.Tag_list;
-import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,8 +21,7 @@ import sistem_informasi_perpustakaan.connection.db_connection;
  *
  * @author Daniel
  */
-//Class untuk input/update data buku
-public class Daftar_buku extends javax.swing.JFrame {
+public class Daftar_majalah extends javax.swing.JFrame {
     public boolean isTagListOpen = false;//variabel yang membantu agar tag list tidak dibuka lebih dari 1 sebelum menutupnya
     private boolean update = false;//Kalau digunakan untuk update data buku akan benilai true
     private int id_buku = 0;
@@ -32,9 +29,9 @@ public class Daftar_buku extends javax.swing.JFrame {
     public int idTag2 = 0;
     public int idTag3 = 0;
     /**
-     * Creates new form Daftar_buku
+     * Creates new form Daftar_majalah
      */
-    public Daftar_buku() {
+    public Daftar_majalah() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -49,291 +46,318 @@ public class Daftar_buku extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btn_addTag1 = new javax.swing.JLabel();
         textbox_judul = new javax.swing.JTextField();
-        textbox_penulis = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        textbox_penerbit = new javax.swing.JTextField();
-        Spinner_jumlah = new javax.swing.JSpinner();
-        jLabel6 = new javax.swing.JLabel();
-        btn_submit = new javax.swing.JLabel();
-        btn_back = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        textbox_tag1 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        textbox_tag2 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        textbox_tag3 = new javax.swing.JTextField();
-        btn_addTag2 = new javax.swing.JLabel();
-        btn_addTag3 = new javax.swing.JLabel();
-        validasi_tag = new javax.swing.JLabel();
         validasi_judul = new javax.swing.JLabel();
-        validasi_penulis = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        textbox_penerbit = new javax.swing.JTextField();
+        validasi_penerbit = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         spinner_thn_terbit = new javax.swing.JSpinner();
         validasi_thn_terbit = new javax.swing.JLabel();
-        validasi_no_rak = new javax.swing.JLabel();
-        validasi_penerbit = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        Spinner_no_rak = new javax.swing.JSpinner();
-        jLabel14 = new javax.swing.JLabel();
         textbox_kota_terbit = new javax.swing.JTextField();
         validasi_kota_terbit = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        textbox_isbn = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        textbox_volume = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        textbox_issn = new javax.swing.JTextField();
+        validasi_issn = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         textbox_edisi = new javax.swing.JTextField();
-        validasi_isbn = new javax.swing.JLabel();
+        validasi_edisi = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        Spinner_jumlah = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        Spinner_no_rak = new javax.swing.JSpinner();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        textbox_tag1 = new javax.swing.JTextField();
+        btn_addTag1 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        textbox_tag2 = new javax.swing.JTextField();
+        btn_addTag2 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-
-        jLabel13.setText("jLabel13");
+        textbox_tag3 = new javax.swing.JTextField();
+        btn_addTag3 = new javax.swing.JLabel();
+        validasi_tag = new javax.swing.JLabel();
+        btn_back = new javax.swing.JLabel();
+        btn_submit = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel1.setText("Judul Majalah");
 
-        jLabel1.setText("Judul Buku");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        validasi_judul.setText("Validasi Judul");
+        validasi_judul.setVisible(false);
 
-        jLabel2.setText("Penulis");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 79, -1, -1));
+        jLabel2.setText("Penerbit");
+
+        validasi_penerbit.setText("Validasi Penerbit");
+        validasi_penerbit.setVisible(false);
+
+        jLabel3.setText("Tahun Terbit");
+
+        spinner_thn_terbit.setModel(new javax.swing.SpinnerNumberModel(2021, 1, null, 1));
+
+        validasi_thn_terbit.setText("Validasi Tahun Terbit");
+        validasi_thn_terbit.setVisible(false);
+
+        jLabel4.setText("Kota Terbit");
+
+        validasi_kota_terbit.setText("Validasi Kota Terbit");
+        validasi_kota_terbit.setVisible(false);
+
+        jLabel5.setText("ISSN");
+
+        validasi_issn.setText("Validasi ISSN");
+        validasi_issn.setVisible(false);
+
+        jLabel6.setText("Edisi");
+
+        validasi_edisi.setText("Validasi Edisi");
+        validasi_edisi.setVisible(false);
+
+        jLabel7.setText("Jumlah");
+
+        Spinner_jumlah.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel8.setText("No.Rak");
+
+        Spinner_no_rak.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jLabel9.setText("Tag Majalah");
+
+        jLabel10.setText("Tag 1");
+
+        textbox_tag1.setEditable(false);
 
         btn_addTag1.setText("Add Tag");
         btn_addTag1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_addTag1MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_addTag1MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_addTag1MouseExited(evt);
-            }
         });
-        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, -1, -1));
 
-        textbox_judul.setBackground(new java.awt.Color(204, 204, 204));
-        textbox_judul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textbox_judulActionPerformed(evt);
-            }
-        });
-        jPanel1.add(textbox_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 33, 241, -1));
+        jLabel11.setText("Tag 2");
 
-        textbox_penulis.setBackground(new java.awt.Color(204, 204, 204));
-        textbox_penulis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textbox_penulisActionPerformed(evt);
-            }
-        });
-        jPanel1.add(textbox_penulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 99, 241, -1));
-
-        jLabel3.setText("Penerbit");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 141, -1, -1));
-
-        textbox_penerbit.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel1.add(textbox_penerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 161, 241, -1));
-
-        Spinner_jumlah.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        ((javax.swing.JSpinner.DefaultEditor)Spinner_jumlah.getEditor()).getTextField().setEditable(false);
-        jPanel1.add(Spinner_jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, -1, -1));
-
-        jLabel6.setText("No.Rak");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, -1, -1));
-
-        btn_submit.setText("Submit");
-        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_submitMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_submitMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_submitMouseExited(evt);
-            }
-        });
-        btn_submit.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btn_submitKeyPressed(evt);
-            }
-        });
-        jPanel1.add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 710, -1, -1));
-
-        btn_back.setText("Back");
-        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_backMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_backMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_backMouseExited(evt);
-            }
-        });
-        jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 710, -1, -1));
-
-        jLabel7.setText("Tag Buku");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 550, -1, -1));
-
-        jLabel8.setText("Tag 1");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, -1));
-
-        textbox_tag1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        textbox_tag1.setEnabled(false);
-        textbox_tag1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textbox_tag1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, 243, -1));
-
-        jLabel9.setText("Tag 2");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 610, -1, -1));
-
-        textbox_tag2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        textbox_tag2.setEnabled(false);
-        textbox_tag2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textbox_tag2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 630, 243, -1));
-
-        jLabel10.setText("Tag 3");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 650, -1, -1));
-
-        textbox_tag3.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        textbox_tag3.setEnabled(false);
-        jPanel1.add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 243, -1));
+        textbox_tag2.setEditable(false);
 
         btn_addTag2.setText("Add Tag");
         btn_addTag2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_addTag2MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_addTag2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_addTag2MouseExited(evt);
+        });
+
+        jLabel12.setText("Tag 3");
+
+        textbox_tag3.setEditable(false);
+        textbox_tag3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                textbox_tag3MouseClicked(evt);
             }
         });
-        jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 610, -1, -1));
 
         btn_addTag3.setText("Add Tag");
         btn_addTag3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_addTag3MouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_addTag3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_addTag3MouseExited(evt);
-            }
         });
-        jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 650, -1, -1));
 
-        validasi_tag.setText("Warning!");
+        validasi_tag.setText("Warning !");
         validasi_tag.setVisible(false);
-        jPanel1.add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, -1, -1));
 
-        validasi_judul.setText("Validasi Judul");
-        validasi_judul.setVisible(false);
-        jPanel1.add(validasi_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, -1, -1));
-
-        validasi_penulis.setText("Validasi Penulis");
-        validasi_penulis.setVisible(false);
-        jPanel1.add(validasi_penulis, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, -1, -1));
-
-        spinner_thn_terbit.setModel(new javax.swing.SpinnerNumberModel(2021, 0, null, 1));
-        spinner_thn_terbit.setEditor(new javax.swing.JSpinner.NumberEditor(spinner_thn_terbit,"0"));
-        ((javax.swing.JSpinner.DefaultEditor)spinner_thn_terbit.getEditor()).getTextField().setEditable(false);
-        spinner_thn_terbit.setRequestFocusEnabled(false);
-        spinner_thn_terbit.setValue(2021);
-        jPanel1.add(spinner_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 207, 162, -1));
-
-        validasi_thn_terbit.setText("Validasi Tahun Terbit");
-        validasi_thn_terbit.setVisible(false);
-        jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-
-        validasi_no_rak.setText("Validasi No.Rak");
-        validasi_no_rak.setVisible(false);
-        jPanel1.add(validasi_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
-
-        validasi_penerbit.setText("Validasi Penerbit");
-        validasi_penerbit.setVisible(false);
-        jPanel1.add(validasi_penerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 187, -1, -1));
-
-        jLabel4.setText("Tahun Terbit");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
-
-        jLabel5.setText("Jumlah");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, -1, -1));
-
-        Spinner_no_rak.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        ((javax.swing.JSpinner.DefaultEditor)Spinner_no_rak.getEditor()).getTextField().setEditable(false);
-        jPanel1.add(Spinner_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 242, -1));
-
-        jLabel14.setText("Kota Terbit");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-        jPanel1.add(textbox_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 240, -1));
-
-        validasi_kota_terbit.setText("Validasi Kota Terbit");
-        validasi_kota_terbit.setVisible(false);
-        jPanel1.add(validasi_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
-        jLabel15.setText("ISBN");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
-        jPanel1.add(textbox_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 240, -1));
-
-        jLabel16.setText("Volume");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
-        jPanel1.add(textbox_volume, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 240, -1));
-
-        jLabel17.setText("Edisi");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, -1, -1));
-
-        textbox_edisi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textbox_edisiActionPerformed(evt);
+        btn_back.setText("Back");
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_backMouseClicked(evt);
             }
         });
-        jPanel1.add(textbox_edisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, 240, -1));
 
-        validasi_isbn.setText("Validasi ISBN");
-        validasi_isbn.setVisible(false);
-        jPanel1.add(validasi_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        btn_submit.setText("Submit");
+        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_submitMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Spinner_no_rak, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(textbox_kota_terbit)
+                    .addComponent(textbox_judul)
+                    .addComponent(textbox_penerbit)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(spinner_thn_terbit, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addComponent(textbox_issn)
+                    .addComponent(textbox_edisi)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Spinner_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textbox_tag1)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_addTag1))
+                    .addComponent(textbox_tag2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_addTag2))
+                    .addComponent(textbox_tag3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_addTag3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(validasi_judul)
+                            .addComponent(jLabel2)
+                            .addComponent(validasi_penerbit)
+                            .addComponent(validasi_thn_terbit)
+                            .addComponent(jLabel4)
+                            .addComponent(validasi_kota_terbit)
+                            .addComponent(jLabel5)
+                            .addComponent(validasi_issn)
+                            .addComponent(jLabel6)
+                            .addComponent(validasi_edisi)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(validasi_tag))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_back)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_submit)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_judul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_judul)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_penerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_penerbit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(spinner_thn_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_thn_terbit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_kota_terbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_kota_terbit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_issn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_issn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_edisi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_edisi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(Spinner_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Spinner_no_rak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(btn_addTag1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_tag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(btn_addTag2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_tag2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(btn_addTag3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textbox_tag3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(validasi_tag)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_back)
+                    .addComponent(btn_submit))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         jScrollPane1.setViewportView(jPanel1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 280, 320));
+        jLabel13.setText("Tambah Data Majalah");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Tambah Buku Baru");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 240, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back_ground.jpg"))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 400));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jLabel13)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel13)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
+        this.dispose();
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option();
+        tipe_buku_option.setVisible(true);
+    }//GEN-LAST:event_btn_backMouseClicked
+
+    private void textbox_tag3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textbox_tag3MouseClicked
+
+    }//GEN-LAST:event_textbox_tag3MouseClicked
 
     private void btn_addTag3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag3MouseClicked
         if(!isTagListOpen){
@@ -351,39 +375,25 @@ public class Daftar_buku extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_addTag2MouseClicked
 
-    private void textbox_tag2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textbox_tag2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textbox_tag2ActionPerformed
-
-    private void textbox_tag1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textbox_tag1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textbox_tag1ActionPerformed
-
-    private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
-        this.dispose();
-        Tipe_buku_option tipe_buku_option = new Tipe_buku_option();
-        tipe_buku_option.setVisible(true);
-    }//GEN-LAST:event_btn_backMouseClicked
-
-    private void btn_submitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_submitKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_submitKeyPressed
+    private void btn_addTag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag1MouseClicked
+        if(!isTagListOpen){
+            Tag_list tag = new Tag_list(this,1);
+            tag.setVisible(true);
+            isTagListOpen = true;
+        }
+    }//GEN-LAST:event_btn_addTag1MouseClicked
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
-        boolean judulIsValid = titleValidation();
-        boolean penulisIsValid = textBoxValidation(textbox_penulis);
+                boolean judulIsValid = titleValidation();
         boolean penerbitIsValid = textBoxValidation(textbox_penerbit);
         boolean tagIsValid = tagValidation();
         boolean yearIsValid = yearValidation();
         boolean kotaTerbitIsValid = textBoxValidation(textbox_kota_terbit);
-        boolean isbnIsValid = textBoxValidation(textbox_isbn);
+        boolean issnIsValid = textBoxValidation(textbox_issn);
+        boolean edisiIsValid = textBoxValidation(textbox_edisi);
         //validasi
         if(!judulIsValid){
             validasi_judul.setVisible(true);
-        }
-        if(!penulisIsValid){
-            validasi_penulis.setText("Penulis tidak boleh kosong");
-            validasi_penulis.setVisible(true);
         }
         if(!penerbitIsValid){
             validasi_penerbit.setText("Penerbit tidak boleh kosong");
@@ -409,20 +419,23 @@ public class Daftar_buku extends javax.swing.JFrame {
             validasi_kota_terbit.setText("Kota Terbit tidak boleh kosong");
             validasi_kota_terbit.setVisible(true);
         }
-        if(!isbnIsValid){
-            validasi_isbn.setText("ISBN tidak boleh kosong");
-            validasi_isbn.setVisible(true);
+        if(!issnIsValid){
+            validasi_issn.setText("ISBN tidak boleh kosong");
+            validasi_issn.setVisible(true);
+        }
+        if(!edisiIsValid){
+            validasi_edisi.setText("Edisi tidak boleh kosong");
+            validasi_edisi.setVisible(true);
         }
         //Disubmit kalau isian sudah valid semua
-        if(judulIsValid == true && penulisIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true && kotaTerbitIsValid == true && isbnIsValid == true){
+        if(judulIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true && kotaTerbitIsValid == true && issnIsValid == true && edisiIsValid == true){
             validasi_judul.setVisible(false);
-            validasi_penulis.setVisible(false);
             validasi_penerbit.setVisible(false);
             validasi_tag.setVisible(false);
             validasi_thn_terbit.setVisible(false);
             validasi_kota_terbit.setVisible(false);
-            validasi_isbn.setVisible(false);
-            submitPenulis();
+            validasi_issn.setVisible(false);
+            validasi_edisi.setVisible(false);
             submitPenerbit();
             submitRak();
             submitKota();
@@ -436,8 +449,8 @@ public class Daftar_buku extends javax.swing.JFrame {
             int ok = JOptionPane.showConfirmDialog(this,"Data Berhasil Diinputkan !","",JOptionPane.DEFAULT_OPTION);
             if(ok == 0 && update == false){
                 this.dispose();
-                Daftar_buku daftar_buku = new Daftar_buku();
-                daftar_buku.setVisible(true);
+                Daftar_journal daftar_journal = new Daftar_journal();
+                daftar_journal.setVisible(true);
             }
             else if(ok == 0 && update == true){
                 this.dispose();
@@ -446,67 +459,6 @@ public class Daftar_buku extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btn_submitMouseClicked
-
-    private void textbox_penulisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textbox_penulisActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textbox_penulisActionPerformed
-
-    private void textbox_judulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textbox_judulActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textbox_judulActionPerformed
-
-    private void btn_addTag1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag1MouseClicked
-        if(!isTagListOpen){
-            Tag_list tag = new Tag_list(this,1);
-            tag.setVisible(true);
-            isTagListOpen = true;
-        }
-    }//GEN-LAST:event_btn_addTag1MouseClicked
-
-    private void btn_addTag1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag1MouseEntered
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btn_addTag1MouseEntered
-
-    private void btn_addTag1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag1MouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_btn_addTag1MouseExited
-
-    private void btn_addTag2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag2MouseEntered
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btn_addTag2MouseEntered
-
-    private void btn_addTag2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag2MouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_btn_addTag2MouseExited
-
-    private void btn_addTag3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag3MouseEntered
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btn_addTag3MouseEntered
-
-    private void btn_addTag3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addTag3MouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_btn_addTag3MouseExited
-
-    private void btn_submitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseEntered
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btn_submitMouseEntered
-
-    private void btn_submitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_btn_submitMouseExited
-
-    private void btn_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseEntered
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btn_backMouseEntered
-
-    private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
-        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_btn_backMouseExited
-
-    private void textbox_edisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textbox_edisiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textbox_edisiActionPerformed
-
     private boolean textBoxValidation(javax.swing.JTextField textbox){
         String text = textbox.getText();
         if(text.equals("")){
@@ -666,79 +618,7 @@ public class Daftar_buku extends javax.swing.JFrame {
         }
         }
     }
-    /*untuk fungsi submit penulis,penerbit atau nomor rak akan dilakukan pengecekan terlebih dahulu
-      Kalau belum ada datanya akan ditambahkan dahulu ke tabelnya
-      Kalau sudah ada langsung diselect idnya*/
-    private void submitPenulis(){
-        Connection conn = db_connection.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String penulis = textbox_penulis.getText().toLowerCase();
-        int db_id_penulis = 0;
-        String sql = "SELECT id FROM tb_penulis WHERE nama = ?;";
-        try {            
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,penulis);
-            rs = ps.executeQuery();
-            if(rs.next()){
-                db_id_penulis = rs.getInt("id");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
-            if(rs != null){
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if(ps != null){
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if(conn != null){
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
-        conn = db_connection.getConnection();
-        if(db_id_penulis == 0){
-            sql = "INSERT INTO tb_penulis (nama) VALUES (?);";
-            try {
-                ps = conn.prepareStatement(sql);
-                ps.setString(1,penulis);
-                ps.executeUpdate();
-            } 
-            catch (SQLException e) {
-            }
-            finally{
-            if(rs != null){
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if(ps != null){
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if(conn != null){
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
-        }
-    }
-    private void submitRak(){
+        private void submitRak(){
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -879,17 +759,14 @@ public class Daftar_buku extends javax.swing.JFrame {
     //proses submit data buku
     private void submitDataBuku(){
         String judul = textbox_judul.getText().toLowerCase();
-        String penulis = textbox_penulis.getText().toLowerCase();
         String penerbit = textbox_penerbit.getText().toLowerCase();
         String kota = textbox_kota_terbit.getText().toLowerCase();
-        String isbn = textbox_isbn.getText();
-        String volume = textbox_volume.getText();
+        String issn = textbox_issn.getText();
         String edisi = textbox_edisi.getText();
         int thn_terbit = (int) spinner_thn_terbit.getValue();
         int jumlah = (int) Spinner_jumlah.getValue();
         int no_rak = (int) Spinner_no_rak.getValue();
         int id_kota = 0;
-        int id_penulis = 0;
         int id_penerbit = 0;
         int id_no_rak = 0;
         Connection conn = db_connection.getConnection();
@@ -903,16 +780,6 @@ public class Daftar_buku extends javax.swing.JFrame {
             rs = ps.executeQuery();
             if(rs.next()){
                 id_kota = rs.getInt("id");
-            }
-        } catch (SQLException e) {
-        }
-        sql = "SELECT id FROM tb_penulis WHERE nama = ?;";
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,penulis);
-            rs = ps.executeQuery();
-            if(rs.next()){
-                id_penulis = rs.getInt("id");
             }
         } catch (SQLException e) {
         }
@@ -938,30 +805,18 @@ public class Daftar_buku extends javax.swing.JFrame {
         }
         //kalau tidak update data langsung diinsert ke tabel kalau dilakukan perubahan data maka akan menggunakan update
         if(!update){
-            sql = "INSERT INTO tb_buku (judul,penulis_id,penerbit_id,tahun_terbit,jumlah,tgl_pendaftaran,rak_id,kota_terbit_id,isbn_issn,volume,edisi,tipe_buku_id) VALUES (?,?,?,?,?,CURDATE(),?,?,?,?,?,?);";
+            sql = "INSERT INTO tb_buku (judul,penerbit_id,tahun_terbit,jumlah,tgl_pendaftaran,rak_id,kota_terbit_id,isbn_issn,edisi,tipe_buku_id) VALUES (?,?,?,?,CURDATE(),?,?,?,?,?);";
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
-                ps.setInt(2,id_penulis);
-                ps.setInt(3,id_penerbit);
-                ps.setInt(4,thn_terbit);
-                ps.setInt(5,jumlah);
-                ps.setInt(6,id_no_rak);
-                ps.setInt(7,id_kota);
-                ps.setString(8,isbn);
-                if(volume.equals("")){
-                    ps.setNull(9,Types.NULL);
-                }
-                else{
-                    ps.setString(9,volume);
-                }
-                if(edisi.equals("")){
-                    ps.setNull(10,Types.NULL);
-                }
-                else{
-                    ps.setString(10,edisi);
-                }
-                ps.setInt(11,1);
+                ps.setInt(2,id_penerbit);
+                ps.setInt(3,thn_terbit);
+                ps.setInt(4,jumlah);
+                ps.setInt(5,id_no_rak);
+                ps.setInt(6,id_kota);
+                ps.setString(7,issn);
+                ps.setString(8,edisi);
+                ps.setInt(9,3);
                 ps.executeUpdate();
             }
             catch (SQLException e) {
@@ -992,7 +847,6 @@ public class Daftar_buku extends javax.swing.JFrame {
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
-                ps.setInt(2,id_penulis);
                 ps.setInt(3,id_penerbit);
                 ps.setInt(4,thn_terbit);
                 ps.setInt(5,jumlah);
@@ -1100,7 +954,6 @@ public class Daftar_buku extends javax.swing.JFrame {
             if(rs.next()){
                 id_buku = rs.getInt(1);
                 textbox_judul.setText(rs.getString(2));
-                textbox_penulis.setText(rs.getString(3));
                 textbox_penerbit.setText(rs.getString(4));
                 spinner_thn_terbit.setValue(rs.getInt(5));
                 Spinner_jumlah.setValue(rs.getInt(6));
@@ -1223,20 +1076,20 @@ public class Daftar_buku extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Daftar_buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar_majalah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Daftar_buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar_majalah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Daftar_buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar_majalah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Daftar_buku.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar_majalah.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Daftar_buku().setVisible(true);
+                new Daftar_majalah().setVisible(true);
             }
         });
     }
@@ -1254,10 +1107,6 @@ public class Daftar_buku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1270,21 +1119,18 @@ public class Daftar_buku extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spinner_thn_terbit;
     private javax.swing.JTextField textbox_edisi;
-    private javax.swing.JTextField textbox_isbn;
+    private javax.swing.JTextField textbox_issn;
     private javax.swing.JTextField textbox_judul;
     private javax.swing.JTextField textbox_kota_terbit;
     private javax.swing.JTextField textbox_penerbit;
-    private javax.swing.JTextField textbox_penulis;
     public javax.swing.JTextField textbox_tag1;
     public javax.swing.JTextField textbox_tag2;
     public javax.swing.JTextField textbox_tag3;
-    private javax.swing.JTextField textbox_volume;
-    private javax.swing.JLabel validasi_isbn;
+    private javax.swing.JLabel validasi_edisi;
+    private javax.swing.JLabel validasi_issn;
     private javax.swing.JLabel validasi_judul;
     private javax.swing.JLabel validasi_kota_terbit;
-    private javax.swing.JLabel validasi_no_rak;
     private javax.swing.JLabel validasi_penerbit;
-    private javax.swing.JLabel validasi_penulis;
     private javax.swing.JLabel validasi_tag;
     private javax.swing.JLabel validasi_thn_terbit;
     // End of variables declaration//GEN-END:variables
