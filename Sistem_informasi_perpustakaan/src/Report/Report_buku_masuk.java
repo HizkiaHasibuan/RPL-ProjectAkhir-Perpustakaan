@@ -37,6 +37,8 @@ public class Report_buku_masuk extends javax.swing.JFrame {
      */
     public Report_buku_masuk() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
@@ -131,7 +133,8 @@ public class Report_buku_masuk extends javax.swing.JFrame {
             //updateQuery.setText(query);
             JasperReport jr = JasperCompileManager.compileReport(jd);
             JasperPrint jp = JasperFillManager.fillReport(jr, map, conn);
-            JasperViewer.viewReport(jp);
+            //JasperViewer jv = new JasperViewer(jp,false);
+            JasperViewer.viewReport(jp,false);
         } catch (JRException ex) {
             Logger.getLogger(Report_buku_masuk.class.getName()).log(Level.SEVERE, null, ex);
         }
