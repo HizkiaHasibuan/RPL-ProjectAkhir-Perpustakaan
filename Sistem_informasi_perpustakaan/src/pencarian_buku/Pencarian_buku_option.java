@@ -6,6 +6,7 @@
 package pencarian_buku;
 
 import java.awt.Cursor;
+import pendaftaran_buku.Tipe_buku_option;
 import sistem_informasi_perpustakaan.Main_menu;
 
 /**
@@ -140,8 +141,8 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
 //searching buku sesuai metode berdasarkan button yang di click
     private void btn_search_by_titleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_search_by_titleMouseClicked
         this.dispose();
-        Searching searching = new Searching(0);
-        searching.setVisible(true);
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option(1, 0);
+        tipe_buku_option.setVisible(true);
     }//GEN-LAST:event_btn_search_by_titleMouseClicked
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
@@ -152,14 +153,14 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
 
     private void btn_search_by_authorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_search_by_authorMouseClicked
         this.dispose();
-        Searching searching = new Searching(1);
+        Searching searching = new Searching(1,false,1);
         searching.setVisible(true);
     }//GEN-LAST:event_btn_search_by_authorMouseClicked
 
     private void btn_search_by_publisherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_search_by_publisherMouseClicked
         this.dispose();
-        Searching searching = new Searching(2);
-        searching.setVisible(true);
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option(1, 2);
+        tipe_buku_option.setVisible(true);
     }//GEN-LAST:event_btn_search_by_publisherMouseClicked
 
     private void btn_search_by_tagMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_search_by_tagMouseClicked
