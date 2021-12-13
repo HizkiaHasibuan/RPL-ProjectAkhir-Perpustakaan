@@ -5,6 +5,7 @@
  */
 package pendaftaran_buku;
 
+import Report.Report_option;
 import denda_buku.daftar_denda;
 import denda_buku.daftar_pengembalian_telat;
 import java.awt.Cursor;
@@ -57,6 +58,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_buat_laporan = new javax.swing.JLabel();
         btn_daftar_buku = new javax.swing.JLabel();
         btn_edit_buku = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
@@ -68,6 +70,17 @@ public class Daftar_buku_option extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_buat_laporan.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_buat_laporan.setForeground(new java.awt.Color(255, 255, 255));
+        btn_buat_laporan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_buat_laporan.setText("Buat Laporan");
+        btn_buat_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buat_laporanMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_buat_laporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
 
         btn_daftar_buku.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_daftar_buku.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,7 +114,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_edit_bukuMouseExited(evt);
             }
         });
-        getContentPane().add(btn_edit_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+        getContentPane().add(btn_edit_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
         btn_back.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,7 +131,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 70, -1));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 70, -1));
 
         btn_peminjaman.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_peminjaman.setForeground(new java.awt.Color(255, 255, 255));
@@ -129,7 +142,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_peminjamanMouseClicked(evt);
             }
         });
-        getContentPane().add(btn_peminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 237, -1, -1));
+        getContentPane().add(btn_peminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         btn_pengembalian.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_pengembalian.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,7 +153,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_pengembalianMouseClicked(evt);
             }
         });
-        getContentPane().add(btn_pengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 165, -1, -1));
+        getContentPane().add(btn_pengembalian, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
         btn_daftar_denda.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_daftar_denda.setForeground(new java.awt.Color(255, 255, 255));
@@ -158,7 +171,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 24, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,7 +231,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     
     private void btn_daftar_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseClicked
         this.dispose();
-        Tipe_buku_option tipe_buku_option = new Tipe_buku_option();
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option(0,4);
         tipe_buku_option.setVisible(true);
     }//GEN-LAST:event_btn_daftar_bukuMouseClicked
 
@@ -276,6 +289,13 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         tampil_notif();
     }//GEN-LAST:event_btn_pengembalianMouseClicked
 
+    private void btn_buat_laporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buat_laporanMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        Report_option report_option = new Report_option();
+        report_option.setVisible(true);
+    }//GEN-LAST:event_btn_buat_laporanMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -307,6 +327,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_back;
+    private javax.swing.JLabel btn_buat_laporan;
     private javax.swing.JLabel btn_daftar_buku;
     private javax.swing.JLabel btn_daftar_denda;
     private javax.swing.JLabel btn_edit_buku;

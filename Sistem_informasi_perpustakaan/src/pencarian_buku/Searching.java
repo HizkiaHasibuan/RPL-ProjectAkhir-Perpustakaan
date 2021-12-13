@@ -27,6 +27,7 @@ public class Searching extends javax.swing.JFrame {
       digunakan pada saat melakukan pencarian buku yang mau diganti datanya.
       Perubahan data buku hanya dilakukan oleh Admin/Pegawai.
     */
+    private int tipe;//1 = buku,2 = jurnal,3 = majalah
     /**
      * Creates new form Search_by_title
      */
@@ -44,11 +45,26 @@ public class Searching extends javax.swing.JFrame {
     }
     /*Constructor yang dipanggil kalau hanya ingin mencari data buku.
       Variabel mode menentukan metode pencarian yang digunakan*/
-    public Searching(int mode) {
+    public Searching(int mode,boolean isAdmin,int tipe) {
         this.mode = mode;
+        this.isAdmin = isAdmin;
+        this.tipe = tipe;
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        if(tipe == 2 || tipe == 3){
+        DefaultTableModel tableModel = new DefaultTableModel();
+        tableModel.addColumn("Judul");
+        //tableModel.addColumn("Penulis");
+        tableModel.addColumn("Penerbit");
+        tableModel.addColumn("Tahun Terbit");
+        tableModel.addColumn("Nomor Rak");
+        tableModel.addColumn("Status");
+        tableModel.addColumn("ISSN/ISBN");
+        tableModel.addColumn("Tipe");
+        tabel_buku.setModel(tableModel);
+        }
+
     }
 
     /**
@@ -88,7 +104,7 @@ public class Searching extends javax.swing.JFrame {
         getContentPane().add(keterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 80, -1));
 
         textbox_search.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(textbox_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 45, 269, -1));
+        getContentPane().add(textbox_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 45, 300, -1));
 
         btn_search.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_search.setForeground(new java.awt.Color(255, 255, 255));
@@ -104,7 +120,7 @@ public class Searching extends javax.swing.JFrame {
                 btn_searchMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 76, 60, -1));
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 60, -1));
 
         tabel_buku.setBackground(new java.awt.Color(204, 204, 204));
         tabel_buku.setModel(new javax.swing.table.DefaultTableModel(
@@ -112,11 +128,11 @@ public class Searching extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Judul", "Penulis", "Penerbit", "Tahun Terbit", "Nomor Rak", "Status"
+                "Judul", "Penulis", "Penerbit", "Tahun Terbit", "Nomor Rak", "Status", "ISSN/ISBN", "Tipe"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -130,7 +146,7 @@ public class Searching extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_buku);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 108, 375, 134));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 108, 560, 134));
 
         validasi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         validasi.setForeground(new java.awt.Color(255, 0, 0));
@@ -160,7 +176,7 @@ public class Searching extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 120, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_pencarian_op.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 250));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,15 +210,17 @@ public class Searching extends javax.swing.JFrame {
     }
     //proses searching
     private void search(){
-        String t_judul;
-        String t_penulis;
-        String t_penerbit;
-        int t_thn_terbit;
-        int t_no_rak;
-        int t_jumlah;
+        String t_judul=null;
+        String t_penulis=null;
+        String t_penerbit=null;
+        int t_thn_terbit=0;
+        int t_no_rak=0;
+        int t_jumlah = 0;
         int t_dipinjam;
         String t_status;
-        int t_id_buku;
+        int t_id_buku = 0;
+        String t_isbn_issn = null;
+        String t_tipe = null;
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -211,36 +229,83 @@ public class Searching extends javax.swing.JFrame {
         String text = textbox_search.getText().toLowerCase();
         String sql = null;
         //melakukan select dimana kondisi where sesuai dengan metode pencarian yang digunakan
-        if(mode == 0){
-            sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_buku.judul LIKE '%"+text+"%';";
+        if(tipe == 1){
+            if(mode == 0){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_buku.judul LIKE '%"+text+"%';";
+            }
+            else if(mode == 1){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_penulis.nama LIKE '%"+text+"%';";
+            }
+            else if(mode == 2){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_penerbit.nama LIKE '%"+text+"%';";
+            }
         }
-        else if(mode == 1){
-            sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_penulis.nama LIKE '%"+text+"%';";
+        else if(tipe == 2){
+            if(mode == 0){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 2 AND tb_buku.judul LIKE '%"+text+"%';";
+            }
+            else if(mode == 2){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 2 AND tb_penerbit.nama LIKE '%"+text+"%';";
+            }
         }
-        else if(mode == 2){
-            sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_penerbit.nama LIKE '%"+text+"%';";
+        else if(tipe == 3){
+            if(mode == 0){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_buku.judul LIKE '%"+text+"%';";
+            }
+            else if(mode == 2){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_penerbit.nama LIKE '%"+text+"%';";
+            }
         }
         /*cek banyak buku dengan id tertentu yang sedang dipinjam.Kalau jumlah buku lebih banyak dari yang sedang dipinjam
           Berarti status = tersedia kalau tidak status = sedang dipinjam*/
         String sql2 = "SELECT COUNT(tb_detail_peminjaman.id) FROM tb_detail_peminjaman WHERE buku_id = ? AND status_buku ='dipinjam';";
         DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.addColumn("Judul");
-        tableModel.addColumn("Penulis");
-        tableModel.addColumn("Penerbit");
-        tableModel.addColumn("Tahun Terbit");
-        tableModel.addColumn("Nomor Rak");
-        tableModel.addColumn("Status");
+        if(tipe == 1){
+            tableModel.addColumn("Judul");
+            tableModel.addColumn("Penulis");
+            tableModel.addColumn("Penerbit");
+            tableModel.addColumn("Tahun Terbit");
+            tableModel.addColumn("Nomor Rak");
+            tableModel.addColumn("Status");
+            tableModel.addColumn("ISSN/ISBN");
+            tableModel.addColumn("Tipe");
+        }
+        else if(tipe == 2 || tipe == 3){
+            tableModel.addColumn("Judul");
+            tableModel.addColumn("Penerbit");
+            tableModel.addColumn("Tahun Terbit");
+            tableModel.addColumn("Nomor Rak");
+            tableModel.addColumn("Status");
+            tableModel.addColumn("ISSN/ISBN");
+            tableModel.addColumn("Tipe");
+        }
+
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                t_id_buku = rs.getInt(1);
-                t_judul = rs.getString(2);
-                t_penulis = rs.getString(3);
-                t_penerbit = rs.getString(4);
-                t_thn_terbit = rs.getInt(5);
-                t_jumlah = rs.getInt(6);
-                t_no_rak = rs.getInt(7);
+                if(tipe == 1){
+                    t_id_buku = rs.getInt(1);
+                    t_judul = rs.getString(2);
+                    t_penulis = rs.getString(3);
+                    t_penerbit = rs.getString(4);
+                    t_thn_terbit = rs.getInt(5);
+                    t_jumlah = rs.getInt(6);
+                    t_no_rak = rs.getInt(7);
+                    t_isbn_issn = rs.getString(8);
+                    t_tipe = rs.getString(9);
+                }
+                else if(tipe == 2 || tipe == 3){
+                    t_id_buku = rs.getInt(1);
+                    t_judul = rs.getString(2);
+                    //t_penulis = rs.getString(3);
+                    t_penerbit = rs.getString(3);
+                    t_thn_terbit = rs.getInt(4);
+                    t_jumlah = rs.getInt(5);
+                    t_no_rak = rs.getInt(6);
+                    t_isbn_issn = rs.getString(7);
+                    t_tipe = rs.getString(8);
+                }
                 ps2 = conn.prepareStatement(sql2);
                 ps2.setInt(1,t_id_buku);
                 rs2 = ps2.executeQuery();
@@ -254,9 +319,17 @@ public class Searching extends javax.swing.JFrame {
                 else{
                     t_status = "Sedang Dipinjam";
                 }
-                tableModel.addRow(new Object[]{
-                    t_judul,t_penulis,t_penerbit,t_thn_terbit,t_no_rak,t_status
+                if(tipe == 1){
+                    tableModel.addRow(new Object[]{
+                        t_judul,t_penulis,t_penerbit,t_thn_terbit,t_no_rak,t_status,t_isbn_issn,t_tipe
                 });
+                }
+                else if(tipe == 2 || tipe == 3){
+                    tableModel.addRow(new Object[]{
+                        t_judul,t_penerbit,t_thn_terbit,t_no_rak,t_status,t_isbn_issn,t_tipe
+                });
+                }
+
             }
         } catch (SQLException e) {
         }

@@ -5,15 +5,26 @@
  */
 package pendaftaran_buku;
 
+import pencarian_buku.Pencarian_buku_option;
+import pencarian_buku.Searching;
+
 /**
  *
  * @author Daniel
  */
 public class Tipe_buku_option extends javax.swing.JFrame {
-
+    int from;//0 daftar_buku_option,1 search
+    int mode;//mode pencarian kalau misalnya dibuka dari search(0 search by title, 1 search by author, 2 search by publisher) 4 dari daftar buku option
     /**
      * Creates new form Tipe_buku_option
      */
+    public Tipe_buku_option(int from,int mode) {
+        this.from = from;
+        this.mode = mode;
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+    }
     public Tipe_buku_option() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -114,26 +125,51 @@ public class Tipe_buku_option extends javax.swing.JFrame {
 
     private void btn_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bukuMouseClicked
         this.dispose();
-        Daftar_buku daftar_buku = new Daftar_buku();
-        daftar_buku.setVisible(true);
+        if(from == 0){
+            Daftar_buku daftar_buku = new Daftar_buku();
+            daftar_buku.setVisible(true);
+        }
+        else if(from == 1){
+            Searching searching = new Searching(mode, false,1);
+            searching.setVisible(true);
+        }
+
     }//GEN-LAST:event_btn_bukuMouseClicked
 
     private void btn_journalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_journalMouseClicked
         this.dispose();
-        Daftar_journal daftar_journal = new Daftar_journal();
-        daftar_journal.setVisible(true);
+        if(from == 0){
+            Daftar_journal daftar_journal = new Daftar_journal();
+            daftar_journal.setVisible(true);
+        }
+        else if(from == 1){
+            Searching searching = new Searching(mode, false,2);
+            searching.setVisible(true);
+        }
     }//GEN-LAST:event_btn_journalMouseClicked
 
     private void btn_majalahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_majalahMouseClicked
         this.dispose();
-        Daftar_majalah daftar_majalah = new Daftar_majalah();
-        daftar_majalah.setVisible(true);
+        if(from == 0){
+            Daftar_majalah daftar_majalah = new Daftar_majalah();
+            daftar_majalah.setVisible(true);
+        }
+        else if(from == 1){
+            Searching searching = new Searching(mode, false,3);
+            searching.setVisible(true);
+        }
     }//GEN-LAST:event_btn_majalahMouseClicked
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
         this.dispose();
-        Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
-        daftar_buku_option.setVisible(true);
+        if(from == 0){
+            Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+            daftar_buku_option.setVisible(true); 
+        }
+        else if(from == 1){
+            Pencarian_buku_option pencarian_buku_option = new Pencarian_buku_option();
+            pencarian_buku_option.setVisible(true);
+        }
     }//GEN-LAST:event_btn_backMouseClicked
 
     /**

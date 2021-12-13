@@ -353,7 +353,7 @@ public class Daftar_journal extends javax.swing.JFrame {
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
         this.dispose();
-        Tipe_buku_option tipe_buku_option = new Tipe_buku_option();
+        Tipe_buku_option tipe_buku_option = new Tipe_buku_option(0,4);
         tipe_buku_option.setVisible(true);
     }//GEN-LAST:event_btn_backMouseClicked
 
