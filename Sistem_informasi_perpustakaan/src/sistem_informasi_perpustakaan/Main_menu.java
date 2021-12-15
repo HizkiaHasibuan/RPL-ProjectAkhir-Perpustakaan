@@ -6,6 +6,7 @@
 package sistem_informasi_perpustakaan;
 
 import java.awt.Cursor;
+import javax.swing.JOptionPane;
 import login_admin.login_admin;
 import pencarian_buku.Pencarian_buku_option;
 import pendaftaran_buku.Daftar_buku_option;
@@ -25,6 +26,21 @@ public class Main_menu extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        if(isLoggedIn){
+            btn_login.setText("Log out");
+        }
+    }
+    public Main_menu(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        if(isLoggedIn){
+            btn_login.setText("Log Out");
+        }
+        else{
+            btn_login.setText("Log In");
+        }
     }
 
     /**
@@ -40,6 +56,7 @@ public class Main_menu extends javax.swing.JFrame {
         btn_pencarian_buku = new javax.swing.JLabel();
         btn_daftar_member = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        btn_login = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,6 +130,18 @@ public class Main_menu extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(180, 50, 70, 24);
 
+        btn_login.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_login.setForeground(new java.awt.Color(255, 255, 255));
+        btn_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_login.setText("Log In");
+        btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_loginMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_login);
+        btn_login.setBounds(304, 20, 70, 15);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, 0, 400, 300);
@@ -127,7 +156,7 @@ public class Main_menu extends javax.swing.JFrame {
             daftar_buku_option.setVisible(true);
         }
         else{
-            login_admin lg_admin = new login_admin();
+            login_admin lg_admin = new login_admin(0);
             lg_admin.setVisible(true);
         }
     }//GEN-LAST:event_btn_pendaftaran_bukuMouseClicked
@@ -160,6 +189,22 @@ public class Main_menu extends javax.swing.JFrame {
         df_member.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_daftar_memberMouseClicked
+
+    private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
+        this.dispose();
+        if(isLoggedIn){
+            int response = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin log out?", "Konfirmasi Log out", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if(response == JOptionPane.YES_OPTION){
+                Main_menu main_menu = new Main_menu(false);
+                main_menu.setVisible(true);
+            }
+        }
+        else{
+            login_admin lg_admin = new login_admin(1);
+            lg_admin.setVisible(true);
+        }
+
+    }//GEN-LAST:event_btn_loginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,6 +243,7 @@ public class Main_menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_daftar_member;
+    private javax.swing.JLabel btn_login;
     private javax.swing.JLabel btn_pencarian_buku;
     private javax.swing.JLabel btn_pendaftaran_buku;
     private javax.swing.JLabel jLabel1;

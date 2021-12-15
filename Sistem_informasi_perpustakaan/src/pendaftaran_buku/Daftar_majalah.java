@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import pencarian_buku.Searching;
 import sistem_informasi_perpustakaan.connection.db_connection;
 
 /**
@@ -350,9 +351,15 @@ public class Daftar_majalah extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
-        this.dispose();
-        Tipe_buku_option tipe_buku_option = new Tipe_buku_option(0,4);
-        tipe_buku_option.setVisible(true);
+                this.dispose();
+        if(!update){
+            Tipe_buku_option tipe_buku_option = new Tipe_buku_option(0,4);
+            tipe_buku_option.setVisible(true);   
+        }
+        else{
+            Searching searching = new Searching(0, true, 3);
+            searching.setVisible(true);
+        }
     }//GEN-LAST:event_btn_backMouseClicked
 
     private void textbox_tag3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textbox_tag3MouseClicked
@@ -384,7 +391,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_addTag1MouseClicked
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
-                boolean judulIsValid = titleValidation();
+        boolean judulIsValid = titleValidation();
         boolean penerbitIsValid = textBoxValidation(textbox_penerbit);
         boolean tagIsValid = tagValidation();
         boolean yearIsValid = yearValidation();
@@ -542,7 +549,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
                     }
                 }
             }
-            if(db_id_buku != 0){
+            if(db_id_buku != 0 && update == false){
                 validasi_judul.setText("Judul buku sudah terdaftar");
                 return false;
             }
@@ -843,15 +850,18 @@ public class Daftar_majalah extends javax.swing.JFrame {
             }
         }
         else if(update){
-            sql = "UPDATE tb_buku SET judul = ?,penulis_id = ?,penerbit_id = ?,tahun_terbit = ?,jumlah = ?,rak_id = ? WHERE id = ?;";
+            sql = "UPDATE tb_buku SET judul = ?,penerbit_id = ?,tahun_terbit = ?,jumlah = ?,rak_id = ?,kota_terbit_id = ?,isbn_issn = ?,edisi = ? WHERE id = ?;";
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
-                ps.setInt(3,id_penerbit);
-                ps.setInt(4,thn_terbit);
-                ps.setInt(5,jumlah);
-                ps.setInt(6,id_no_rak);
-                ps.setInt(7,id_buku);
+                ps.setInt(2,id_penerbit);
+                ps.setInt(3,thn_terbit);
+                ps.setInt(4,jumlah);
+                ps.setInt(5,id_no_rak);
+                ps.setInt(6,id_kota);
+                ps.setString(7,issn);
+                ps.setString(8,edisi);
+                ps.setInt(9,id_buku);
                 ps.executeUpdate();
             }
             catch (SQLException e) {
@@ -946,7 +956,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_buku.judul = ?;";
+        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_buku.isbn_issn,tb_buku.edisi FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id WHERE tb_buku.judul = ?;";
         try {            
             ps = conn.prepareStatement(sql);
             ps.setString(1,judul);
@@ -954,10 +964,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
             if(rs.next()){
                 id_buku = rs.getInt(1);
                 textbox_judul.setText(rs.getString(2));
-                textbox_penerbit.setText(rs.getString(4));
-                spinner_thn_terbit.setValue(rs.getInt(5));
-                Spinner_jumlah.setValue(rs.getInt(6));
-                Spinner_no_rak.setValue(rs.getInt(7));
+                textbox_penerbit.setText(rs.getString(3));
+                spinner_thn_terbit.setValue(rs.getInt(4));
+                Spinner_jumlah.setValue(rs.getInt(5));
+                Spinner_no_rak.setValue(rs.getInt(6));
+                textbox_kota_terbit.setText(rs.getString(7));
+                textbox_issn.setText(rs.getString(8));
+                textbox_edisi.setText(rs.getString(9));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);
