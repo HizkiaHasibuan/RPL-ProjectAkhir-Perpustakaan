@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 import pendaftaran_buku.Daftar_buku;
 import pendaftaran_buku.Daftar_buku_option;
+import pendaftaran_buku.Daftar_journal;
+import pendaftaran_buku.Daftar_majalah;
 import sistem_informasi_perpustakaan.connection.db_connection;
 
 /**
@@ -132,7 +134,7 @@ public class Searching extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -372,9 +374,21 @@ public class Searching extends javax.swing.JFrame {
         if(isAdmin){
             int row = tabel_buku.rowAtPoint(evt.getPoint());
             String judul = (String) tabel_buku.getValueAt(row,0);
-            Daftar_buku daftar_buku = new Daftar_buku();
-            daftar_buku.setVisible(true);
-            daftar_buku.prepareUpdate(judul);
+            if(tipe == 1){
+                Daftar_buku daftar_buku = new Daftar_buku();
+                daftar_buku.setVisible(true);
+                daftar_buku.prepareUpdate(judul);
+            }
+            else if(tipe == 2){
+                Daftar_journal daftar_journal = new Daftar_journal();
+                daftar_journal.setVisible(true);
+                daftar_journal.prepareUpdate(judul);
+            }
+            else if(tipe == 3){
+                Daftar_majalah daftar_majalah = new Daftar_majalah();
+                daftar_majalah.setVisible(true);
+                daftar_majalah.prepareUpdate(judul);
+            }
             this.dispose();
         }
     }//GEN-LAST:event_tabel_bukuMouseClicked

@@ -20,10 +20,16 @@ import sistem_informasi_perpustakaan.connection.db_connection;
  * @author asus
  */
 public class login_admin extends javax.swing.JFrame {
-
+    int to;/*menandakan jframe yang dibuka setelah melakukan login 
+      (0 = buka daftar buku option(kalau login dibuka dari opsi ingin melakukan daftar buku), 
+      1 balik ke main menu (kalau login dibuka dari button login di main menu)*/
     /**
      * Creates new form login_admin
      */
+    public login_admin(int to) {
+        this.to = to;
+        initComponents();
+    }
     public login_admin() {
         initComponents();
     }
@@ -125,12 +131,18 @@ public class login_admin extends javax.swing.JFrame {
             if(jTextFieldUsername.getText().equals("") || jPasswordFieldPass.getPassword().equals("")){
                 JOptionPane.showMessageDialog(this,"Username atau Password \nTidak Boleh Kosong");
             } else {
-                if(id_pegawai != 0){
+                if(id_pegawai != 0 && to == 0){
                     Main_menu.isLoggedIn = true;
                     Daftar_buku_option option_admin = new Daftar_buku_option(id_pegawai);
                     option_admin.setVisible(true);
                     this.dispose();
-                } else {
+                }
+                else if(id_pegawai != 0 && to == 1){
+                    this.dispose();
+                    Main_menu main_menu = new Main_menu(true);
+                    main_menu.setVisible(true);
+                }
+                else {
                     JOptionPane.showMessageDialog(this,"Username atau Password Salah");
                 }
             }

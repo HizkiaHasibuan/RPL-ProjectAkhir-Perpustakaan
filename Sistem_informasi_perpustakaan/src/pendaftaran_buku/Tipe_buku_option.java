@@ -13,7 +13,7 @@ import pencarian_buku.Searching;
  * @author Daniel
  */
 public class Tipe_buku_option extends javax.swing.JFrame {
-    int from;//0 daftar_buku_option,1 search
+    int from;//0 daftar_buku_option(daftar buku),1 search,2 daftar_buku_option(edit buku)
     int mode;//mode pencarian kalau misalnya dibuka dari search(0 search by title, 1 search by author, 2 search by publisher) 4 dari daftar buku option
     /**
      * Creates new form Tipe_buku_option
@@ -133,6 +133,10 @@ public class Tipe_buku_option extends javax.swing.JFrame {
             Searching searching = new Searching(mode, false,1);
             searching.setVisible(true);
         }
+        else if(from == 2){
+            Searching searching = new Searching(0, true, 1);
+            searching.setVisible(true);
+        }
 
     }//GEN-LAST:event_btn_bukuMouseClicked
 
@@ -144,6 +148,10 @@ public class Tipe_buku_option extends javax.swing.JFrame {
         }
         else if(from == 1){
             Searching searching = new Searching(mode, false,2);
+            searching.setVisible(true);
+        }
+        else if(from == 2){
+            Searching searching = new Searching(0, true, 2);
             searching.setVisible(true);
         }
     }//GEN-LAST:event_btn_journalMouseClicked
@@ -158,11 +166,15 @@ public class Tipe_buku_option extends javax.swing.JFrame {
             Searching searching = new Searching(mode, false,3);
             searching.setVisible(true);
         }
+        else if(from == 2){
+            Searching searching = new Searching(0, true, 3);
+            searching.setVisible(true);
+        }
     }//GEN-LAST:event_btn_majalahMouseClicked
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
         this.dispose();
-        if(from == 0){
+        if(from == 0 || from == 2){
             Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
             daftar_buku_option.setVisible(true); 
         }

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import pencarian_buku.Searching;
 import sistem_informasi_perpustakaan.connection.db_connection;
 
 /**
@@ -361,8 +362,14 @@ public class Daftar_buku extends javax.swing.JFrame {
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
         this.dispose();
-        Tipe_buku_option tipe_buku_option = new Tipe_buku_option(0,4);
-        tipe_buku_option.setVisible(true);
+        if(!update){
+            Tipe_buku_option tipe_buku_option = new Tipe_buku_option(0,4);
+            tipe_buku_option.setVisible(true);   
+        }
+        else{
+            Searching searching = new Searching(0, true, 1);
+            searching.setVisible(true);
+        }
     }//GEN-LAST:event_btn_backMouseClicked
 
     private void btn_submitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_submitKeyPressed
@@ -590,7 +597,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                     }
                 }
             }
-            if(db_id_buku != 0){
+            if(db_id_buku != 0 && update == false){
                 validasi_judul.setText("Judul buku sudah terdaftar");
                 return false;
             }
@@ -988,7 +995,7 @@ public class Daftar_buku extends javax.swing.JFrame {
             }
         }
         else if(update){
-            sql = "UPDATE tb_buku SET judul = ?,penulis_id = ?,penerbit_id = ?,tahun_terbit = ?,jumlah = ?,rak_id = ? WHERE id = ?;";
+            sql = "UPDATE tb_buku SET judul = ?,penulis_id = ?,penerbit_id = ?,tahun_terbit = ?,jumlah = ?,rak_id = ?,kota_terbit_id = ?,isbn_issn = ?,volume = ?,edisi = ? WHERE id = ?;";
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
@@ -997,7 +1004,21 @@ public class Daftar_buku extends javax.swing.JFrame {
                 ps.setInt(4,thn_terbit);
                 ps.setInt(5,jumlah);
                 ps.setInt(6,id_no_rak);
-                ps.setInt(7,id_buku);
+                ps.setInt(7, id_kota);
+                ps.setString(8,isbn);
+                if(volume.equals("")){
+                    ps.setNull(9,Types.NULL);
+                }
+                else{
+                    ps.setString(9,volume);
+                }
+                if(edisi.equals("")){
+                    ps.setNull(10,Types.NULL);
+                }
+                else{
+                    ps.setString(10,edisi);
+                }
+                ps.setInt(11,id_buku);
                 ps.executeUpdate();
             }
             catch (SQLException e) {
@@ -1092,7 +1113,7 @@ public class Daftar_buku extends javax.swing.JFrame {
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_buku.judul = ?;";
+        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_buku.isbn_issn,tb_buku.volume,tb_buku.edisi FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id WHERE tb_buku.judul = ?;";
         try {            
             ps = conn.prepareStatement(sql);
             ps.setString(1,judul);
@@ -1105,6 +1126,10 @@ public class Daftar_buku extends javax.swing.JFrame {
                 spinner_thn_terbit.setValue(rs.getInt(5));
                 Spinner_jumlah.setValue(rs.getInt(6));
                 Spinner_no_rak.setValue(rs.getInt(7));
+                textbox_kota_terbit.setText(rs.getString(8));
+                textbox_isbn.setText(rs.getString(9));
+                textbox_volume.setText(rs.getString(10));
+                textbox_edisi.setText(rs.getString(11));
             }
         } catch (SQLException ex) {
             Logger.getLogger(Daftar_buku.class.getName()).log(Level.SEVERE, null, ex);

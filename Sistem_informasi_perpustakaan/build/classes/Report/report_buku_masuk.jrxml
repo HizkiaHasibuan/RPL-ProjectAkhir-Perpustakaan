@@ -1,301 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="27e64f16-6b45-490d-a9f4-cc0a05631b99">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61924af5-c59b-4442-bc2b-8c91592e29fb">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="100"/>
-	<style name="table">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1">
-		<box>
-			<pen lineWidth="1.0" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
-	</style>
-	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
-		<box>
-			<pen lineWidth="0.5" lineColor="#000000"/>
-		</box>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
 		<conditionalStyle>
-			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
-			<style backcolor="#EFF7FF"/>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
 		</conditionalStyle>
 	</style>
-	<subDataset name="Tabel_buku" uuid="2b0e44cf-4390-4ce2-a8cc-1b5e3b81041e">
-		<parameter name="month" class="java.lang.Integer"/>
-		<parameter name="year" class="java.lang.Integer"/>
-		<queryString>
-			<![CDATA[SELECT tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_buku.tgl_pendaftaran,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_tipe_buku.tipe_buku,tb_buku.isbn_issn
+	<parameter name="bulan" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tahun" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="bulan_string" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT tb_buku.judul AS "Judul",tb_buku.jumlah AS "Jumlah",tb_buku.tgl_pendaftaran AS"Tgl Pendaftaran",tb_tipe_buku.tipe_buku AS "Tipe",tb_buku.isbn_issn AS "ISSN/ISBN"
 FROM tb_buku
-INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id
-INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id
-INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id
 INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id
-WHERE MONTH(tb_buku.tgl_pendaftaran) = $P{month} AND YEAR(tb_buku.tgl_pendaftaran) = $P{year};]]>
-		</queryString>
-		<field name="judul" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="nama" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="tahun_terbit" class="java.lang.Integer">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="jumlah" class="java.lang.Integer">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="tgl_pendaftaran" class="java.sql.Date">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="no_rak" class="java.lang.Integer">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="nama_kota" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="tipe_buku" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-		<field name="isbn_issn" class="java.lang.String">
-			<fieldDescription><![CDATA[]]></fieldDescription>
-		</field>
-	</subDataset>
-	<parameter name="month" class="java.lang.Integer"/>
-	<parameter name="year" class="java.lang.Integer"/>
-	<queryString language="SQL">
-		<![CDATA[SELECT tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_buku.tgl_pendaftaran,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_tipe_buku.tipe_buku,tb_buku.isbn_issn
-FROM tb_buku
-INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id
-INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id
-INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id
-INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id]]>
+WHERE MONTH(tb_buku.tgl_pendaftaran) = $P{bulan} AND YEAR(tb_buku.tgl_pendaftaran) = $P{tahun};]]>
 	</queryString>
-	<field name="judul" class="java.lang.String">
+	<field name="Judul" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="nama" class="java.lang.String">
+	<field name="Jumlah" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tahun_terbit" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="jumlah" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="tgl_pendaftaran" class="java.sql.Date">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="no_rak" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nama_kota" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="tipe_buku" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="isbn_issn" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
+	<field name="Tgl Pendaftaran" class="java.sql.Date"/>
+	<field name="Tipe" class="java.lang.String"/>
+	<field name="ISSN/ISBN" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="6b23ae32-57ce-4fb7-bb8f-2ccdbd980280"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="5a0aeb64-8f61-472f-805b-b6c421a791c7"/>
+					<textElement>
+						<font size="36" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Laporan Buku Masuk]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="82bb1db3-803c-4c17-bfed-fc0de7a5c6ab"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="b0ef0711-1e12-44f6-a649-6e6843cae819"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<textField>
+				<reportElement x="455" y="20" width="100" height="20" uuid="bef5179d-1ddb-4c1a-b3d7-f8d75d25c76f"/>
+				<textFieldExpression><![CDATA[$P{tahun}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="055d9ae5-8f21-4ff7-a123-a039b6b596a4"/>
+				<textFieldExpression><![CDATA[$P{bulan_string}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="7" width="157" height="18" forecolor="#000000" uuid="4ebd6579-29fa-481e-a218-1c7c0a3c4960"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Judul]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="157" y="7" width="65" height="18" forecolor="#000000" uuid="51525c63-40e2-4f36-9d39-8004f5deee94"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jumlah]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="222" y="7" width="111" height="18" forecolor="#000000" uuid="120827a9-7ddc-4d19-9965-fab3a5511f49"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tgl Pendaftaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="7" width="111" height="18" forecolor="#000000" uuid="456f205f-f588-480c-99a4-e5e64276a920"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tipe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="444" y="7" width="111" height="18" forecolor="#000000" uuid="bca5cd77-ee9e-4545-9207-7879c8e7b88c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[ISSN/ISBN]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
-			<componentElement>
-				<reportElement key="table 1" style="table 1" x="0" y="0" width="360" height="80" uuid="4e12a6b7-a325-4801-b08d-f5158ea4b172"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Tabel_buku" uuid="a05b35dc-8b86-4c80-94a8-cf436512252d">
-						<datasetParameter name="month">
-							<datasetParameterExpression><![CDATA[$P{month}]]></datasetParameterExpression>
-						</datasetParameter>
-						<datasetParameter name="year">
-							<datasetParameterExpression><![CDATA[$P{year}]]></datasetParameterExpression>
-						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="90" uuid="c6c2cabd-8629-437a-8f5a-178cdeaae4b8">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="11a565d0-b36a-4201-9c3d-8dc5642105a5"/>
-								<text><![CDATA[judul]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="b1e0b86f-95e2-488f-b49d-0fad4937d526"/>
-								<textFieldExpression><![CDATA[$F{judul}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="2891884d-6d4a-4066-95cf-fd7dbfceea79">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="3a6b1e20-baab-4662-b84c-80b7a8763cd1"/>
-								<text><![CDATA[nama]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="40b8e791-e6c2-4dc1-909c-1f07e3e30072"/>
-								<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="982ce0b3-5361-4831-8b98-19fa4748a8a4">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="c61fe359-41f9-4027-8e20-04cf6209b005"/>
-								<text><![CDATA[tahun_terbit]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="cbe0476a-732f-4c7b-8543-80826c82cf81"/>
-								<textFieldExpression><![CDATA[$F{tahun_terbit}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="ad1e5bcc-2d1d-4c5b-8f2b-17869398e4b6">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="f0d7d9ee-7c7c-4824-b7d6-3a8b880074ad"/>
-								<text><![CDATA[jumlah]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="d7aa6280-e9ee-4821-9f64-2d82427c6ccd"/>
-								<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="000ec87c-f810-458f-8fc0-fd890d7c340e">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="c33b2eac-166c-4f28-b516-2a3303f4d385"/>
-								<text><![CDATA[tgl_pendaftaran]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="e8118949-641d-481a-bb95-207fd053b6af"/>
-								<textFieldExpression><![CDATA[$F{tgl_pendaftaran}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="ed8789d3-2999-4f86-b761-0644922731d0">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="9aac6172-aec5-44a7-80b9-ce644409e4ff"/>
-								<text><![CDATA[no_rak]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="8d2b2bcf-73e7-4456-a316-6f058e123de7"/>
-								<textFieldExpression><![CDATA[$F{no_rak}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="8b8e2d27-4a11-4a74-9ab4-af512e9f894d">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="686b4334-55ba-4aa6-87e7-9efe64584797"/>
-								<text><![CDATA[nama_kota]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="51cd687c-fb8d-4590-b878-0106cd279add"/>
-								<textFieldExpression><![CDATA[$F{nama_kota}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="3434879e-c7df-4f91-93e3-cac9c7f034d1">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="dd751f71-e76a-425f-8a40-df086ca5f48d"/>
-								<text><![CDATA[tipe_buku]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="b9b006f7-1285-4d9a-936b-7503564b66e4"/>
-								<textFieldExpression><![CDATA[$F{tipe_buku}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="b3da0c2b-f930-4b97-a464-c84624e2c8cf">
-						<jr:columnHeader style="table 1_CH" height="30">
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="a223aaaf-3f8d-4645-94fd-98584f45e0a0"/>
-								<text><![CDATA[isbn_issn]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="table 1_CH" height="30"/>
-						<jr:detailCell style="table 1_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="90" height="20" uuid="6716308c-5f67-49c5-9442-42b648645f4e"/>
-								<textFieldExpression><![CDATA[$F{isbn_issn}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="aaf0a0ea-456e-4f87-adae-7bd4b32d8229"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="157" height="18" uuid="9f6ecdaf-0001-4ec4-92a7-e11832038bbe"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Judul}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="157" y="0" width="65" height="18" uuid="608ee62b-8897-474c-9cd3-9163b10b3b1a"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Jumlah}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" positionType="Float" x="222" y="0" width="111" height="18" uuid="e27647c8-b723-4d0b-a0b9-9cc6fef2a81c"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Tgl Pendaftaran}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="333" y="0" width="111" height="18" uuid="74d8a141-df35-4df5-afce-b71741d946ec"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Tipe}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="444" y="0" width="111" height="18" uuid="eea0022b-00b8-43e5-93a6-436ec296ab75"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ISSN/ISBN}]]></textFieldExpression>
+				</textField>
+			</frame>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="e9a59c6d-ac84-4f81-adc0-f0ca89870440"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="6c1f2bab-ddfe-4796-889a-3d4e16566f56"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="0a7b76e3-a452-4152-a681-611c7191b162"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="d872fb09-268c-4772-a89f-a292a4080025"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="f34b1476-a10e-4094-ab2c-1438199524de"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

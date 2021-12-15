@@ -367,13 +367,13 @@ public class Tag_search extends javax.swing.JFrame {
         size = tag_id.size();
         //proses select sesuai banyak tag di dalam array list
         if(size == 1){
-            sql = "SELECT tb_tag_buku.buku_id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_tag_buku.tag_id IN(?) GROUP BY tb_tag_buku.buku_id HAVING COUNT(*) = 1;";
+            sql = "SELECT tb_tag_buku.buku_id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_tag_buku.tag_id IN(?) GROUP BY tb_tag_buku.buku_id HAVING COUNT(*) = 1;";
         }
         else if(size == 2){
-            sql = "SELECT tb_tag_buku.buku_id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_tag_buku.tag_id IN(?,?) GROUP BY tb_tag_buku.buku_id HAVING COUNT(*) = 2;";
+            sql = "SELECT tb_tag_buku.buku_id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_tag_buku.tag_id IN(?,?) GROUP BY tb_tag_buku.buku_id HAVING COUNT(*) = 2;";
         }
         else if(size == 3){
-            sql ="SELECT tb_tag_buku.buku_id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_tag_buku.tag_id IN(?,?,?) GROUP BY tb_tag_buku.buku_id HAVING COUNT(*) = 3;";
+            sql ="SELECT tb_tag_buku.buku_id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak FROM tb_tag_buku INNER JOIN tb_buku ON tb_tag_buku.buku_id = tb_buku.id LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id WHERE tb_tag_buku.tag_id IN(?,?,?) GROUP BY tb_tag_buku.buku_id HAVING COUNT(*) = 3;";
         }
         String sql2 = "SELECT COUNT(tb_detail_peminjaman.id) FROM tb_detail_peminjaman WHERE buku_id = ? AND status_buku ='dipinjam';";
         DefaultTableModel tableModel = new DefaultTableModel();
