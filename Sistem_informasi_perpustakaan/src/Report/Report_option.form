@@ -23,18 +23,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace pref="159" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="btn_laporan_buku_masuk" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="123" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btn_laporan_pengembalian_harian" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="155" max="-2" attributes="0"/>
+                  <Component id="btn_laporan_pengembalian_bulanan" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btn_laporan_peminjaman_harian" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btn_laporan_peminjaman_bulanan" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btn_laporan_buku_masuk" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btn_back" max="32767" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,7 +45,17 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="btn_laporan_buku_masuk" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="220" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="btn_laporan_peminjaman_harian" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btn_laporan_peminjaman_bulanan" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btn_laporan_pengembalian_harian" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btn_laporan_pengembalian_bulanan" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Component id="btn_back" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,6 +74,62 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_buku_masukMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_buku_masukMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_buku_masukMouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_laporan_peminjaman_harian">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Laporan Peminjaman (Harian)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_peminjaman_harianMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_peminjaman_harianMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_peminjaman_harianMouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_laporan_peminjaman_bulanan">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Laporan Peminjaman (Bulanan)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_peminjaman_bulananMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_peminjaman_bulananMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_peminjaman_bulananMouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_laporan_pengembalian_harian">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Laporan Pengembalian (Harian)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_pengembalian_harianMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_pengembalian_harianMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_pengembalian_harianMouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_laporan_pengembalian_bulanan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Laporan Pengembalian (Bulanan)"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_pengembalian_bulananMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_pengembalian_bulananMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_laporan_pengembalian_bulananMouseExited"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="btn_back">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Back"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_backMouseClicked"/>
+        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_backMouseEntered"/>
+        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_backMouseExited"/>
       </Events>
     </Component>
   </SubComponents>
