@@ -138,6 +138,12 @@ public class Main_menu extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_loginMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_loginMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_loginMouseExited(evt);
+            }
         });
         getContentPane().add(btn_login);
         btn_login.setBounds(304, 20, 70, 15);
@@ -195,6 +201,7 @@ public class Main_menu extends javax.swing.JFrame {
         if(isLoggedIn){
             int response = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin log out?", "Konfirmasi Log out", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(response == JOptionPane.YES_OPTION){
+                login_admin.id_pegawai_logged_in = 0;
                 Main_menu main_menu = new Main_menu(false);
                 main_menu.setVisible(true);
             }
@@ -205,6 +212,14 @@ public class Main_menu extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btn_loginMouseClicked
+
+    private void btn_loginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_loginMouseEntered
+
+    private void btn_loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_loginMouseExited
 
     /**
      * @param args the command line arguments

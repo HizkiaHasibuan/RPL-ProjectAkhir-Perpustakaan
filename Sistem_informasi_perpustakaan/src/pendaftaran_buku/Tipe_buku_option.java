@@ -5,6 +5,7 @@
  */
 package pendaftaran_buku;
 
+import java.awt.Cursor;
 import pencarian_buku.Pencarian_buku_option;
 import pencarian_buku.Searching;
 
@@ -54,6 +55,12 @@ public class Tipe_buku_option extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_bukuMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_bukuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_bukuMouseExited(evt);
+            }
         });
 
         btn_journal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -62,6 +69,12 @@ public class Tipe_buku_option extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_journalMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_journalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_journalMouseExited(evt);
+            }
         });
 
         btn_majalah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -69,6 +82,12 @@ public class Tipe_buku_option extends javax.swing.JFrame {
         btn_majalah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_majalahMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_majalahMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_majalahMouseExited(evt);
             }
         });
 
@@ -79,6 +98,12 @@ public class Tipe_buku_option extends javax.swing.JFrame {
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_backMouseExited(evt);
             }
         });
 
@@ -183,6 +208,38 @@ public class Tipe_buku_option extends javax.swing.JFrame {
             pencarian_buku_option.setVisible(true);
         }
     }//GEN-LAST:event_btn_backMouseClicked
+
+    private void btn_bukuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bukuMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_bukuMouseEntered
+
+    private void btn_journalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_journalMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_journalMouseEntered
+
+    private void btn_majalahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_majalahMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_majalahMouseEntered
+
+    private void btn_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_backMouseEntered
+
+    private void btn_bukuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_bukuMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_bukuMouseExited
+
+    private void btn_journalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_journalMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_journalMouseExited
+
+    private void btn_majalahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_majalahMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_majalahMouseExited
+
+    private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
+       setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_backMouseExited
 
     /**
      * @param args the command line arguments

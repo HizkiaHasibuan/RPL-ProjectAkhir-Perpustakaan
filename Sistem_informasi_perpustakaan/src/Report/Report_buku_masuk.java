@@ -5,6 +5,7 @@
  */
 package Report;
 
+import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -62,6 +63,12 @@ public class Report_buku_masuk extends javax.swing.JFrame {
         btn_buat_laporan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_buat_laporanMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_buat_laporanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_buat_laporanMouseExited(evt);
             }
         });
 
@@ -139,6 +146,14 @@ public class Report_buku_masuk extends javax.swing.JFrame {
             Logger.getLogger(Report_buku_masuk.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_buat_laporanMouseClicked
+
+    private void btn_buat_laporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buat_laporanMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_buat_laporanMouseEntered
+
+    private void btn_buat_laporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buat_laporanMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_buat_laporanMouseExited
 
     /**
      * @param args the command line arguments

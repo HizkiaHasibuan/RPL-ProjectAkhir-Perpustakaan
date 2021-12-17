@@ -10,7 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import peminjaman_pengembalian_buku.peminjaman_buku;
 import pendaftaran_buku.Daftar_buku;
 import pendaftaran_buku.Daftar_buku_option;
 import pendaftaran_buku.Daftar_journal;
@@ -29,7 +31,10 @@ public class Searching extends javax.swing.JFrame {
       digunakan pada saat melakukan pencarian buku yang mau diganti datanya.
       Perubahan data buku hanya dilakukan oleh Admin/Pegawai.
     */
-    private int tipe;//1 = buku,2 = jurnal,3 = majalah
+    private int tipe;//1 = buku,2 = jurnal,3 = majalah, 4 = all
+    private boolean pinjam = false;//cek dibuka dari form peminjaman atau bukan (true = dari form peminjaman)
+    private peminjaman_buku peminjaman_buku;
+    private int indexTextBox;
     /**
      * Creates new form Search_by_title
      */
@@ -66,9 +71,18 @@ public class Searching extends javax.swing.JFrame {
         tableModel.addColumn("Tipe");
         tabel_buku.setModel(tableModel);
         }
-
     }
-
+    public Searching(peminjaman_buku peminjaman_buku, boolean isAdmin, int indexTextBox){
+        this.pinjam = true;
+        this.isAdmin = isAdmin;
+        this.peminjaman_buku = peminjaman_buku;
+        this.indexTextBox = indexTextBox;
+        this.tipe = 4;
+        this.mode = 0;
+        initComponents();
+        this.setLocationRelativeTo(this.peminjaman_buku);
+        this.setResizable(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -258,11 +272,22 @@ public class Searching extends javax.swing.JFrame {
                 sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_penerbit.nama LIKE '%"+text+"%';";
             }
         }
+        else if(tipe == 4){
+            if(mode == 0){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.judul LIKE '%"+text+"%';";
+            }
+            else if(mode == 1){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_penulis.nama LIKE '%"+text+"%';";
+            }
+            else if(mode == 2){
+                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_penerbit.nama LIKE '%"+text+"%';";
+            }
+        }
         /*cek banyak buku dengan id tertentu yang sedang dipinjam.Kalau jumlah buku lebih banyak dari yang sedang dipinjam
           Berarti status = tersedia kalau tidak status = sedang dipinjam*/
         String sql2 = "SELECT COUNT(tb_detail_peminjaman.id) FROM tb_detail_peminjaman WHERE buku_id = ? AND status_buku ='dipinjam';";
         DefaultTableModel tableModel = new DefaultTableModel();
-        if(tipe == 1){
+        if(tipe == 1 || tipe == 4){
             tableModel.addColumn("Judul");
             tableModel.addColumn("Penulis");
             tableModel.addColumn("Penerbit");
@@ -308,6 +333,17 @@ public class Searching extends javax.swing.JFrame {
                     t_isbn_issn = rs.getString(7);
                     t_tipe = rs.getString(8);
                 }
+                else if(tipe == 4){
+                    t_id_buku = rs.getInt(1);
+                    t_judul = rs.getString(2);
+                    t_penulis = rs.getString(3);
+                    t_penerbit = rs.getString(4);
+                    t_thn_terbit = rs.getInt(5);
+                    t_jumlah = rs.getInt(6);
+                    t_no_rak = rs.getInt(7);
+                    t_isbn_issn = rs.getString(8);
+                    t_tipe = rs.getString(9);
+                }
                 ps2 = conn.prepareStatement(sql2);
                 ps2.setInt(1,t_id_buku);
                 rs2 = ps2.executeQuery();
@@ -321,7 +357,7 @@ public class Searching extends javax.swing.JFrame {
                 else{
                     t_status = "Sedang Dipinjam";
                 }
-                if(tipe == 1){
+                if(tipe == 1 || tipe == 4){
                     tableModel.addRow(new Object[]{
                         t_judul,t_penulis,t_penerbit,t_thn_terbit,t_no_rak,t_status,t_isbn_issn,t_tipe
                 });
@@ -371,7 +407,7 @@ public class Searching extends javax.swing.JFrame {
     }
     //Kalau admin/pegawai bisa click hasil pencarian untuk ubah data buku sesuai yang di click
     private void tabel_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_bukuMouseClicked
-        if(isAdmin){
+        if(isAdmin == true && pinjam == false){
             int row = tabel_buku.rowAtPoint(evt.getPoint());
             String judul = (String) tabel_buku.getValueAt(row,0);
             if(tipe == 1){
@@ -391,14 +427,39 @@ public class Searching extends javax.swing.JFrame {
             }
             this.dispose();
         }
+        else if(isAdmin == true && pinjam == true){
+            int row = tabel_buku.rowAtPoint(evt.getPoint());
+            String judul = (String) tabel_buku.getValueAt(row,0);
+            String status = (String) tabel_buku.getValueAt(row,5);
+            if(status.equals("Sedang Dipinjam")){
+                JOptionPane.showConfirmDialog(this,"Buku tidak tersedia !","",JOptionPane.DEFAULT_OPTION);
+            }
+            else{
+                if(indexTextBox == 1){
+                    peminjaman_buku.textbox_buku1.setText(judul);
+                }
+                else if(indexTextBox == 2){
+                    peminjaman_buku.textbox_buku2.setText(judul);
+                }
+                else if(indexTextBox == 3){
+                    peminjaman_buku.textbox_buku3.setText(judul);
+                }
+                peminjaman_buku.isSearchingOpen = false;
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_tabel_bukuMouseClicked
 
     private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
         this.dispose();
         //admin dikembalikan ke halaman opsi pendaftaran buku
-        if(isAdmin){
+        if(isAdmin == true && pinjam == false){
             Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
             daftar_buku_option.setVisible(true);
+        }
+        else if(isAdmin == true && pinjam == true){
+            peminjaman_buku.isSearchingOpen = false;
+            this.dispose();
         }
         else{
             Pencarian_buku_option pencarian_buku_option = new Pencarian_buku_option();

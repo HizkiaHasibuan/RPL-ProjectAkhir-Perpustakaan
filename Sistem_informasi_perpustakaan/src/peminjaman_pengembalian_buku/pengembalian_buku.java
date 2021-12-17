@@ -5,14 +5,29 @@
 package peminjaman_pengembalian_buku;
 
 import denda_buku.denda_buku;
+import java.awt.Cursor;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import login_admin.login_admin;
 import pendaftaran_buku.Daftar_buku_option;
+import sistem_informasi_perpustakaan.connection.db_connection;
 
 /**
  *
  * @author asus
  */
 public class pengembalian_buku extends javax.swing.JFrame {
-
+    private int id_peminjaman = 0;
+    private int idBuku1 = 0;
+    private int idBuku2 = 0;
+    private int idBuku3 = 0;
+    private boolean idIsValid = false;
     /**
      * Creates new form pengembalian_buku
      */
@@ -21,6 +36,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
     
     public pengembalian_buku() {
         initComponents();
+        idIsValid = idValidation();
     }
 
     /**
@@ -35,6 +51,21 @@ public class pengembalian_buku extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
         jButtonDenda = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        textbox_id = new javax.swing.JTextField();
+        validasi_id = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        textbox_buku2 = new javax.swing.JTextField();
+        textbox_buku1 = new javax.swing.JTextField();
+        textbox_buku3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        validasi_buku = new javax.swing.JLabel();
+        btn_submit = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        buku_kembali1 = new javax.swing.JCheckBox();
+        buku_kembali2 = new javax.swing.JCheckBox();
+        buku_kembali3 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +99,112 @@ public class pengembalian_buku extends javax.swing.JFrame {
         });
         getContentPane().add(jButtonDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 252, 120, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ID Member");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+
+        textbox_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textbox_idKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                textbox_idKeyReleased(evt);
+            }
+        });
+        getContentPane().add(textbox_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 210, -1));
+
+        validasi_id.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_id.setForeground(new java.awt.Color(255, 255, 255));
+        validasi_id.setText("validasi_id");
+        validasi_id.setVisible(false);
+        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Buku 2");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Buku 1");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        textbox_buku2.setEditable(false);
+        getContentPane().add(textbox_buku2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 210, -1));
+
+        textbox_buku1.setEditable(false);
+        getContentPane().add(textbox_buku1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 210, -1));
+
+        textbox_buku3.setEditable(false);
+        getContentPane().add(textbox_buku3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 210, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Buku 3");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+
+        validasi_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_buku.setForeground(new java.awt.Color(255, 255, 255));
+        validasi_buku.setText("validasi buku");
+        validasi_buku.setVisible(false);
+        getContentPane().add(validasi_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        btn_submit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_submit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_submit.setText("Submit Pengembalian");
+        btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_submitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_submitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_submitMouseExited(evt);
+            }
+        });
+        getContentPane().add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Kembali");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, -1));
+
+        buku_kembali1.setBackground(new java.awt.Color(255, 255, 255));
+        buku_kembali1.setOpaque(false);
+        buku_kembali1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buku_kembali1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buku_kembali1MouseExited(evt);
+            }
+        });
+        getContentPane().add(buku_kembali1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+
+        buku_kembali2.setOpaque(false);
+        buku_kembali2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buku_kembali2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buku_kembali2MouseExited(evt);
+            }
+        });
+        getContentPane().add(buku_kembali2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 120, -1, -1));
+
+        buku_kembali3.setOpaque(false);
+        buku_kembali3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buku_kembali3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buku_kembali3MouseExited(evt);
+            }
+        });
+        getContentPane().add(buku_kembali3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, -1, -1));
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
 
@@ -90,6 +227,427 @@ public class pengembalian_buku extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonDendaActionPerformed
 
+    private void textbox_idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textbox_idKeyPressed
+
+    }//GEN-LAST:event_textbox_idKeyPressed
+
+    private void textbox_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textbox_idKeyReleased
+        idIsValid = idValidation();
+        if(idIsValid){
+            validasi_id.setVisible(false);
+            loadDataBuku(Integer.parseInt(textbox_id.getText()));
+            if(idBuku1 != 0){
+                buku_kembali1.setEnabled(true);
+            }
+            else if(idBuku1 == 0){
+                buku_kembali1.setEnabled(false);
+                buku_kembali1.setSelected(false);
+            }
+            if(idBuku2 != 0){
+                buku_kembali2.setEnabled(true);
+            }
+            else if(idBuku2 == 0){
+                buku_kembali2.setEnabled(false);
+                buku_kembali1.setSelected(false);
+            }
+            if(idBuku3 != 0){
+                buku_kembali3.setEnabled(true);
+            }
+            else if(idBuku3 == 0){
+                buku_kembali3.setEnabled(false);
+                buku_kembali1.setSelected(false);
+            }
+        }
+        else if(!idIsValid){
+            idBuku1 = 0;
+            idBuku2 = 0;
+            idBuku3 = 0;
+            textbox_buku1.setText("");
+            textbox_buku2.setText("");
+            textbox_buku3.setText("");
+            buku_kembali1.setEnabled(false);
+            buku_kembali2.setEnabled(false);
+            buku_kembali3.setEnabled(false);
+            buku_kembali1.setSelected(false);
+            buku_kembali2.setSelected(false);
+            buku_kembali3.setSelected(false);
+        }
+    }//GEN-LAST:event_textbox_idKeyReleased
+
+    private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
+        boolean bookIsValid = bookValidation();
+        if(!bookIsValid){
+            validasi_buku.setText("Minimal pilih 1");
+            validasi_buku.setVisible(true);
+        }
+        else if(bookIsValid){
+            validasi_buku.setVisible(false);
+        }
+        if(idIsValid == true && bookIsValid == true){
+            insertDataPengembalian();
+            JOptionPane.showConfirmDialog(this,"Data Pengembalian Berhasil Dimasukan !","",JOptionPane.DEFAULT_OPTION);
+            this.dispose();
+            Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+            daftar_buku_option.setVisible(true);
+        }
+    }//GEN-LAST:event_btn_submitMouseClicked
+
+    private void buku_kembali1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buku_kembali1MouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_buku_kembali1MouseEntered
+
+    private void buku_kembali2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buku_kembali2MouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_buku_kembali2MouseEntered
+
+    private void buku_kembali3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buku_kembali3MouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_buku_kembali3MouseEntered
+
+    private void btn_submitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_submitMouseEntered
+
+    private void buku_kembali1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buku_kembali1MouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_buku_kembali1MouseExited
+
+    private void buku_kembali2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buku_kembali2MouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_buku_kembali2MouseExited
+
+    private void buku_kembali3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buku_kembali3MouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_buku_kembali3MouseExited
+
+    private void btn_submitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_submitMouseExited
+    private boolean idValidation(){
+        if(textbox_id.getText().equals("")){
+            validasi_id.setText("ID Tidak boleh kosong");
+            validasi_id.setVisible(true);
+            return false;
+        }
+        else{
+            Connection conn = db_connection.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            int id = 0;
+            String sql = "SELECT COUNT(tb_member.id) FROM tb_member WHERE id = ?;";
+            int result = 0;
+            try{
+                id = Integer.parseInt(textbox_id.getText());
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,id);
+                rs = ps.executeQuery();
+                if(rs.next()){
+                    result = rs.getInt(1);
+                }
+            }
+            catch(NumberFormatException exception){
+                validasi_id.setText("ID tidak valid");
+                validasi_id.setVisible(true);
+                return false;
+            }
+            catch (SQLException ex) {
+                Logger.getLogger(peminjaman_buku.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            finally{
+                if(rs != null){
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(ps != null){
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(conn != null){
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+            if(result == 0){
+                validasi_id.setText("ID tidak valid");
+                validasi_id.setVisible(true);
+                return false;
+            }
+            else{
+                int member_result = 0;
+                try {
+                    conn = db_connection.getConnection();
+                    sql = "SELECT COUNT(tb_detail_peminjaman.id) FROM tb_detail_peminjaman INNER JOIN tb_peminjaman ON tb_detail_peminjaman.peminjaman_id = tb_peminjaman.id WHERE tb_detail_peminjaman.status_buku = 'dipinjam' AND tb_peminjaman.member_id = ?;";
+                    ps = conn.prepareStatement(sql);
+                    ps.setInt(1,id);
+                    rs = ps.executeQuery();
+                    if(rs.next()){
+                        member_result = rs.getInt(1);
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(peminjaman_buku.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                finally{
+                    if(rs != null){
+                        try {
+                            rs.close();
+                        } catch (SQLException e) {
+                        }
+                    }
+                    if(ps != null){
+                        try {
+                            ps.close();
+                        } catch (SQLException e) {
+                        }
+                    }
+                    if(conn != null){
+                        try {
+                            conn.close();
+                        } catch (SQLException e) {
+                        }
+                    }
+                }
+                if(member_result == 0){
+                    validasi_id.setText("Tidak ada Peminjaman yang Perlu Pengembalian Oleh Member ini");
+                    validasi_id.setVisible(true);
+                    return false;
+                }
+                return true;
+            }
+        }
+    }
+    private void loadDataBuku(int id_member){
+        int iteration = 0;
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "SELECT tb_peminjaman.id FROM tb_peminjaman WHERE tb_peminjaman.member_id = ? ORDER BY tb_peminjaman.id DESC LIMIT 1;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_member);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_peminjaman = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(pengembalian_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        sql = "SELECT tb_detail_peminjaman.buku_id,tb_buku.judul FROM tb_detail_peminjaman INNER JOIN tb_buku ON tb_detail_peminjaman.buku_id = tb_buku.id WHERE tb_detail_peminjaman.peminjaman_id = ? AND tb_detail_peminjaman.status_buku = 'dipinjam';";
+        try{
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_peminjaman);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                if(iteration == 0){
+                    idBuku1 = rs.getInt(1);
+                    textbox_buku1.setText(rs.getString(2));
+                }
+                else if(iteration == 1){
+                    idBuku2 = rs.getInt(1);
+                    textbox_buku2.setText(rs.getString(2));
+                }
+                else if(iteration == 2){
+                    idBuku3 = rs.getInt(1);
+                    textbox_buku3.setText(rs.getString(2));
+                }
+                iteration++;
+            }
+        }
+        catch (SQLException e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
+    private boolean bookValidation(){
+        if(buku_kembali1.isSelected() == false && buku_kembali2.isSelected() == false && buku_kembali3.isSelected() == false){
+            return false;
+        }
+        return true;
+    }
+    private void insertDataPengembalian(){
+        ArrayList<Integer> buku_id = new ArrayList<Integer>();
+        Connection conn = db_connection.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int id_pegawai = login_admin.id_pegawai_logged_in;
+        int id_pengembalian = 0;
+        String sql = "INSERT INTO tb_pengembalian (peminjaman_id,pegawai_id,tgl_kembali) VALUES (?,?,CURDATE());";
+        if(buku_kembali1.isSelected() && idBuku1 != 0){
+            buku_id.add(idBuku1);
+        }
+        if(buku_kembali2.isSelected() && idBuku2 != 0){
+            buku_id.add(idBuku2);
+        }
+        if(buku_kembali1.isSelected() && idBuku3 != 0){
+            buku_id.add(idBuku3);
+        }
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_peminjaman);
+            ps.setInt(2,id_pegawai);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(pengembalian_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        sql = "SELECT tb_pengembalian.id FROM tb_pengembalian WHERE tb_pengembalian.peminjaman_id = ? AND tb_pengembalian.pegawai_id = ? ORDER BY tb_pengembalian.id DESC LIMIT 1;";
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_peminjaman);
+            ps.setInt(2,id_pegawai);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_pengembalian = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        sql = "INSERT INTO tb_detail_pengembalian (buku_id,pengembalian_id) VALUES (?,?);";
+        try {
+            for(int id_buku : buku_id){
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,id_buku);
+                ps.setInt(2,id_pengembalian);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        conn = db_connection.getConnection();
+        sql = "UPDATE tb_detail_peminjaman SET status_buku = 'kembali' WHERE peminjaman_id = ? AND buku_id = ?;";
+        try {
+            for(int id_buku : buku_id){
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,id_peminjaman);
+                ps.setInt(2,id_buku);
+                ps.executeUpdate();
+            }
+        } catch (SQLException e) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -126,9 +684,24 @@ public class pengembalian_buku extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_submit;
+    private javax.swing.JCheckBox buku_kembali1;
+    private javax.swing.JCheckBox buku_kembali2;
+    private javax.swing.JCheckBox buku_kembali3;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonDenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField textbox_buku1;
+    private javax.swing.JTextField textbox_buku2;
+    private javax.swing.JTextField textbox_buku3;
+    private javax.swing.JTextField textbox_id;
+    private javax.swing.JLabel validasi_buku;
+    private javax.swing.JLabel validasi_id;
     // End of variables declaration//GEN-END:variables
 }

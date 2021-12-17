@@ -5,6 +5,25 @@
  */
 package Report;
 
+import java.awt.Cursor;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import pendaftaran_buku.Daftar_buku_option;
+import sistem_informasi_perpustakaan.connection.db_connection;
+
 /**
  *
  * @author Daniel
@@ -31,6 +50,11 @@ public class Report_option extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btn_laporan_buku_masuk = new javax.swing.JLabel();
+        btn_laporan_peminjaman_harian = new javax.swing.JLabel();
+        btn_laporan_peminjaman_bulanan = new javax.swing.JLabel();
+        btn_laporan_pengembalian_harian = new javax.swing.JLabel();
+        btn_laporan_pengembalian_bulanan = new javax.swing.JLabel();
+        btn_back = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,21 +67,98 @@ public class Report_option extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_laporan_buku_masukMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_laporan_buku_masukMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_laporan_buku_masukMouseExited(evt);
+            }
+        });
+
+        btn_laporan_peminjaman_harian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_laporan_peminjaman_harian.setText("Laporan Peminjaman (Harian)");
+        btn_laporan_peminjaman_harian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporan_peminjaman_harianMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_laporan_peminjaman_harianMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_laporan_peminjaman_harianMouseExited(evt);
+            }
+        });
+
+        btn_laporan_peminjaman_bulanan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_laporan_peminjaman_bulanan.setText("Laporan Peminjaman (Bulanan)");
+        btn_laporan_peminjaman_bulanan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporan_peminjaman_bulananMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_laporan_peminjaman_bulananMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_laporan_peminjaman_bulananMouseExited(evt);
+            }
+        });
+
+        btn_laporan_pengembalian_harian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_laporan_pengembalian_harian.setText("Laporan Pengembalian (Harian)");
+        btn_laporan_pengembalian_harian.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporan_pengembalian_harianMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_laporan_pengembalian_harianMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_laporan_pengembalian_harianMouseExited(evt);
+            }
+        });
+
+        btn_laporan_pengembalian_bulanan.setText("Laporan Pengembalian (Bulanan)");
+        btn_laporan_pengembalian_bulanan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_laporan_pengembalian_bulananMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_laporan_pengembalian_bulananMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_laporan_pengembalian_bulananMouseExited(evt);
+            }
+        });
+
+        btn_back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_back.setText("Back");
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_backMouseExited(evt);
+            }
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(159, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_laporan_buku_masuk)
-                        .addGap(143, 143, 143))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(165, 165, 165))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_laporan_pengembalian_harian, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_laporan_pengembalian_bulanan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_laporan_peminjaman_harian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_laporan_peminjaman_bulanan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_laporan_buku_masuk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(120, 120, 120))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,7 +167,17 @@ public class Report_option extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
                 .addComponent(btn_laporan_buku_masuk)
-                .addContainerGap(220, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_laporan_peminjaman_harian)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_laporan_peminjaman_bulanan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_laporan_pengembalian_harian)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_laporan_pengembalian_bulanan)
+                .addGap(46, 46, 46)
+                .addComponent(btn_back)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +189,118 @@ public class Report_option extends javax.swing.JFrame {
         Report_buku_masuk report_buku_masuk = new Report_buku_masuk();
         report_buku_masuk.setVisible(true);
     }//GEN-LAST:event_btn_laporan_buku_masukMouseClicked
+
+    private void btn_laporan_peminjaman_harianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_peminjaman_harianMouseClicked
+        try {
+            Connection conn = db_connection.getConnection();
+            JasperDesign jd = JRXmlLoader.load("src\\Report\\report_peminjaman_harian.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, conn);
+            JasperViewer.viewReport(jp,false);
+        } catch (JRException ex) {
+            Logger.getLogger(Report_option.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_laporan_peminjaman_harianMouseClicked
+
+    private void btn_laporan_peminjaman_bulananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_peminjaman_bulananMouseClicked
+        try {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM");
+            String bulan = simpleDateFormat.format(calendar.getTime());
+            Map<String, Object> map = new HashMap<>();
+            map.put("bulan",bulan);
+            Connection conn = db_connection.getConnection();
+            JasperDesign jd = JRXmlLoader.load("src\\Report\\report_peminjaman_bulanan.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, conn);
+            JasperViewer.viewReport(jp,false);
+        } catch (JRException ex) {
+            Logger.getLogger(Report_option.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_laporan_peminjaman_bulananMouseClicked
+
+    private void btn_laporan_pengembalian_harianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_pengembalian_harianMouseClicked
+        try {
+            Connection conn = db_connection.getConnection();
+            JasperDesign jd = JRXmlLoader.load("src\\Report\\report_pengembalian_harian.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, null, conn);
+            JasperViewer.viewReport(jp,false);
+        } catch (JRException ex) {
+            Logger.getLogger(Report_option.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_laporan_pengembalian_harianMouseClicked
+
+    private void btn_laporan_pengembalian_bulananMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_pengembalian_bulananMouseClicked
+                try {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM");
+            String bulan = simpleDateFormat.format(calendar.getTime());
+            Map<String, Object> map = new HashMap<>();
+            map.put("bulan",bulan);
+            Connection conn = db_connection.getConnection();
+            JasperDesign jd = JRXmlLoader.load("src\\Report\\report_pengembalian_bulanan.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport(jd);
+            JasperPrint jp = JasperFillManager.fillReport(jr, map, conn);
+            JasperViewer.viewReport(jp,false);
+        } catch (JRException ex) {
+            Logger.getLogger(Report_option.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_laporan_pengembalian_bulananMouseClicked
+
+    private void btn_laporan_buku_masukMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_buku_masukMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_laporan_buku_masukMouseEntered
+
+    private void btn_laporan_peminjaman_harianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_peminjaman_harianMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_laporan_peminjaman_harianMouseEntered
+
+    private void btn_laporan_peminjaman_bulananMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_peminjaman_bulananMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_laporan_peminjaman_bulananMouseEntered
+
+    private void btn_laporan_pengembalian_harianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_pengembalian_harianMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_laporan_pengembalian_harianMouseEntered
+
+    private void btn_laporan_pengembalian_bulananMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_pengembalian_bulananMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_laporan_pengembalian_bulananMouseEntered
+
+    private void btn_laporan_buku_masukMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_buku_masukMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_laporan_buku_masukMouseExited
+
+    private void btn_laporan_peminjaman_harianMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_peminjaman_harianMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_laporan_peminjaman_harianMouseExited
+
+    private void btn_laporan_peminjaman_bulananMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_peminjaman_bulananMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_laporan_peminjaman_bulananMouseExited
+
+    private void btn_laporan_pengembalian_harianMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_pengembalian_harianMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_laporan_pengembalian_harianMouseExited
+
+    private void btn_laporan_pengembalian_bulananMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_laporan_pengembalian_bulananMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_laporan_pengembalian_bulananMouseExited
+
+    private void btn_backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseClicked
+        this.dispose();
+        Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+        daftar_buku_option.setVisible(true);
+    }//GEN-LAST:event_btn_backMouseClicked
+
+    private void btn_backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseEntered
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btn_backMouseEntered
+
+    private void btn_backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_backMouseExited
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_btn_backMouseExited
 
     /**
      * @param args the command line arguments
@@ -115,7 +338,12 @@ public class Report_option extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_laporan_buku_masuk;
+    private javax.swing.JLabel btn_laporan_peminjaman_bulanan;
+    private javax.swing.JLabel btn_laporan_peminjaman_harian;
+    private javax.swing.JLabel btn_laporan_pengembalian_bulanan;
+    private javax.swing.JLabel btn_laporan_pengembalian_harian;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,6 +23,7 @@ public class login_admin extends javax.swing.JFrame {
     int to;/*menandakan jframe yang dibuka setelah melakukan login 
       (0 = buka daftar buku option(kalau login dibuka dari opsi ingin melakukan daftar buku), 
       1 balik ke main menu (kalau login dibuka dari button login di main menu)*/
+    public static int id_pegawai_logged_in;
     /**
      * Creates new form login_admin
      */
@@ -136,11 +137,13 @@ public class login_admin extends javax.swing.JFrame {
                     Daftar_buku_option option_admin = new Daftar_buku_option(id_pegawai);
                     option_admin.setVisible(true);
                     this.dispose();
+                    id_pegawai_logged_in = id_pegawai;
                 }
                 else if(id_pegawai != 0 && to == 1){
                     this.dispose();
                     Main_menu main_menu = new Main_menu(true);
                     main_menu.setVisible(true);
+                    id_pegawai_logged_in = id_pegawai;
                 }
                 else {
                     JOptionPane.showMessageDialog(this,"Username atau Password Salah");
