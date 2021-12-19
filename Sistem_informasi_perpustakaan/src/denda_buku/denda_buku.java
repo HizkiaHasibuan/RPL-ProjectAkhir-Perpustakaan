@@ -74,12 +74,14 @@ public class denda_buku extends javax.swing.JFrame {
                 jTextFieldKetDenda2.setEditable(false);
                 jRadioButtonBuku2Hilang.setEnabled(false);
                 jRadioButtonBuku2Rusak.setEnabled(false);
+                jRadioButtonBuku2RusakBerat.setEnabled(false);
                 jRadioButtonBuku2None.setEnabled(false);
             }
             if (jTextFieldBuku3.getText().equals("")) {
                 jTextFieldKetDenda3.setEditable(false);
                 jRadioButtonBuku3Hilang.setEnabled(false);
                 jRadioButtonBuku3Rusak.setEnabled(false);
+                jRadioButtonBuku3RusakBerat.setEnabled(false);
                 jRadioButtonBuku3None.setEnabled(false);
             }
         } catch (SQLException ex) {
@@ -133,6 +135,9 @@ public class denda_buku extends javax.swing.JFrame {
         jRadioButtonBuku2None = new javax.swing.JRadioButton();
         jRadioButtonBuku3None = new javax.swing.JRadioButton();
         jButtonBack = new javax.swing.JButton();
+        jRadioButtonBuku1RusakBerat = new javax.swing.JRadioButton();
+        jRadioButtonBuku3RusakBerat = new javax.swing.JRadioButton();
+        jRadioButtonBuku2RusakBerat = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -189,7 +194,7 @@ public class denda_buku extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Denda Buku");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 170, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 170, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -219,39 +224,44 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonBuku1Rusak);
         jRadioButtonBuku1Rusak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku1Rusak.setText("Rusak");
+        jRadioButtonBuku1Rusak.setText("Rusak Ringan");
         jRadioButtonBuku1Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku1Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 80, -1));
+        jRadioButtonBuku1Rusak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonBuku1RusakActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRadioButtonBuku1Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
 
         buttonGroup1.add(jRadioButtonBuku1Hilang);
         jRadioButtonBuku1Hilang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonBuku1Hilang.setText("Hilang");
         jRadioButtonBuku1Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku1Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 70, -1));
+        getContentPane().add(jRadioButtonBuku1Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 70, -1));
 
         buttonGroup2.add(jRadioButtonBuku2Rusak);
         jRadioButtonBuku2Rusak.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButtonBuku2Rusak.setText("Rusak");
+        jRadioButtonBuku2Rusak.setText("Rusak Ringan");
         jRadioButtonBuku2Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 90, -1));
+        getContentPane().add(jRadioButtonBuku2Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 110, -1));
 
         buttonGroup2.add(jRadioButtonBuku2Hilang);
         jRadioButtonBuku2Hilang.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButtonBuku2Hilang.setText("Hilang");
         jRadioButtonBuku2Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 70, -1));
+        getContentPane().add(jRadioButtonBuku2Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 70, -1));
 
         buttonGroup3.add(jRadioButtonBuku3Rusak);
         jRadioButtonBuku3Rusak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku3Rusak.setText("Rusak");
+        jRadioButtonBuku3Rusak.setText("Rusak Ringan");
         jRadioButtonBuku3Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 70, -1));
+        getContentPane().add(jRadioButtonBuku3Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 110, -1));
 
         buttonGroup3.add(jRadioButtonBuku3Hilang);
         jRadioButtonBuku3Hilang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonBuku3Hilang.setText("Hilang");
         jRadioButtonBuku3Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, 70, -1));
+        getContentPane().add(jRadioButtonBuku3Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 70, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -338,21 +348,21 @@ public class denda_buku extends javax.swing.JFrame {
         jRadioButtonBuku1None.setSelected(true);
         jRadioButtonBuku1None.setText("None");
         jRadioButtonBuku1None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku1None, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
+        getContentPane().add(jRadioButtonBuku1None, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
 
         buttonGroup2.add(jRadioButtonBuku2None);
         jRadioButtonBuku2None.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jRadioButtonBuku2None.setSelected(true);
         jRadioButtonBuku2None.setText("None");
         jRadioButtonBuku2None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2None, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
+        getContentPane().add(jRadioButtonBuku2None, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, -1, -1));
 
         buttonGroup3.add(jRadioButtonBuku3None);
         jRadioButtonBuku3None.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jRadioButtonBuku3None.setSelected(true);
         jRadioButtonBuku3None.setText("None");
         jRadioButtonBuku3None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3None, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, -1));
+        getContentPane().add(jRadioButtonBuku3None, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 60, -1));
 
         jButtonBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButtonBack.setText("Back");
@@ -363,6 +373,29 @@ public class denda_buku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, -1, -1));
+
+        buttonGroup1.add(jRadioButtonBuku1RusakBerat);
+        jRadioButtonBuku1RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku1RusakBerat.setText("Rusak Berat");
+        jRadioButtonBuku1RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButtonBuku1RusakBerat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonBuku1RusakBeratActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRadioButtonBuku1RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 100, -1));
+
+        buttonGroup3.add(jRadioButtonBuku3RusakBerat);
+        jRadioButtonBuku3RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku3RusakBerat.setText("Rusak Berat");
+        jRadioButtonBuku3RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jRadioButtonBuku3RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 100, -1));
+
+        buttonGroup2.add(jRadioButtonBuku2RusakBerat);
+        jRadioButtonBuku2RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonBuku2RusakBerat.setText("Rusak Berat");
+        jRadioButtonBuku2RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(jRadioButtonBuku2RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 100, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_large.jpg"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 530));
@@ -438,30 +471,43 @@ public class denda_buku extends javax.swing.JFrame {
             this.terlambat = 1;
         }
 
-
         if (jRadioButtonBuku1Rusak.isSelected()) {
-            jenis_denda1="Rusak Rp. 15.000";
+            jenis_denda1="Rusak Ringan Rp. 15.000";
             bayar_denda += 15000;
+        }
+        if (jRadioButtonBuku1RusakBerat.isSelected()) {
+            jenis_denda1="Rusak Berat Rp. 50.000";
+            bayar_denda += 50000;
         }
         if (jRadioButtonBuku1Hilang.isSelected()) {
-            jenis_denda1="Hilang    Rp. 20.000";
-            bayar_denda += 20000;
+            jenis_denda1="Hilang    Rp. 50.000";
+            bayar_denda += 50000;
         }
+        
         if (jRadioButtonBuku2Rusak.isSelected()) {
-            jenis_denda2="Rusak Rp. 15.000";
+            jenis_denda2="Rusak Ringan Rp. 15.000";
             bayar_denda += 15000;
+        }
+        if (jRadioButtonBuku2RusakBerat.isSelected()) {
+            jenis_denda2="Rusak Berat Rp. 50.000";
+            bayar_denda += 50000;
         }
         if (jRadioButtonBuku2Hilang.isSelected()) {
-            jenis_denda2="Hilang    Rp. 20.000";
-            bayar_denda += 20000;
+            jenis_denda2="Hilang    Rp. 50.000";
+            bayar_denda += 50000;
         }
+        
         if (jRadioButtonBuku3Rusak.isSelected()) {
-            jenis_denda3="Rusak Rp. 15.000";
+            jenis_denda3="Rusak Ringan Rp. 15.000";
             bayar_denda += 15000;
         }
+        if (jRadioButtonBuku3RusakBerat.isSelected()) {
+            jenis_denda3="Rusak Berat Rp. 50.000";
+            bayar_denda += 50000;
+        }
         if (jRadioButtonBuku3Hilang.isSelected()) {
-            jenis_denda3="Hilang    Rp. 20.000";
-            bayar_denda += 20000;
+            jenis_denda3="Hilang    Rp. 50.000";
+            bayar_denda += 50000;
         }
         
         telat *= jml_buku_telat;
@@ -512,13 +558,19 @@ public class denda_buku extends javax.swing.JFrame {
         int id_jenis_denda1 = 0;
         int id_jenis_denda2 = 0;
         int id_jenis_denda3 = 0;
-
+        int id_buku1 = 0;
+        int id_buku2 = 0;
+        int id_buku3 = 0;
+        int indeks=1;
+        //idBuku();
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         String sql ="INSERT INTO tb_denda (keterangan_denda,jenis_denda_id,detail_pengembalian_id) VALUES (?,?,?);";
 
         if (jRadioButtonBuku1Rusak.isSelected()) {
             id_jenis_denda1 = 2;
+        } else if(jRadioButtonBuku1RusakBerat.isSelected()){
+            id_jenis_denda1 = 5;
         } else if(jRadioButtonBuku1Hilang.isSelected()){
             id_jenis_denda1 = 3;
         } else {
@@ -527,6 +579,8 @@ public class denda_buku extends javax.swing.JFrame {
         
         if (jRadioButtonBuku2Rusak.isSelected()) {
             id_jenis_denda2 = 2;
+        } else if(jRadioButtonBuku2RusakBerat.isSelected()){
+            id_jenis_denda2 = 5;
         } else if (jRadioButtonBuku2Hilang.isSelected()) {
             id_jenis_denda2 = 3;
         } else{
@@ -535,6 +589,8 @@ public class denda_buku extends javax.swing.JFrame {
 
         if (jRadioButtonBuku3Rusak.isSelected()) {
             id_jenis_denda3 = 2;
+        } else if(jRadioButtonBuku3RusakBerat.isSelected()){
+            id_jenis_denda3 = 5;
         } else if (jRadioButtonBuku3Hilang.isSelected()) {
             id_jenis_denda3 = 3;
         } else {
@@ -547,7 +603,7 @@ public class denda_buku extends javax.swing.JFrame {
             ps.setInt(2,id_jenis_denda1);
             ps.setInt(3,id_pengembalian1);
             ps.executeUpdate();
-            
+                        
             if (this.terlambat==1) {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,ketBuku1);
@@ -555,7 +611,7 @@ public class denda_buku extends javax.swing.JFrame {
                 ps.setInt(3,id_pengembalian1);
                 ps.executeUpdate();
             }
-            
+                    
             if (!jTextFieldBuku2.getText().isEmpty()) {
                 ps.setString(1,ketBuku2);
                 ps.setInt(2,id_jenis_denda2);
@@ -587,20 +643,73 @@ public class denda_buku extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Data Berhasil Disimpan");
         } catch (SQLException ex) {
             Logger.getLogger(denda_buku.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        } 
+
         this.dispose();
         Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
         daftar_buku_option.setVisible(true);
         
     }//GEN-LAST:event_jButtonSimpanDendaActionPerformed
 
+//    private void idBuku(){
+//        int id_buku1;
+//        int id_buku2;
+//        int id_buku3;
+//        Connection conn1 = db_connection.getConnection();
+//        PreparedStatement ps1 = null;
+//        ResultSet rs1 = null;
+//        String sql = "SELECT buku_id FROM tb_detail_pengembalian WHERE pengembalian_id=?;";
+//        
+//        try {
+//            ps1 = conn1.prepareStatement(sql);
+//            ps1.setInt(1,id_pengembalian1);
+//            //ps1.executeUpdate();
+//            rs1 = ps1.executeQuery();
+//            System.out.println("hhkjkjjkjh" + id_pengembalian1);
+//            while(rs1.next()){
+//                id_buku1 = rs1.getInt(1);
+//                System.out.println(" Bom =" +id_buku1);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(pengembalian_buku.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        finally{
+//            if(rs1 != null){
+//                try {
+//                    rs1.close();
+//                } catch (SQLException e) {
+//                }
+//            }
+//            if(ps1 != null){
+//                try {
+//                    ps1.close();
+//                } catch (SQLException e) {
+//                }
+//            }
+//            if(conn1 != null){
+//                try {
+//                    conn1.close();
+//                } catch (SQLException e) {
+//                }
+//            }
+//        }
+//        
+//    }
+    
     private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         // TODO add your handling code here:
         this.dispose();
         pengembalian_buku pengembalian_bk = new pengembalian_buku();
         pengembalian_bk.setVisible(true);
     }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jRadioButtonBuku1RusakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonBuku1RusakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonBuku1RusakActionPerformed
+
+    private void jRadioButtonBuku1RusakBeratActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonBuku1RusakBeratActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonBuku1RusakBeratActionPerformed
 
     /**
      * @param args the command line arguments
@@ -656,12 +765,15 @@ public class denda_buku extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonBuku1Hilang;
     private javax.swing.JRadioButton jRadioButtonBuku1None;
     private javax.swing.JRadioButton jRadioButtonBuku1Rusak;
+    private javax.swing.JRadioButton jRadioButtonBuku1RusakBerat;
     private javax.swing.JRadioButton jRadioButtonBuku2Hilang;
     private javax.swing.JRadioButton jRadioButtonBuku2None;
     private javax.swing.JRadioButton jRadioButtonBuku2Rusak;
+    private javax.swing.JRadioButton jRadioButtonBuku2RusakBerat;
     private javax.swing.JRadioButton jRadioButtonBuku3Hilang;
     private javax.swing.JRadioButton jRadioButtonBuku3None;
     private javax.swing.JRadioButton jRadioButtonBuku3Rusak;
+    private javax.swing.JRadioButton jRadioButtonBuku3RusakBerat;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

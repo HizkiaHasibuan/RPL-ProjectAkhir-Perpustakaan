@@ -55,7 +55,7 @@ public class daftar_denda extends javax.swing.JFrame {
                 "INNER JOIN tb_detail_peminjaman ON tb_buku.`id`=tb_detail_peminjaman.`buku_id`\n" +
                 "INNER JOIN tb_peminjaman ON tb_detail_peminjaman.`peminjaman_id`=tb_peminjaman.`id`\n" +
                 "INNER JOIN tb_member ON tb_peminjaman.`member_id`=tb_member.`id`\n" +
-                "WHERE tb_denda.`jenis_denda_id`!=4;";
+                "WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;";
         
         try {
             ps = conn.prepareStatement(sql);
