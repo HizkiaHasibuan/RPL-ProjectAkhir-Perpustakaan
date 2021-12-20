@@ -24,6 +24,7 @@ import peminjaman_pengembalian_buku.List_peminjaman;
 import peminjaman_pengembalian_buku.peminjaman_buku;
 import peminjaman_pengembalian_buku.pengembalian_buku;
 import pencarian_buku.Searching;
+import pendaftaran_member.kartu_member;
 import sistem_informasi_perpustakaan.Main_menu;
 import sistem_informasi_perpustakaan.connection.db_connection;
 
@@ -68,6 +69,8 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         btn_daftar_denda = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_list_peminjaman = new javax.swing.JLabel();
+        btn_buat_laporan1 = new javax.swing.JLabel();
+        btn_kartu_member = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -139,7 +142,7 @@ public class Daftar_buku_option extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 70, -1));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 70, -1));
 
         btn_peminjaman.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btn_peminjaman.setForeground(new java.awt.Color(255, 255, 255));
@@ -211,6 +214,34 @@ public class Daftar_buku_option extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_list_peminjaman, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+
+        btn_buat_laporan1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_buat_laporan1.setForeground(new java.awt.Color(255, 255, 255));
+        btn_buat_laporan1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_buat_laporan1.setText("Buat Laporan");
+        btn_buat_laporan1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buat_laporan1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_buat_laporan1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_buat_laporan1MouseExited(evt);
+            }
+        });
+        getContentPane().add(btn_buat_laporan1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+
+        btn_kartu_member.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btn_kartu_member.setForeground(new java.awt.Color(255, 255, 255));
+        btn_kartu_member.setText("Kartu member");
+        btn_kartu_member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_kartu_member.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_kartu_memberMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_kartu_member, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 120, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
@@ -384,6 +415,25 @@ public class Daftar_buku_option extends javax.swing.JFrame {
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_btn_list_peminjamanMouseExited
 
+    private void btn_buat_laporan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buat_laporan1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buat_laporan1MouseClicked
+
+    private void btn_buat_laporan1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buat_laporan1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buat_laporan1MouseEntered
+
+    private void btn_buat_laporan1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buat_laporan1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_buat_laporan1MouseExited
+
+    private void btn_kartu_memberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_kartu_memberMouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        kartu_member cetak_kartu_member = new kartu_member();
+        cetak_kartu_member.setVisible(true);
+    }//GEN-LAST:event_btn_kartu_memberMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -416,9 +466,11 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_buat_laporan;
+    private javax.swing.JLabel btn_buat_laporan1;
     private javax.swing.JLabel btn_daftar_buku;
     private javax.swing.JLabel btn_daftar_denda;
     private javax.swing.JLabel btn_edit_buku;
+    private javax.swing.JLabel btn_kartu_member;
     private javax.swing.JLabel btn_list_peminjaman;
     private javax.swing.JLabel btn_peminjaman;
     private javax.swing.JLabel btn_pengembalian;

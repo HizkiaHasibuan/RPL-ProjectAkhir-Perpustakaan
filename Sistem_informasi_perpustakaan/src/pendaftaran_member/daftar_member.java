@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import com.mysql.jdbc.Driver;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Pattern;
 import sistem_informasi_perpustakaan.Main_menu;
 import sistem_informasi_perpustakaan.connection.db_connection;
 
@@ -74,6 +75,11 @@ public class daftar_member extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
         jTextFieldNama.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldNama.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNamaKeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextFieldNama, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 200, -1));
 
         jTextFieldEmail.setBackground(new java.awt.Color(204, 204, 204));
@@ -111,6 +117,11 @@ public class daftar_member extends javax.swing.JFrame {
         jTextFieldPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPhoneActionPerformed(evt);
+            }
+        });
+        jTextFieldPhone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldPhoneKeyTyped(evt);
             }
         });
         getContentPane().add(jTextFieldPhone, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 200, -1));
@@ -191,7 +202,11 @@ public class daftar_member extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Pastikan Semua Data Terisi");
         }else if(ultah.isAfter(now)){
             JOptionPane.showMessageDialog(null,"Tanggal Ulang Tahun \nMelebihi Tanggal Sekarang");
-        }else {
+        } if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", jTextFieldEmail.getText()))){
+            JOptionPane.showMessageDialog(null, "Masukkan Email dengan Benar", "Message", JOptionPane.ERROR_MESSAGE);
+        }else if(jTextFieldPhone.getText().length()<10 || jTextFieldPhone.getText().length()>14){
+            JOptionPane.showMessageDialog(null,"Nomor telepon Tidak Boleh Kurang Dari 10 dan Lebih dari 14");
+        } else {
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,nama);
@@ -227,6 +242,22 @@ public class daftar_member extends javax.swing.JFrame {
         mn_menu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextFieldPhoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPhoneKeyTyped
+        // TODO add your handling code here:
+        if(Character.isAlphabetic(evt.getKeyChar())){
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Masukkan no hp dengan Benar");
+        }
+    }//GEN-LAST:event_jTextFieldPhoneKeyTyped
+
+    private void jTextFieldNamaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNamaKeyTyped
+        // TODO add your handling code here:
+        if(Character.isDigit(evt.getKeyChar())){
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Masukkan nama dengan Benar");
+        }
+    }//GEN-LAST:event_jTextFieldNamaKeyTyped
 
     /**
      * @param args the command line arguments

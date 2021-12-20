@@ -4,6 +4,7 @@
  */
 package peminjaman_pengembalian_buku;
 
+import denda_buku.daftar_pengembalian_telat;
 import denda_buku.denda_buku;
 import java.awt.Cursor;
 import java.sql.Connection;
@@ -24,6 +25,7 @@ import sistem_informasi_perpustakaan.connection.db_connection;
  */
 public class pengembalian_buku extends javax.swing.JFrame {
     private int id_peminjaman = 0;
+    private int id_pengembalian;
     private int idBuku1 = 0;
     private int idBuku2 = 0;
     private int idBuku3 = 0;
@@ -31,8 +33,6 @@ public class pengembalian_buku extends javax.swing.JFrame {
     /**
      * Creates new form pengembalian_buku
      */
-    
-    private int id_pengembalian;//untuk nyimpan id_pengembalian (Kemungkinan masih mau diganti)
     
     public pengembalian_buku() {
         initComponents();
@@ -50,7 +50,6 @@ public class pengembalian_buku extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
-        jButtonDenda = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         textbox_id = new javax.swing.JTextField();
         validasi_id = new javax.swing.JLabel();
@@ -87,17 +86,6 @@ public class pengembalian_buku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 252, 73, -1));
-
-        jButtonDenda.setBackground(new java.awt.Color(153, 153, 153));
-        jButtonDenda.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jButtonDenda.setText("Denda Buku");
-        jButtonDenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonDenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDendaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButtonDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 252, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,7 +152,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
                 btn_submitMouseExited(evt);
             }
         });
-        getContentPane().add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
+        getContentPane().add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,14 +206,6 @@ public class pengembalian_buku extends javax.swing.JFrame {
         Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
         daftar_buku_option.setVisible(true);
     }//GEN-LAST:event_jButtonBackActionPerformed
-
-    private void jButtonDendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDendaActionPerformed
-        // TODO add your handling code here:
-        id_pengembalian=2;//untuk sementara (Kemungkinan masih mau diganti)
-        denda_buku denda = new denda_buku(id_pengembalian);
-        denda.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButtonDendaActionPerformed
 
     private void textbox_idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textbox_idKeyPressed
 
@@ -285,10 +265,42 @@ public class pengembalian_buku extends javax.swing.JFrame {
         }
         if(idIsValid == true && bookIsValid == true){
             insertDataPengembalian();
-            JOptionPane.showConfirmDialog(this,"Data Pengembalian Berhasil Dimasukan !","",JOptionPane.DEFAULT_OPTION);
+            //JOptionPane.showConfirmDialog(this,"Data Pengembalian Berhasil Dimasukan !","",JOptionPane.DEFAULT_OPTION);
+            Connection conn = db_connection.getConnection();
+            PreparedStatement ps;
+            ResultSet rs;
+            String sql;
+            int respon = JOptionPane.showConfirmDialog(this, "Data Pengembalian Berhasil Dimasukan ! " + "\nAda denda?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            
+            if(respon==JOptionPane.YES_OPTION){
+            
+
+            sql ="SELECT tb_pengembalian.id FROM tb_pengembalian WHERE tb_pengembalian.`peminjaman_id`=" + id_peminjaman + ";";
+
+            try {
+                ps = conn.prepareStatement(sql);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    id_pengembalian = rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(denda_buku.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            denda_buku denda = new denda_buku(id_pengembalian);
+            denda.setVisible(true);
+            this.dispose();
+            }
+            
+            if(respon==JOptionPane.NO_OPTION){
             this.dispose();
             Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
             daftar_buku_option.setVisible(true);
+            }
+            
+//            this.dispose();
+//            Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+//            daftar_buku_option.setVisible(true);
         }
     }//GEN-LAST:event_btn_submitMouseClicked
 
@@ -689,7 +701,6 @@ public class pengembalian_buku extends javax.swing.JFrame {
     private javax.swing.JCheckBox buku_kembali2;
     private javax.swing.JCheckBox buku_kembali3;
     private javax.swing.JButton jButtonBack;
-    private javax.swing.JButton jButtonDenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
