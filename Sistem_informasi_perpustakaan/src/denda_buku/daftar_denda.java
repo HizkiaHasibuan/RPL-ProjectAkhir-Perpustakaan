@@ -90,14 +90,17 @@ public class daftar_denda extends javax.swing.JFrame {
         jTableDaftarDenda = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(420, 350));
+        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTableDaftarDenda.setBackground(new java.awt.Color(153, 153, 153));
+        jTableDaftarDenda.setBackground(new java.awt.Color(148, 61, 21));
+        jTableDaftarDenda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTableDaftarDenda.setForeground(new java.awt.Color(255, 255, 255));
         jTableDaftarDenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -119,25 +122,43 @@ public class daftar_denda extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableDaftarDenda);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, 375, 197));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 375, 170));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Daftar Denda Buku");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
 
         jButtonBack.setBackground(new java.awt.Color(153, 153, 153));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButtonBack.setText("Back");
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
         jButtonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 274, 73, -1));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 40, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 300));
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 414, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 304, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 420, 310));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background600x650.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 400));
 
         pack();
         setLocationRelativeTo(null);
@@ -189,6 +210,7 @@ public class daftar_denda extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableDaftarDenda;
     // End of variables declaration//GEN-END:variables

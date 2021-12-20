@@ -56,12 +56,21 @@ public class Report_option extends javax.swing.JFrame {
         btn_laporan_pengembalian_bulanan = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
         btn_laporan_denda = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Buat Laporan");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 300, -1));
 
+        btn_laporan_buku_masuk.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_laporan_buku_masuk.setForeground(new java.awt.Color(255, 255, 255));
         btn_laporan_buku_masuk.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_laporan_buku_masuk.setText("Laporan Buku Masuk");
         btn_laporan_buku_masuk.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -75,7 +84,10 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_buku_masukMouseExited(evt);
             }
         });
+        getContentPane().add(btn_laporan_buku_masuk, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 310, 30));
 
+        btn_laporan_peminjaman_harian.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_laporan_peminjaman_harian.setForeground(new java.awt.Color(255, 255, 255));
         btn_laporan_peminjaman_harian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_laporan_peminjaman_harian.setText("Laporan Peminjaman (Harian)");
         btn_laporan_peminjaman_harian.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,7 +101,10 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_peminjaman_harianMouseExited(evt);
             }
         });
+        getContentPane().add(btn_laporan_peminjaman_harian, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 320, 30));
 
+        btn_laporan_peminjaman_bulanan.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_laporan_peminjaman_bulanan.setForeground(new java.awt.Color(255, 255, 255));
         btn_laporan_peminjaman_bulanan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_laporan_peminjaman_bulanan.setText("Laporan Peminjaman (Bulanan)");
         btn_laporan_peminjaman_bulanan.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -103,7 +118,10 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_peminjaman_bulananMouseExited(evt);
             }
         });
+        getContentPane().add(btn_laporan_peminjaman_bulanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 340, 30));
 
+        btn_laporan_pengembalian_harian.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_laporan_pengembalian_harian.setForeground(new java.awt.Color(255, 255, 255));
         btn_laporan_pengembalian_harian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_laporan_pengembalian_harian.setText("Laporan Pengembalian (Harian)");
         btn_laporan_pengembalian_harian.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -117,7 +135,10 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_pengembalian_harianMouseExited(evt);
             }
         });
+        getContentPane().add(btn_laporan_pengembalian_harian, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 370, 30));
 
+        btn_laporan_pengembalian_bulanan.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_laporan_pengembalian_bulanan.setForeground(new java.awt.Color(255, 255, 255));
         btn_laporan_pengembalian_bulanan.setText("Laporan Pengembalian (Bulanan)");
         btn_laporan_pengembalian_bulanan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,9 +151,12 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_pengembalian_bulananMouseExited(evt);
             }
         });
+        getContentPane().add(btn_laporan_pengembalian_bulanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, 40));
 
+        btn_back.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
         btn_back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_back.setText("Back");
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backyellow50x50.png"))); // NOI18N
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
@@ -144,7 +168,11 @@ public class Report_option extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 470, 310, 60));
 
+        btn_laporan_denda.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
+        btn_laporan_denda.setForeground(new java.awt.Color(255, 255, 255));
+        btn_laporan_denda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_laporan_denda.setText("Laporan Denda");
         btn_laporan_denda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_laporan_denda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,48 +180,27 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_dendaMouseClicked(evt);
             }
         });
+        getContentPane().add(btn_laporan_denda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 280, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_laporan_peminjaman_harian, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_laporan_denda)
-                        .addGap(42, 42, 42))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_laporan_buku_masuk, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                        .addComponent(btn_back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btn_laporan_peminjaman_bulanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_laporan_pengembalian_harian, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_laporan_pengembalian_bulanan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(112, 112, 112))
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 474, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addComponent(btn_laporan_buku_masuk)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_laporan_denda)
-                .addGap(8, 8, 8)
-                .addComponent(btn_laporan_peminjaman_harian)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_laporan_peminjaman_bulanan)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_laporan_pengembalian_harian)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_laporan_pengembalian_bulanan)
-                .addGap(31, 31, 31)
-                .addComponent(btn_back)
-                .addContainerGap(53, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 504, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 480, 510));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background700x600.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -365,6 +372,7 @@ public class Report_option extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_laporan_buku_masuk;
     private javax.swing.JLabel btn_laporan_denda;
@@ -373,5 +381,6 @@ public class Report_option extends javax.swing.JFrame {
     private javax.swing.JLabel btn_laporan_pengembalian_bulanan;
     private javax.swing.JLabel btn_laporan_pengembalian_harian;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

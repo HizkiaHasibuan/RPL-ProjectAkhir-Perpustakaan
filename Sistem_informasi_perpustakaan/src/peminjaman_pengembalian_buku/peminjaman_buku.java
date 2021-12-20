@@ -60,41 +60,47 @@ public class peminjaman_buku extends javax.swing.JFrame {
         textbox_buku3 = new javax.swing.JTextField();
         btn_add_buku3 = new javax.swing.JLabel();
         validasi_buku = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Peminjaman Buku");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 230, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 320, -1));
 
         jButtonBack.setBackground(new java.awt.Color(153, 153, 153));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButtonBack.setText("Back");
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
         jButtonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 266, 73, -1));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 40, 40));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ID Member");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 20));
-        getContentPane().add(textbox_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 200, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 20));
 
-        validasi_id.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        validasi_id.setForeground(new java.awt.Color(255, 255, 255));
+        textbox_id.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_id.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        textbox_id.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 200, -1));
+
+        validasi_id.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
+        validasi_id.setForeground(new java.awt.Color(255, 255, 0));
         validasi_id.setText("validasi_id");
         validasi_id.setVisible(false);
-        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 200, -1));
 
-        btn_pinjam.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_pinjam.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btn_pinjam.setForeground(new java.awt.Color(255, 255, 255));
         btn_pinjam.setText("Pinjam");
         btn_pinjam.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -108,30 +114,36 @@ public class peminjaman_buku extends javax.swing.JFrame {
                 btn_pinjamMouseExited(evt);
             }
         });
-        getContentPane().add(btn_pinjam, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, -1));
+        getContentPane().add(btn_pinjam, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Buku 1");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
         textbox_buku1.setEditable(false);
-        getContentPane().add(textbox_buku1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 200, -1));
+        textbox_buku1.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_buku1.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        textbox_buku1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_buku1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 200, -1));
 
         textbox_buku2.setEditable(false);
-        getContentPane().add(textbox_buku2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 200, -1));
+        textbox_buku2.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_buku2.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        textbox_buku2.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_buku2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 200, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Buku 2");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Buku 3");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        btn_add_buku1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_add_buku1.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         btn_add_buku1.setForeground(new java.awt.Color(255, 255, 255));
         btn_add_buku1.setText("Add Buku");
         btn_add_buku1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,9 +157,9 @@ public class peminjaman_buku extends javax.swing.JFrame {
                 btn_add_buku1MouseExited(evt);
             }
         });
-        getContentPane().add(btn_add_buku1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
+        getContentPane().add(btn_add_buku1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
 
-        btn_add_buku2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_add_buku2.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         btn_add_buku2.setForeground(new java.awt.Color(255, 255, 255));
         btn_add_buku2.setText("Add Buku");
         btn_add_buku2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -161,12 +173,15 @@ public class peminjaman_buku extends javax.swing.JFrame {
                 btn_add_buku2MouseExited(evt);
             }
         });
-        getContentPane().add(btn_add_buku2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
+        getContentPane().add(btn_add_buku2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, -1, -1));
 
         textbox_buku3.setEditable(false);
-        getContentPane().add(textbox_buku3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 200, -1));
+        textbox_buku3.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_buku3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        textbox_buku3.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_buku3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 200, -1));
 
-        btn_add_buku3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_add_buku3.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         btn_add_buku3.setForeground(new java.awt.Color(255, 255, 255));
         btn_add_buku3.setText("Add Buku");
         btn_add_buku3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,17 +195,34 @@ public class peminjaman_buku extends javax.swing.JFrame {
                 btn_add_buku3MouseExited(evt);
             }
         });
-        getContentPane().add(btn_add_buku3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
+        getContentPane().add(btn_add_buku3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
 
-        validasi_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        validasi_buku.setForeground(new java.awt.Color(255, 255, 255));
+        validasi_buku.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
+        validasi_buku.setForeground(new java.awt.Color(255, 255, 0));
         validasi_buku.setText("Validasi Buku");
         validasi_buku.setVisible(false);
-        getContentPane().add(validasi_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, 20));
+        getContentPane().add(validasi_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, 20));
+
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 414, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 304, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 420, 310));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 300));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background600x650.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 400));
 
         pack();
         setLocationRelativeTo(null);
@@ -611,6 +643,7 @@ public class peminjaman_buku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     public javax.swing.JTextField textbox_buku1;
     public javax.swing.JTextField textbox_buku2;
     public javax.swing.JTextField textbox_buku3;

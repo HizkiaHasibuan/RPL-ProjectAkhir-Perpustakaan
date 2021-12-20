@@ -41,14 +41,26 @@ public class Tipe_buku_option extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
         btn_buku = new javax.swing.JLabel();
         btn_journal = new javax.swing.JLabel();
         btn_majalah = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(400, 400));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Pilih Tipe Buku");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 260, 30));
+
+        btn_buku.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        btn_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_buku.setText("Buku");
         btn_buku.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -62,7 +74,10 @@ public class Tipe_buku_option extends javax.swing.JFrame {
                 btn_bukuMouseExited(evt);
             }
         });
+        getContentPane().add(btn_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 100, 30));
 
+        btn_journal.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        btn_journal.setForeground(new java.awt.Color(255, 255, 255));
         btn_journal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_journal.setText("Journal");
         btn_journal.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,7 +91,10 @@ public class Tipe_buku_option extends javax.swing.JFrame {
                 btn_journalMouseExited(evt);
             }
         });
+        getContentPane().add(btn_journal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 100, 30));
 
+        btn_majalah.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        btn_majalah.setForeground(new java.awt.Color(255, 255, 255));
         btn_majalah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_majalah.setText("Majalah");
         btn_majalah.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,11 +108,11 @@ public class Tipe_buku_option extends javax.swing.JFrame {
                 btn_majalahMouseExited(evt);
             }
         });
+        getContentPane().add(btn_majalah, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 100, 30));
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Pilih Tipe Buku");
-
-        btn_back.setText("Back");
+        btn_back.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backyellow50x50.png"))); // NOI18N
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
@@ -106,44 +124,27 @@ public class Tipe_buku_option extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(63, 63, 63)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_buku, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btn_journal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btn_majalah, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(btn_back)))
-                .addContainerGap(81, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 284, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel4)
-                .addGap(27, 27, 27)
-                .addComponent(btn_buku)
-                .addGap(56, 56, 56)
-                .addComponent(btn_journal)
-                .addGap(68, 68, 68)
-                .addComponent(btn_majalah)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btn_back)
-                .addGap(22, 22, 22))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 284, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 290, 290));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background500x400.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -281,6 +282,8 @@ public class Tipe_buku_option extends javax.swing.JFrame {
     private javax.swing.JLabel btn_buku;
     private javax.swing.JLabel btn_journal;
     private javax.swing.JLabel btn_majalah;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

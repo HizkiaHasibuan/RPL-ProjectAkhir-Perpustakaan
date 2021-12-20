@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/denda_buku/denda_buku.java</file>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/peminjaman_pengembalian_buku/pengembalian_buku.java</file>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/pendaftaran_member/daftar_member.java</file>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/Report/Report_option.java</file>
+            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/denda_buku/daftar_denda.java</file>
+            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/peminjaman_pengembalian_buku/peminjaman_buku.java</file>
+            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/Tag/Tag_list.java</file>
         </group>
     </open-files>
 </project-private>

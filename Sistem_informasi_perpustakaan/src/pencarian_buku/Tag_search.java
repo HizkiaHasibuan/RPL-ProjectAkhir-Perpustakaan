@@ -59,52 +59,57 @@ public class Tag_search extends javax.swing.JFrame {
         btn_back = new javax.swing.JLabel();
         validasi_tag = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tag 1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 41, 46, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 50, -1));
 
         textbox_tag1.setEditable(false);
-        textbox_tag1.setBackground(new java.awt.Color(204, 204, 204));
-        textbox_tag1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        getContentPane().add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 43, 105, -1));
+        textbox_tag1.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_tag1.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        textbox_tag1.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 210, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Tag 2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 74, 46, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 50, -1));
 
         textbox_tag2.setEditable(false);
-        textbox_tag2.setBackground(new java.awt.Color(204, 204, 204));
-        textbox_tag2.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        textbox_tag2.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_tag2.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        textbox_tag2.setForeground(new java.awt.Color(255, 255, 255));
         textbox_tag2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textbox_tag2MouseClicked(evt);
             }
         });
-        getContentPane().add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 76, 105, -1));
+        getContentPane().add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 210, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tag 3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 107, 46, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 60, -1));
 
         textbox_tag3.setEditable(false);
-        textbox_tag3.setBackground(new java.awt.Color(204, 204, 204));
-        textbox_tag3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        textbox_tag3.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_tag3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        textbox_tag3.setForeground(new java.awt.Color(255, 255, 255));
         textbox_tag3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 textbox_tag3MouseClicked(evt);
             }
         });
-        getContentPane().add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 109, 105, -1));
+        getContentPane().add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 210, -1));
 
-        btn_add_tag1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_add_tag1.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         btn_add_tag1.setForeground(new java.awt.Color(255, 255, 255));
         btn_add_tag1.setText("Add tag");
         btn_add_tag1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,9 +123,9 @@ public class Tag_search extends javax.swing.JFrame {
                 btn_add_tag1MouseExited(evt);
             }
         });
-        getContentPane().add(btn_add_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 41, 64, -1));
+        getContentPane().add(btn_add_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 90, -1));
 
-        btn_add_tag2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_add_tag2.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         btn_add_tag2.setForeground(new java.awt.Color(255, 255, 255));
         btn_add_tag2.setText("Add tag");
         btn_add_tag2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,9 +139,9 @@ public class Tag_search extends javax.swing.JFrame {
                 btn_add_tag2MouseExited(evt);
             }
         });
-        getContentPane().add(btn_add_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 74, 64, -1));
+        getContentPane().add(btn_add_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 90, -1));
 
-        btn_add_tag3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_add_tag3.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         btn_add_tag3.setForeground(new java.awt.Color(255, 255, 255));
         btn_add_tag3.setText("Add tag");
         btn_add_tag3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,9 +155,13 @@ public class Tag_search extends javax.swing.JFrame {
                 btn_add_tag3MouseExited(evt);
             }
         });
-        getContentPane().add(btn_add_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 107, 64, -1));
+        getContentPane().add(btn_add_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 90, -1));
 
-        tabel_buku.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setBackground(new java.awt.Color(148, 61, 21));
+
+        tabel_buku.setBackground(new java.awt.Color(148, 61, 21));
+        tabel_buku.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        tabel_buku.setForeground(new java.awt.Color(255, 255, 255));
         tabel_buku.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -163,10 +172,10 @@ public class Tag_search extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabel_buku);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 161, 548, 127));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 548, 127));
 
-        btn_search.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btn_search.setForeground(new java.awt.Color(0, 0, 255));
+        btn_search.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
+        btn_search.setForeground(new java.awt.Color(255, 255, 0));
         btn_search.setText("Search");
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,11 +188,12 @@ public class Tag_search extends javax.swing.JFrame {
                 btn_searchMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 135, 60, -1));
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, 70, 30));
 
+        btn_back.setBackground(new java.awt.Color(153, 153, 153));
         btn_back.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
-        btn_back.setText("Back");
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backyellow50x50.png"))); // NOI18N
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
@@ -195,21 +205,38 @@ public class Tag_search extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 135, -1, -1));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
-        validasi_tag.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        validasi_tag.setForeground(new java.awt.Color(255, 0, 0));
+        validasi_tag.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
+        validasi_tag.setForeground(new java.awt.Color(255, 255, 0));
         validasi_tag.setText("Warning !");
         validasi_tag.setVisible(false);
-        getContentPane().add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 135, 90, -1));
+        getContentPane().add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 290, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("Pencarian Dengan Tag");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 11, 210, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 390, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_pencarian_op.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, -1));
+        jPanel3.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel3.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 574, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 394, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 580, 400));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background700x600.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -495,6 +522,7 @@ public class Tag_search extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel btn_add_tag1;
     private javax.swing.JLabel btn_add_tag2;
     private javax.swing.JLabel btn_add_tag3;
@@ -504,7 +532,9 @@ public class Tag_search extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabel_buku;
     public javax.swing.JTextField textbox_tag1;

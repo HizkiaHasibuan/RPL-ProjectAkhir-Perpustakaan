@@ -50,114 +50,148 @@ public class kartu_member extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButtonCetak = new javax.swing.JButton();
-        jTextFieldid_member = new javax.swing.JTextField();
-        notif = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
+        jTextFieldid_member = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jButtonCetak = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        notif = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        background = new javax.swing.JLabel();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Id Member");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Cetak Kartu Member");
-
-        jButtonCetak.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonCetak.setText("Cetak");
-        jButtonCetak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonCetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCetakActionPerformed(evt);
-            }
-        });
-
-        jTextFieldid_member.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldid_memberKeyTyped(evt);
-            }
-        });
-
-        notif.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        notif.setForeground(new java.awt.Color(204, 0, 0));
-        notif.setText("Validasi");
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonBack.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonBack.setText("Back");
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
         jButtonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, 40, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(notif, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldid_member, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonCetak, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(88, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButtonBack, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+        jTextFieldid_member.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldid_member.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldid_member.setForeground(new java.awt.Color(255, 255, 255));
+        jTextFieldid_member.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldid_memberActionPerformed(evt);
+            }
+        });
+        jTextFieldid_member.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldid_memberKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextFieldid_member, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 98, -1));
+
+        jLabel5.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Kartu Member");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 250, 24));
+
+        jButtonCetak.setBackground(new java.awt.Color(153, 153, 153));
+        jButtonCetak.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonCetak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/print.png"))); // NOI18N
+        jButtonCetak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonCetak.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jButtonCetak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCetakActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButtonCetak, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 40, 40));
+
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Id");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 30, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Print");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 40, 20));
+
+        notif.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        notif.setForeground(new java.awt.Color(255, 255, 0));
+        notif.setText("Validasi");
+        getContentPane().add(notif, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 160, 24));
+
+        jLabel3.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cetak");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 250, 24));
+
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 314, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldid_member, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(notif, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonCetak)
-                .addGap(30, 30, 30)
-                .addComponent(jButtonBack)
-                .addContainerGap(56, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 254, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 320, 260));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background.jpg"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
+        daftar_buku_option.setVisible(true);
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jTextFieldid_memberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldid_memberKeyTyped
+        // TODO add your handling code here:
+        if(Character.isAlphabetic(evt.getKeyChar())){
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Masukkan Id dengan Benar");
+        }
+    }//GEN-LAST:event_jTextFieldid_memberKeyTyped
+
+    private void jTextFieldid_memberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldid_memberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldid_memberActionPerformed
+
     private void jButtonCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCetakActionPerformed
         // TODO add your handling code here:
-        
+
         Connection conn = db_connection.getConnection();
-            PreparedStatement ps;
-            ResultSet rs;
-            String sql;
-            //int member_id= Integer.parseInt(jTextFieldid_member.getText());
-            int id_member=0;
-            
-            if(jTextFieldid_member.getText().equals("")){
-                notif.setText("ID Tidak boleh kosong");
-                notif.setVisible(true);
-            } else {
-                int member_id= Integer.parseInt(jTextFieldid_member.getText());
+        PreparedStatement ps;
+        ResultSet rs;
+        String sql;
+        //int member_id= Integer.parseInt(jTextFieldid_member.getText());
+        int id_member=0;
+
+        if(jTextFieldid_member.getText().equals("")){
+            notif.setText("ID Tidak boleh kosong");
+            notif.setVisible(true);
+        } else {
+            int member_id= Integer.parseInt(jTextFieldid_member.getText());
             sql ="SELECT count(id) FROM tb_member WHERE id=?;";
 
             try {
@@ -171,41 +205,26 @@ public class kartu_member extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(denda_buku.class.getName()).log(Level.SEVERE, null, ex);
             }
-                if(id_member==0){
-                    notif.setVisible(true);
-                    notif.setText("Id Tidak Ditemukan");
-                } else {
-                    notif.setVisible(false);
-                    notif.setText("");
-                    try {
-                        HashMap parameter = new HashMap<>();
-                        parameter.put("pid",jTextFieldid_member.getText());
-                        //Connection conn = db_connection.getConnection();
-                        JasperDesign jd = JRXmlLoader.load("src\\Report\\kartu_member.jrxml");
-                        JasperReport jr = JasperCompileManager.compileReport(jd);
-                        JasperPrint jp = JasperFillManager.fillReport(jr, parameter, conn);
-                        JasperViewer.viewReport(jp,false);
-                    } catch (JRException ex) {
-                        Logger.getLogger(Report_option.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }                
-            } 
-    }//GEN-LAST:event_jButtonCetakActionPerformed
-
-    private void jTextFieldid_memberKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldid_memberKeyTyped
-        // TODO add your handling code here:
-        if(Character.isAlphabetic(evt.getKeyChar())){
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "Masukkan Id dengan Benar");
+            if(id_member==0){
+                notif.setVisible(true);
+                notif.setText("Id Tidak Ditemukan");
+            } else {
+                notif.setVisible(false);
+                notif.setText("");
+                try {
+                    HashMap parameter = new HashMap<>();
+                    parameter.put("pid",jTextFieldid_member.getText());
+                    //Connection conn = db_connection.getConnection();
+                    JasperDesign jd = JRXmlLoader.load("src\\Report\\kartu_member.jrxml");
+                    JasperReport jr = JasperCompileManager.compileReport(jd);
+                    JasperPrint jp = JasperFillManager.fillReport(jr, parameter, conn);
+                    JasperViewer.viewReport(jp,false);
+                } catch (JRException ex) {
+                    Logger.getLogger(Report_option.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         }
-    }//GEN-LAST:event_jTextFieldid_memberKeyTyped
-
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
-        daftar_buku_option.setVisible(true);
-    }//GEN-LAST:event_jButtonBackActionPerformed
+    }//GEN-LAST:event_jButtonCetakActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,10 +262,14 @@ public class kartu_member extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonCetak;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldid_member;

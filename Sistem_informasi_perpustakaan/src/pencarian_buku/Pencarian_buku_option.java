@@ -40,12 +40,15 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
         btn_search_by_publisher = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 400));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_search_by_title.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_search_by_title.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btn_search_by_title.setForeground(new java.awt.Color(255, 255, 255));
         btn_search_by_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search_by_title.setText("Search dengan Judul");
@@ -60,9 +63,9 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
                 btn_search_by_titleMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search_by_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 180, -1));
+        getContentPane().add(btn_search_by_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 260, -1));
 
-        btn_search_by_tag.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_search_by_tag.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btn_search_by_tag.setForeground(new java.awt.Color(255, 255, 255));
         btn_search_by_tag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search_by_tag.setText("Search dengan Tag");
@@ -77,9 +80,9 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
                 btn_search_by_tagMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search_by_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 170, -1));
+        getContentPane().add(btn_search_by_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 230, -1));
 
-        btn_search_by_author.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_search_by_author.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btn_search_by_author.setForeground(new java.awt.Color(255, 255, 255));
         btn_search_by_author.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_search_by_author.setText("Search dengan Penulis");
@@ -94,9 +97,9 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
                 btn_search_by_authorMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search_by_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 200, -1));
+        getContentPane().add(btn_search_by_author, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 290, -1));
 
-        btn_search_by_publisher.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_search_by_publisher.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btn_search_by_publisher.setForeground(new java.awt.Color(255, 255, 255));
         btn_search_by_publisher.setText("Search dengan Penerbit");
         btn_search_by_publisher.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,11 +113,11 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
                 btn_search_by_publisherMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search_by_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 200, -1));
+        getContentPane().add(btn_search_by_publisher, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 280, -1));
 
-        btn_back.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btn_back.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));
-        btn_back.setText("Back");
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backyellow50x50.png"))); // NOI18N
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
@@ -126,15 +129,32 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 50, -1));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 50, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Pencarian Buku");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 190, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 280, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_pencarian_op.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 394, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 324, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 400, 330));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background600x400.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,12 +265,13 @@ public class Pencarian_buku_option extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_search_by_author;
     private javax.swing.JLabel btn_search_by_publisher;
     private javax.swing.JLabel btn_search_by_tag;
     private javax.swing.JLabel btn_search_by_title;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

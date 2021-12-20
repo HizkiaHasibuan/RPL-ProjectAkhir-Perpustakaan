@@ -138,11 +138,12 @@ public class denda_buku extends javax.swing.JFrame {
         jRadioButtonBuku1RusakBerat = new javax.swing.JRadioButton();
         jRadioButtonBuku3RusakBerat = new javax.swing.JRadioButton();
         jRadioButtonBuku2RusakBerat = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(660, 550));
+        setPreferredSize(new java.awt.Dimension(700, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -150,7 +151,9 @@ public class denda_buku extends javax.swing.JFrame {
         jScrollPane3.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
         jTextFieldBuku3.setEditable(false);
-        jTextFieldBuku3.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldBuku3.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldBuku3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldBuku3.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldBuku3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldBuku3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,13 +162,15 @@ public class denda_buku extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTextFieldBuku3);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 180, 50));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 180, 50));
 
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane4.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
         jTextFieldBuku1.setEditable(false);
-        jTextFieldBuku1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldBuku1.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldBuku1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldBuku1.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldBuku1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldBuku1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,13 +179,15 @@ public class denda_buku extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jTextFieldBuku1);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 50));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 180, 50));
 
         jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane5.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
         jTextFieldBuku2.setEditable(false);
-        jTextFieldBuku2.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldBuku2.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldBuku2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldBuku2.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldBuku2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextFieldBuku2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,41 +196,45 @@ public class denda_buku extends javax.swing.JFrame {
         });
         jScrollPane5.setViewportView(jTextFieldBuku2);
 
-        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 180, 50));
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 180, 50));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Denda Buku");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 170, 40));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 280, 40));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Rincian Denda");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 90, 14));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 90, 14));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Keterangan Denda Buku 1");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 170, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 170, -1));
 
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jTextAreaRincianDenda.setEditable(false);
-        jTextAreaRincianDenda.setBackground(new java.awt.Color(204, 204, 204));
+        jTextAreaRincianDenda.setBackground(new java.awt.Color(148, 61, 21));
         jTextAreaRincianDenda.setColumns(20);
+        jTextAreaRincianDenda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jTextAreaRincianDenda.setForeground(new java.awt.Color(255, 255, 255));
         jTextAreaRincianDenda.setRows(5);
         jTextAreaRincianDenda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextAreaRincianDenda);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 290, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 290, 140));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Buku 3");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 50, 14));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 50, 14));
 
         buttonGroup1.add(jRadioButtonBuku1Rusak);
         jRadioButtonBuku1Rusak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku1Rusak.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1Rusak.setText("Rusak Ringan");
         jRadioButtonBuku1Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButtonBuku1Rusak.addActionListener(new java.awt.event.ActionListener() {
@@ -231,52 +242,59 @@ public class denda_buku extends javax.swing.JFrame {
                 jRadioButtonBuku1RusakActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonBuku1Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, -1, -1));
+        getContentPane().add(jRadioButtonBuku1Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
         buttonGroup1.add(jRadioButtonBuku1Hilang);
         jRadioButtonBuku1Hilang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku1Hilang.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1Hilang.setText("Hilang");
         jRadioButtonBuku1Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku1Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 70, -1));
+        getContentPane().add(jRadioButtonBuku1Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 70, -1));
 
         buttonGroup2.add(jRadioButtonBuku2Rusak);
         jRadioButtonBuku2Rusak.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonBuku2Rusak.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2Rusak.setText("Rusak Ringan");
         jRadioButtonBuku2Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 110, -1));
+        getContentPane().add(jRadioButtonBuku2Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 110, -1));
 
         buttonGroup2.add(jRadioButtonBuku2Hilang);
         jRadioButtonBuku2Hilang.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonBuku2Hilang.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2Hilang.setText("Hilang");
         jRadioButtonBuku2Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 70, -1));
+        getContentPane().add(jRadioButtonBuku2Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 70, -1));
 
         buttonGroup3.add(jRadioButtonBuku3Rusak);
         jRadioButtonBuku3Rusak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku3Rusak.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3Rusak.setText("Rusak Ringan");
         jRadioButtonBuku3Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 110, -1));
+        getContentPane().add(jRadioButtonBuku3Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 110, -1));
 
         buttonGroup3.add(jRadioButtonBuku3Hilang);
         jRadioButtonBuku3Hilang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku3Hilang.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3Hilang.setText("Hilang");
         jRadioButtonBuku3Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 70, -1));
+        getContentPane().add(jRadioButtonBuku3Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 70, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Buku 2");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 50, 14));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 110, 50, 14));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Buku 1");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 50, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 50, -1));
 
         jScrollPane6.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane6.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
-        jTextFieldKetDenda1.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldKetDenda1.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldKetDenda1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldKetDenda1.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldKetDenda1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldKetDenda1ActionPerformed(evt);
@@ -284,12 +302,14 @@ public class denda_buku extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jTextFieldKetDenda1);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 180, 50));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 180, 50));
 
         jScrollPane7.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane7.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
-        jTextFieldKetDenda2.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldKetDenda2.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldKetDenda2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldKetDenda2.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldKetDenda2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextFieldKetDenda2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -298,17 +318,19 @@ public class denda_buku extends javax.swing.JFrame {
         });
         jScrollPane7.setViewportView(jTextFieldKetDenda2);
 
-        getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 180, 50));
+        getContentPane().add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 180, 50));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Keterangan Denda Buku 2");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 180, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 180, -1));
 
         jScrollPane8.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         jScrollPane8.setCursor(new java.awt.Cursor(java.awt.Cursor.E_RESIZE_CURSOR));
 
-        jTextFieldKetDenda3.setBackground(new java.awt.Color(204, 204, 204));
+        jTextFieldKetDenda3.setBackground(new java.awt.Color(148, 61, 21));
+        jTextFieldKetDenda3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldKetDenda3.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldKetDenda3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldKetDenda3ActionPerformed(evt);
@@ -316,14 +338,16 @@ public class denda_buku extends javax.swing.JFrame {
         });
         jScrollPane8.setViewportView(jTextFieldKetDenda3);
 
-        getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 180, 50));
+        getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 180, 50));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Keterangan Denda Buku 3");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 180, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 180, -1));
 
-        jButtonRincianDenda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonRincianDenda.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonRincianDenda.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButtonRincianDenda.setForeground(new java.awt.Color(255, 255, 255));
         jButtonRincianDenda.setText("Rincian Denda");
         jButtonRincianDenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRincianDenda.addActionListener(new java.awt.event.ActionListener() {
@@ -331,9 +355,11 @@ public class denda_buku extends javax.swing.JFrame {
                 jButtonRincianDendaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonRincianDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, -1, -1));
+        getContentPane().add(jButtonRincianDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, -1, -1));
 
+        jButtonSimpanDenda.setBackground(new java.awt.Color(51, 51, 51));
         jButtonSimpanDenda.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButtonSimpanDenda.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSimpanDenda.setText("Simpan");
         jButtonSimpanDenda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonSimpanDenda.addActionListener(new java.awt.event.ActionListener() {
@@ -341,41 +367,46 @@ public class denda_buku extends javax.swing.JFrame {
                 jButtonSimpanDendaActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonSimpanDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 480, -1, -1));
+        getContentPane().add(jButtonSimpanDenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
 
         buttonGroup1.add(jRadioButtonBuku1None);
         jRadioButtonBuku1None.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku1None.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1None.setSelected(true);
         jRadioButtonBuku1None.setText("None");
         jRadioButtonBuku1None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku1None, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
+        getContentPane().add(jRadioButtonBuku1None, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, -1, -1));
 
         buttonGroup2.add(jRadioButtonBuku2None);
         jRadioButtonBuku2None.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonBuku2None.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2None.setSelected(true);
         jRadioButtonBuku2None.setText("None");
         jRadioButtonBuku2None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2None, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, -1, -1));
+        getContentPane().add(jRadioButtonBuku2None, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, -1, -1));
 
         buttonGroup3.add(jRadioButtonBuku3None);
         jRadioButtonBuku3None.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku3None.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3None.setSelected(true);
         jRadioButtonBuku3None.setText("None");
         jRadioButtonBuku3None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3None, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 60, -1));
+        getContentPane().add(jRadioButtonBuku3None, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 360, 60, -1));
 
+        jButtonBack.setBackground(new java.awt.Color(153, 153, 153));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButtonBack.setText("Back");
+        jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/back.png"))); // NOI18N
         jButtonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, -1, -1));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 40, 40));
 
         buttonGroup1.add(jRadioButtonBuku1RusakBerat);
         jRadioButtonBuku1RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku1RusakBerat.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1RusakBerat.setText("Rusak Berat");
         jRadioButtonBuku1RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButtonBuku1RusakBerat.addActionListener(new java.awt.event.ActionListener() {
@@ -383,22 +414,41 @@ public class denda_buku extends javax.swing.JFrame {
                 jRadioButtonBuku1RusakBeratActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButtonBuku1RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 100, -1));
+        getContentPane().add(jRadioButtonBuku1RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 100, -1));
 
         buttonGroup3.add(jRadioButtonBuku3RusakBerat);
         jRadioButtonBuku3RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jRadioButtonBuku3RusakBerat.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3RusakBerat.setText("Rusak Berat");
         jRadioButtonBuku3RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku3RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 100, -1));
+        getContentPane().add(jRadioButtonBuku3RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 100, -1));
 
         buttonGroup2.add(jRadioButtonBuku2RusakBerat);
         jRadioButtonBuku2RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jRadioButtonBuku2RusakBerat.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2RusakBerat.setText("Rusak Berat");
         jRadioButtonBuku2RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        getContentPane().add(jRadioButtonBuku2RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 100, -1));
+        getContentPane().add(jRadioButtonBuku2RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 100, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_large.jpg"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 530));
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 634, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 474, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 640, 480));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background700x600.jpg"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 600));
 
         pack();
         setLocationRelativeTo(null);
@@ -762,6 +812,7 @@ public class denda_buku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButtonBuku1Hilang;
     private javax.swing.JRadioButton jRadioButtonBuku1None;
     private javax.swing.JRadioButton jRadioButtonBuku1Rusak;
