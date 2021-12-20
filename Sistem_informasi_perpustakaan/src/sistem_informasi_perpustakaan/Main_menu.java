@@ -54,17 +54,18 @@ public class Main_menu extends javax.swing.JFrame {
 
         btn_pendaftaran_buku = new javax.swing.JLabel();
         btn_pencarian_buku = new javax.swing.JLabel();
-        btn_daftar_member = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btn_login = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btn_daftar_member = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
+        setPreferredSize(new java.awt.Dimension(600, 500));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_pendaftaran_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_pendaftaran_buku.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         btn_pendaftaran_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_pendaftaran_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_pendaftaran_buku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tbh_buku.jpg"))); // NOI18N
@@ -82,10 +83,9 @@ public class Main_menu extends javax.swing.JFrame {
                 btn_pendaftaran_bukuMouseExited(evt);
             }
         });
-        getContentPane().add(btn_pendaftaran_buku);
-        btn_pendaftaran_buku.setBounds(30, 150, 110, 70);
+        getContentPane().add(btn_pendaftaran_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 180, 90));
 
-        btn_pencarian_buku.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_pencarian_buku.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         btn_pencarian_buku.setForeground(new java.awt.Color(255, 255, 255));
         btn_pencarian_buku.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_pencarian_buku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icon_cari_buku_50.png"))); // NOI18N
@@ -104,34 +104,15 @@ public class Main_menu extends javax.swing.JFrame {
                 btn_pencarian_bukuMouseExited(evt);
             }
         });
-        getContentPane().add(btn_pencarian_buku);
-        btn_pencarian_buku.setBounds(250, 150, 110, 70);
+        getContentPane().add(btn_pencarian_buku, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 160, 80));
 
-        btn_daftar_member.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_daftar_member.setForeground(new java.awt.Color(255, 255, 255));
-        btn_daftar_member.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn_daftar_member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/daftar_member_50.png"))); // NOI18N
-        btn_daftar_member.setText("Daftar Member");
-        btn_daftar_member.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btn_daftar_member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_daftar_member.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_daftar_member.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_daftar_member.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_daftar_memberMouseClicked(evt);
-            }
-        });
-        getContentPane().add(btn_daftar_member);
-        btn_daftar_member.setBounds(150, 150, 100, 70);
-
-        jLabel1.setFont(new java.awt.Font("Yellowtail", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Yellowtail", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Home");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(180, 50, 70, 24);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 90, 24));
 
-        btn_login.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_login.setForeground(new java.awt.Color(255, 255, 255));
+        btn_login.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        btn_login.setForeground(new java.awt.Color(255, 0, 51));
         btn_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btn_login.setText("Log In");
         btn_login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,12 +126,43 @@ public class Main_menu extends javax.swing.JFrame {
                 btn_loginMouseExited(evt);
             }
         });
-        getContentPane().add(btn_login);
-        btn_login.setBounds(304, 20, 70, 15);
+        getContentPane().add(btn_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 70, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_daftar_buku_option.jpg"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 400, 300);
+        btn_daftar_member.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
+        btn_daftar_member.setForeground(new java.awt.Color(255, 255, 255));
+        btn_daftar_member.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btn_daftar_member.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/daftar_member_50.png"))); // NOI18N
+        btn_daftar_member.setText("Daftar Member");
+        btn_daftar_member.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_daftar_member.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_daftar_member.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_daftar_member.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btn_daftar_member.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_daftar_memberMouseClicked(evt);
+            }
+        });
+        getContentPane().add(btn_daftar_member, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 150, 80));
+
+        jPanel4.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel4.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 464, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 364, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 470, 370));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background600x650.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -257,11 +269,15 @@ public class Main_menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel btn_daftar_member;
     private javax.swing.JLabel btn_login;
     private javax.swing.JLabel btn_pencarian_buku;
     private javax.swing.JLabel btn_pendaftaran_buku;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -93,19 +93,22 @@ public class Searching extends javax.swing.JFrame {
     private void initComponents() {
 
         keterangan = new javax.swing.JLabel();
-        textbox_search = new javax.swing.JTextField();
         btn_search = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabel_buku = new javax.swing.JTable();
         validasi = new javax.swing.JLabel();
         btn_back = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        textbox_search = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel_buku = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 400));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        keterangan.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        keterangan.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         keterangan.setForeground(new java.awt.Color(255, 255, 255));
         keterangan.setText("Keterangan");
         if(mode == 0){
@@ -117,13 +120,11 @@ public class Searching extends javax.swing.JFrame {
         else if(mode == 2){
             keterangan.setText("Penerbit");
         }
-        getContentPane().add(keterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 80, -1));
+        getContentPane().add(keterangan, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 110, -1));
 
-        textbox_search.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(textbox_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 45, 300, -1));
-
-        btn_search.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_search.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btn_search.setForeground(new java.awt.Color(255, 255, 255));
+        btn_search.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         btn_search.setText("Search");
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -136,7 +137,39 @@ public class Searching extends javax.swing.JFrame {
                 btn_searchMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 60, -1));
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 60, -1));
+
+        validasi.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
+        validasi.setForeground(new java.awt.Color(255, 0, 0));
+        validasi.setText("Validasi");
+        validasi.setVisible(false);
+        getContentPane().add(validasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 200, -1));
+
+        btn_back.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        btn_back.setForeground(new java.awt.Color(255, 255, 255));
+        btn_back.setText("Back");
+        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn_backMouseExited(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 70, -1));
+
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Pencarian");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 180, 50));
+
+        textbox_search.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_search.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        textbox_search.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 300, -1));
 
         tabel_buku.setBackground(new java.awt.Color(204, 204, 204));
         tabel_buku.setModel(new javax.swing.table.DefaultTableModel(
@@ -162,37 +195,27 @@ public class Searching extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_buku);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 108, 560, 134));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 560, 134));
 
-        validasi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        validasi.setForeground(new java.awt.Color(255, 0, 0));
-        validasi.setText("Validasi");
-        validasi.setVisible(false);
-        getContentPane().add(validasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 200, -1));
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
 
-        btn_back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btn_back.setForeground(new java.awt.Color(255, 255, 255));
-        btn_back.setText("Back");
-        btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_backMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_backMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn_backMouseExited(evt);
-            }
-        });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 76, 30, -1));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 574, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 324, Short.MAX_VALUE)
+        );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pencarian");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 120, 20));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 580, 330));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/bg_pencarian_op.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 250));
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background700x600.jpg"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -520,10 +543,11 @@ public class Searching extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Background;
     private javax.swing.JLabel btn_back;
     private javax.swing.JLabel btn_search;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel keterangan;
     private javax.swing.JTable tabel_buku;

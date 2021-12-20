@@ -78,9 +78,15 @@ public class Tag_list extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         btn_submit = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jList1.setBackground(new java.awt.Color(148, 61, 21));
+        jList1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jList1.setForeground(new java.awt.Color(255, 255, 255));
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Romance", "Sci-Fi", "Fantasy", "Horror", "Mystery", "Historical", "Biography", "Cooking", "Business", "Comedy", "Detective", "Adventure", "Teen", "Children", "Art & Photography", "Personal Development", "Motivational", "Health & Fitness", "Crafts & Hobbies", "Families & Relationship", "Law & Criminology", "Politics & Social Science", "Religion & Spirituality", "Education", "Travel", "Novel", "Comic", "Encyclopedia", "Dictionary", "SMA", "SMP", "SD", "Math", "Biology", "Computer", "Chemistry", "Geography", "Physical Education", "Music", "Civics", "English", "Bahasa Indonesia", "Physics", "Entrepreneurship", "Folktale", "None" };
             public int getSize() { return strings.length; }
@@ -89,6 +95,10 @@ public class Tag_list extends javax.swing.JFrame {
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         jScrollPane1.setViewportView(jList1);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 180, 232));
+
+        btn_submit.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        btn_submit.setForeground(new java.awt.Color(255, 255, 0));
         btn_submit.setText("Submit");
         btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -101,29 +111,15 @@ public class Tag_list extends javax.swing.JFrame {
                 btn_submitMouseExited(evt);
             }
         });
+        getContentPane().add(btn_submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(btn_submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addComponent(btn_submit)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel1.setText("Tag List");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background500x400.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,6 +275,8 @@ public class Tag_list extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btn_submit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

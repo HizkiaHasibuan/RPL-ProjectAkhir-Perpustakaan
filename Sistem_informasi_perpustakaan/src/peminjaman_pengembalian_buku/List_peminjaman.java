@@ -52,11 +52,25 @@ public class List_peminjaman extends javax.swing.JFrame {
         tabel_peminjaman = new javax.swing.JTable();
         btn_back = new javax.swing.JLabel();
         validasi_judul = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Judul buku");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
 
+        textbox_search.setBackground(new java.awt.Color(148, 61, 21));
+        textbox_search.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        textbox_search.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(textbox_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 258, -1));
+
+        btn_search.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        btn_search.setForeground(new java.awt.Color(255, 255, 255));
         btn_search.setText("Search");
         btn_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -69,7 +83,10 @@ public class List_peminjaman extends javax.swing.JFrame {
                 btn_searchMouseExited(evt);
             }
         });
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, -1, -1));
 
+        btn_show_all.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
+        btn_show_all.setForeground(new java.awt.Color(255, 255, 255));
         btn_show_all.setText("Show All");
         btn_show_all.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -82,7 +99,10 @@ public class List_peminjaman extends javax.swing.JFrame {
                 btn_show_allMouseExited(evt);
             }
         });
+        getContentPane().add(btn_show_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
 
+        tabel_peminjaman.setBackground(new java.awt.Color(148, 61, 21));
+        tabel_peminjaman.setForeground(new java.awt.Color(255, 255, 255));
         tabel_peminjaman.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -101,7 +121,9 @@ public class List_peminjaman extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel_peminjaman);
 
-        btn_back.setText("Back");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 480, 134));
+
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/backyellow50x50.png"))); // NOI18N
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_backMouseClicked(evt);
@@ -113,52 +135,38 @@ public class List_peminjaman extends javax.swing.JFrame {
                 btn_backMouseExited(evt);
             }
         });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 50, 40));
 
+        validasi_judul.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
+        validasi_judul.setForeground(new java.awt.Color(255, 255, 0));
         validasi_judul.setText("validasi");
         validasi_judul.setVisible(false);
+        getContentPane().add(validasi_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 260, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_back)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(validasi_judul)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textbox_search, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_search)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_show_all)))))
-                .addContainerGap(108, Short.MAX_VALUE))
+        jLabel2.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 0));
+        jLabel2.setText("List Peminjaman");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 280, 40));
+
+        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102), new java.awt.Color(0, 0, 255), new java.awt.Color(102, 0, 102)));
+        jPanel1.setForeground(new java.awt.Color(163, 9, 9));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(textbox_search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_search)
-                    .addComponent(btn_show_all))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(validasi_judul)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 264, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 560, 270));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background700x600.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -322,6 +330,9 @@ public class List_peminjaman extends javax.swing.JFrame {
     private javax.swing.JLabel btn_search;
     private javax.swing.JLabel btn_show_all;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabel_peminjaman;
     private javax.swing.JTextField textbox_search;
