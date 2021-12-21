@@ -58,7 +58,6 @@ public class login_admin extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,7 +92,7 @@ public class login_admin extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 73, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(283, 240, 90, -1));
 
         jPasswordFieldPass.setBackground(new java.awt.Color(148, 61, 21));
         jPasswordFieldPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -155,7 +154,7 @@ public class login_admin extends javax.swing.JFrame {
                  id_pegawai = rs.getInt(1);
             }
             
-            if(jTextFieldUsername.getText().equals("") || jPasswordFieldPass.getPassword().equals("")){
+            if(jTextFieldUsername.getText().equals("") == true || jPasswordFieldPass.getPassword().equals("") == true){
                 JOptionPane.showMessageDialog(this,"Username atau Password \nTidak Boleh Kosong");
             } else {
                 if(id_pegawai != 0 && to == 0){

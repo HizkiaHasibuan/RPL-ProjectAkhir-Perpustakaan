@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1a20123d-e9f4-43e3-b022-7ae5481ad152">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="760f6658-df86-47d6-bceb-f435e5a08246">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -14,19 +14,21 @@
 		</conditionalStyle>
 	</style>
 	<queryString language="SQL">
-		<![CDATA[SELECT tb_member.nama "Member", tb_peminjaman.id AS "Id Peminjaman", judul AS "Buku", jenis_denda AS "Jenis Denda",keterangan_denda AS "Keterangan" FROM tb_denda
-INNER JOIN tb_jenis_denda ON tb_denda.`jenis_denda_id`= tb_jenis_denda.id
-INNER JOIN tb_detail_pengembalian ON tb_denda.`detail_pengembalian_id`=tb_detail_pengembalian.`id`
-INNER JOIN tb_pengembalian ON tb_detail_pengembalian.`pengembalian_id`=tb_pengembalian.`id`
-INNER JOIN tb_buku ON tb_detail_pengembalian.`buku_id`=tb_buku.`id`
-INNER JOIN tb_detail_peminjaman ON tb_buku.`id`=tb_detail_peminjaman.`buku_id`
-INNER JOIN tb_peminjaman ON tb_detail_peminjaman.`peminjaman_id`=tb_peminjaman.`id`
-INNER JOIN tb_member ON tb_peminjaman.`member_id`=tb_member.`id`
-WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
+		<![CDATA[SELECT tb_member.nama AS "Peminjam",tb_peminjaman.tgl_pinjam AS "Tgl Pinjam",tb_buku.judul AS "Judul",tb_jenis_denda.jenis_denda AS "Jenis Denda",tb_denda.keterangan_denda AS "Keterangan"
+FROM tb_denda
+INNER JOIN tb_detail_pengembalian ON tb_denda.detail_pengembalian_id = tb_detail_pengembalian.id
+INNER JOIN tb_pengembalian ON tb_detail_pengembalian.pengembalian_id = tb_pengembalian.id
+INNER JOIN tb_peminjaman ON tb_pengembalian.peminjaman_id = tb_peminjaman.id
+INNER JOIN tb_member ON tb_peminjaman.member_id = tb_member.id
+INNER JOIN tb_buku ON tb_detail_pengembalian.buku_id = tb_buku.id
+INNER JOIN tb_jenis_denda ON tb_denda.jenis_denda_id = tb_jenis_denda.id
+WHERE tb_denda.jenis_denda_id != 4 AND MONTH(tb_pengembalian.tgl_kembali) = MONTH(CURDATE()) AND YEAR(tb_pengembalian.tgl_kembali) = YEAR(CURDATE());]]>
 	</queryString>
-	<field name="Member" class="java.lang.String"/>
-	<field name="Id Peminjaman" class="java.lang.Integer"/>
-	<field name="Buku" class="java.lang.String"/>
+	<field name="Peminjam" class="java.lang.String"/>
+	<field name="Tgl Pinjam" class="java.sql.Date"/>
+	<field name="Judul" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<field name="Jenis Denda" class="java.lang.String"/>
 	<field name="Keterangan" class="java.lang.String"/>
 	<background>
@@ -35,9 +37,9 @@ WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
 	<title>
 		<band height="132" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="553" height="95" backcolor="#000000" uuid="ee4bb6ad-b358-4842-8465-38ea7f41b5b6"/>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="95" backcolor="#000000" uuid="27c7552e-4ece-4747-8ee3-8d18145afdd4"/>
 				<staticText>
-					<reportElement style="Title" x="111" y="0" width="370" height="66" uuid="4f155a30-bda6-46d7-901c-da2b3392ad4f"/>
+					<reportElement style="Title" x="0" y="0" width="370" height="66" uuid="2c41c7a9-a883-4263-835d-3e5982d0bda3"/>
 					<textElement>
 						<font isBold="false"/>
 					</textElement>
@@ -45,9 +47,9 @@ WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
 				</staticText>
 			</frame>
 			<frame>
-				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#CC0000" uuid="f5865008-deba-498c-9c97-1be526bfdbb1"/>
+				<reportElement mode="Opaque" x="0" y="100" width="451" height="32" forecolor="#000000" backcolor="#CC0000" uuid="a985f825-f920-4b03-9254-f070515f363f"/>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement x="406" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="cadb8579-5c83-425d-a0db-4ecb023a85c1"/>
+					<reportElement x="307" y="12" width="144" height="20" forecolor="#FFFFFF" uuid="40dacf19-0bc2-4e01-841f-a890ea56940a"/>
 					<textElement textAlignment="Right">
 						<font size="12"/>
 					</textElement>
@@ -62,35 +64,35 @@ WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
 	<columnHeader>
 		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement style="Column header" x="0" y="7" width="111" height="18" forecolor="#000000" uuid="61e9c498-12e2-4c1e-83dd-7e285af97126"/>
+				<reportElement style="Column header" x="0" y="7" width="83" height="18" forecolor="#000000" uuid="bf4053d7-94e8-40ed-b1ff-fd7cbe8b6fac"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[Member]]></text>
+				<text><![CDATA[Peminjam]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="111" y="7" width="111" height="18" forecolor="#000000" uuid="600bf2d0-5f3a-4a1b-8afe-2a4a55f58d4b"/>
+				<reportElement style="Column header" x="83" y="7" width="99" height="18" forecolor="#000000" uuid="b1ec48ba-9601-486e-b986-7a5260081569"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[Id Peminjaman]]></text>
+				<text><![CDATA[Tgl Pinjam]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="222" y="7" width="111" height="18" forecolor="#000000" uuid="7014c20a-323d-4d75-b75a-97fde6fe57e2"/>
+				<reportElement style="Column header" x="182" y="7" width="151" height="18" forecolor="#000000" uuid="6e716d85-223a-4a41-b3b7-dc71ef32f1b1"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
-				<text><![CDATA[Buku]]></text>
+				<text><![CDATA[Judul]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="333" y="7" width="111" height="18" forecolor="#000000" uuid="dd03d87c-e16f-4609-8dd9-19f4b569c0c4"/>
+				<reportElement style="Column header" x="333" y="7" width="111" height="18" forecolor="#000000" uuid="3777069e-2dcd-4f85-9678-bb14b81939ec"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
 				<text><![CDATA[Jenis Denda]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="444" y="7" width="111" height="18" forecolor="#000000" uuid="ca57d5f0-f254-440b-ae2d-ad81e36a3026"/>
+				<reportElement style="Column header" x="444" y="7" width="111" height="18" forecolor="#000000" uuid="632e6681-6caa-4e51-97e6-a9c95f4b2c7d"/>
 				<textElement>
 					<font isBold="false"/>
 				</textElement>
@@ -101,37 +103,37 @@ WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
 	<detail>
 		<band height="18" splitType="Stretch">
 			<frame>
-				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="30e3fc3a-0ed4-4d80-9794-705655f12017"/>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="a697bff1-d938-4bf1-a97e-f5d869903a78"/>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="0" y="0" width="111" height="18" uuid="249533a8-303c-4062-89e8-5a7413d09a6f"/>
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="83" height="18" uuid="a5409659-93cd-4531-b7e5-9e0fe0425cdb"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{Member}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{Peminjam}]]></textFieldExpression>
 				</textField>
-				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="111" y="0" width="111" height="18" uuid="26491df2-ba97-4e22-b58f-e135bc00ea62"/>
+				<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
+					<reportElement style="Detail" positionType="Float" x="83" y="0" width="99" height="18" uuid="1e83b17e-7bd9-43f1-a919-c4d1e412f76d"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{Id Peminjaman}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{Tgl Pinjam}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="222" y="0" width="111" height="18" uuid="8eeda4cd-9619-42a0-b512-98adcbc78f66"/>
+					<reportElement style="Detail" positionType="Float" x="182" y="0" width="151" height="18" uuid="72993040-9a81-414c-b99d-5cb6fa177f8c"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{Buku}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{Judul}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="333" y="0" width="111" height="18" uuid="58c7d080-efd5-4ff6-8e90-94212c7ff030"/>
+					<reportElement style="Detail" positionType="Float" x="333" y="0" width="111" height="18" uuid="98bc57d6-825d-47cb-a10d-d8519fd25194"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{Jenis Denda}]]></textFieldExpression>
 				</textField>
 				<textField isStretchWithOverflow="true">
-					<reportElement style="Detail" positionType="Float" x="444" y="0" width="111" height="18" uuid="c32293b9-f901-4ba7-9aac-2165a7957e39"/>
+					<reportElement style="Detail" positionType="Float" x="444" y="0" width="111" height="18" uuid="f3a541c1-a09c-401f-8981-f4fb8cb53324"/>
 					<textElement>
 						<font size="14"/>
 					</textElement>
@@ -143,7 +145,7 @@ WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
 	<columnFooter>
 		<band height="7" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="46d3a7cd-813b-4c1a-b712-2c692628d0f7"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="bda4c49d-64ae-4542-af61-42c9ed712bd3"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -153,23 +155,23 @@ WHERE tb_denda.`jenis_denda_id`!=4 GROUP BY tb_denda.id;]]>
 	<pageFooter>
 		<band height="25" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="ff649d60-d449-4197-81ce-eec1c0c5f6e4"/>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="76881e95-a70d-4622-8a52-55d192d104a1"/>
 				<textField evaluationTime="Report">
-					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="cce45c66-aad1-47eb-acc2-f5304df2ac37"/>
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="5244d0d8-61f2-43ce-9d46-a190e80d45a7"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="6e6843a0-25fd-47b7-a808-4cd6111a0047"/>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="ff9c72f9-ca42-4ebb-817f-ee31ffc85a83"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 				</textField>
 				<textField pattern="EEEEE dd MMMMM yyyy">
-					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="aca87c42-b770-49cd-8c27-6f7abbf37a81"/>
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="b86c680f-cbd4-4acd-9c7b-73d0ca23adda"/>
 					<textElement verticalAlignment="Middle">
 						<font size="10" isBold="false"/>
 					</textElement>

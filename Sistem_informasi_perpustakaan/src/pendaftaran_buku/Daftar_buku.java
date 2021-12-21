@@ -106,8 +106,9 @@ public class Daftar_buku extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(148, 61, 21));
         jScrollPane1.setForeground(new java.awt.Color(148, 61, 21));
 
-        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBackground(new java.awt.Color(148,61,21));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setDoubleBuffered(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(253, 750));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -136,7 +137,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag1MouseExited(evt);
             }
         });
-        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 50, -1));
+        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 570, 60, -1));
 
         textbox_judul.setBackground(new java.awt.Color(148, 61, 21));
         textbox_judul.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -280,7 +281,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag2MouseExited(evt);
             }
         });
-        jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 50, -1));
+        jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 620, 60, -1));
 
         btn_addTag3.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         btn_addTag3.setForeground(new java.awt.Color(255, 255, 255));
@@ -297,7 +298,7 @@ public class Daftar_buku extends javax.swing.JFrame {
                 btn_addTag3MouseExited(evt);
             }
         });
-        jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 670, 50, -1));
+        jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 670, 60, -1));
 
         validasi_tag.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_tag.setForeground(new java.awt.Color(255, 255, 0));
@@ -421,7 +422,7 @@ public class Daftar_buku extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 0));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Tambah Buku Baru");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 330, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 340, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Background600x650.jpg"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 570));

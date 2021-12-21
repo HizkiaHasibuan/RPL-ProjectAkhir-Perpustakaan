@@ -11,7 +11,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -69,14 +73,13 @@ public class pengembalian_buku extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Pengembalian Buku");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 340, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
 
         jButtonBack.setBackground(new java.awt.Color(153, 153, 153));
         jButtonBack.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -287,6 +290,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
 
     private void btn_submitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_submitMouseClicked
         boolean bookIsValid = bookValidation();
+        boolean telat;
         if(!bookIsValid){
             validasi_buku.setText("Minimal pilih 1");
             validasi_buku.setVisible(true);
@@ -296,18 +300,33 @@ public class pengembalian_buku extends javax.swing.JFrame {
         }
         if(idIsValid == true && bookIsValid == true){
             insertDataPengembalian();
-            //JOptionPane.showConfirmDialog(this,"Data Pengembalian Berhasil Dimasukan !","",JOptionPane.DEFAULT_OPTION);
+            telat = check_telat();
             Connection conn = db_connection.getConnection();
             PreparedStatement ps;
             ResultSet rs;
             String sql;
-            int respon = JOptionPane.showConfirmDialog(this, "Data Pengembalian Berhasil Dimasukan ! " + "\nAda denda?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            sql ="SELECT tb_pengembalian.id FROM tb_pengembalian WHERE tb_pengembalian.`peminjaman_id`=" + id_peminjaman + ";";
+            if(telat){
+                try {
+                ps = conn.prepareStatement(sql);
+                rs = ps.executeQuery();
+                while(rs.next()){
+                    id_pengembalian = rs.getInt(1);
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(denda_buku.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            denda_buku denda = new denda_buku(id_pengembalian);
+            denda.setVisible(true);
+            this.dispose();
+            }
+            //JOptionPane.showConfirmDialog(this,"Data Pengembalian Berhasil Dimasukan !","",JOptionPane.DEFAULT_OPTION);
+            else{
+                            int respon = JOptionPane.showConfirmDialog(this, "Data Pengembalian Berhasil Dimasukan ! " + "\nAda denda?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             
             if(respon==JOptionPane.YES_OPTION){
             
-
-            sql ="SELECT tb_pengembalian.id FROM tb_pengembalian WHERE tb_pengembalian.`peminjaman_id`=" + id_peminjaman + ";";
-
             try {
                 ps = conn.prepareStatement(sql);
                 rs = ps.executeQuery();
@@ -328,6 +347,8 @@ public class pengembalian_buku extends javax.swing.JFrame {
             Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
             daftar_buku_option.setVisible(true);
             }
+            }
+
             
 //            this.dispose();
 //            Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
@@ -689,6 +710,58 @@ public class pengembalian_buku extends javax.swing.JFrame {
                 } catch (SQLException e) {
                 }
             }
+        }
+    }
+    private boolean check_telat(){
+        String tgl = null;
+        LocalDate tgl_kembali;
+            LocalDate tgl_sekarang;
+            
+            Connection conn = db_connection.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            String sql = null;
+            
+            sql = "SELECT tb_peminjaman.tgl_kembali FROM tb_peminjaman WHERE tb_peminjaman.id = ?;";
+            Date tanggal = new Date();
+            SimpleDateFormat dateNow = new SimpleDateFormat("yyy-MM-dd");//menentukan format tanggal (tahun-bulan-hari)
+            String nowDate = dateNow.format(tanggal);
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_peminjaman);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                tgl = rs.getString(1);
+            }
+        } catch (SQLException ex) {
+        }
+        finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        tgl_kembali = LocalDate.parse(tgl,DateTimeFormatter.ISO_DATE);
+        tgl_sekarang = LocalDate.parse(nowDate, DateTimeFormatter.ISO_DATE);
+        if(tgl_sekarang.isAfter(tgl_kembali)){
+            return true;
+        }
+        else{
+            return false;
         }
     }
     /**

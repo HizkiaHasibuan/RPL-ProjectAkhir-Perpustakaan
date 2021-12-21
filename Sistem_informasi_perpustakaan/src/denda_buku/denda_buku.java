@@ -648,28 +648,40 @@ public class denda_buku extends javax.swing.JFrame {
         }
 
         try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,ketBuku1);
-            ps.setInt(2,id_jenis_denda1);
-            ps.setInt(3,id_pengembalian1);
-            ps.executeUpdate();
-                        
-            if (this.terlambat==1) {
+            if(id_jenis_denda1 != 4 && id_jenis_denda1 != 0){
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,ketBuku1);
+                ps.setInt(2,id_jenis_denda1);
+                ps.setInt(3,id_pengembalian1);
+                ps.executeUpdate();
+                if(id_jenis_denda1 == 5 || id_jenis_denda1 == 3){
+                    System.out.println("fungsi 1 terpanggil");
+                    hilang_rusak_berat(id_pengembalian1);
+                }
+            }            
+            if (this.terlambat==1) {
+                ps = conn.prepareStatement(sql);
+                ps.setString(1,"Telat");
                 ps.setInt(2,1);
                 ps.setInt(3,id_pengembalian1);
                 ps.executeUpdate();
             }
                     
             if (!jTextFieldBuku2.getText().isEmpty()) {
+                if(id_jenis_denda2 != 4 && id_jenis_denda2 != 0){
                 ps.setString(1,ketBuku2);
                 ps.setInt(2,id_jenis_denda2);
                 ps.setInt(3,id_pengembalian2);
                 ps.executeUpdate();
+                if(id_jenis_denda2 == 5 || id_jenis_denda2 == 3){
+                    System.out.println("fungsi 2 terpanggil");
+                    hilang_rusak_berat(id_pengembalian2);
+                }
+                }
+                
                 if (terlambat==1) {
                     ps = conn.prepareStatement(sql);
-                    ps.setString(1,ketBuku2);
+                    ps.setString(1,"Telat");
                     ps.setInt(2,1);
                     ps.setInt(3,id_pengembalian2);
                     ps.executeUpdate();
@@ -677,13 +689,17 @@ public class denda_buku extends javax.swing.JFrame {
             }
             
             if (!jTextFieldBuku3.getText().isEmpty()) {
+                if(id_jenis_denda3 != 4 && id_jenis_denda3 != 0)
                 ps.setString(1,ketBuku3);
                 ps.setInt(2,id_jenis_denda3);
                 ps.setInt(3,id_pengembalian3);
                 ps.executeUpdate();
+                if(id_jenis_denda1 == 5 || id_jenis_denda1 == 3){
+                    hilang_rusak_berat(id_pengembalian3);
+                }
                 if (terlambat==1) {
                     ps = conn.prepareStatement(sql);
-                    ps.setString(1,ketBuku3);
+                    ps.setString(1,"Telat");
                     ps.setInt(2,1);
                     ps.setInt(3,id_pengembalian3);
                     ps.executeUpdate();
@@ -700,7 +716,59 @@ public class denda_buku extends javax.swing.JFrame {
         daftar_buku_option.setVisible(true);
         
     }//GEN-LAST:event_jButtonSimpanDendaActionPerformed
+private void hilang_rusak_berat(int id_detail_pengembalian){
+    Connection conn = db_connection.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            String sql = null;
+            int id_buku = 0;
+            int jumlah = 0;
+            sql = "SELECT tb_buku.id, tb_buku.jumlah FROM tb_detail_pengembalian INNER JOIN tb_buku ON tb_detail_pengembalian.buku_id = tb_buku.id WHERE tb_detail_pengembalian.id = ?;";            
+    try {
+            System.out.println("Select berhasil");
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,id_detail_pengembalian);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                id_buku = rs.getInt(1);
+                System.out.println("Id buku yang dimin : "+ id_buku);
+                jumlah = rs.getInt(2) - 1;
+                System.out.println("Jumlah setelah di min: "+jumlah);
+            }   
+    } catch (SQLException ex) {
+            Logger.getLogger(denda_buku.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    sql = "UPDATE tb_buku SET jumlah = ? WHERE id = ?;";
+    try {
+        System.out.println("Minus berhasil");
+        ps = conn.prepareStatement(sql);
+        ps.setInt(1,jumlah);
+        ps.setInt(2,id_buku);
+        ps.executeUpdate();
+    } catch (SQLException e) {
+    }
+    finally{
+                if(rs != null){
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(ps != null){
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(conn != null){
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
 
+}
 //    private void idBuku(){
 //        int id_buku1;
 //        int id_buku2;

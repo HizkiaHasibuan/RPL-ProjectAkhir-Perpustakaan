@@ -50,7 +50,6 @@ public class daftar_pengembalian_telat extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -69,7 +68,7 @@ public class daftar_pengembalian_telat extends javax.swing.JFrame {
         jLabel1.setText("Daftar Peminjaman");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 240, -1));
 
-        jLabel2.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 0));
         jLabel2.setText("Belum Dikembalikan (Terlambat)");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 370, -1));
@@ -130,10 +129,7 @@ public class daftar_pengembalian_telat extends javax.swing.JFrame {
         ResultSet rs;
         String sql;
         
-        sql ="SELECT tb_member.`nama`, tb_peminjaman.`id`,tb_peminjaman.tgl_kembali FROM tb_peminjaman\n" +
-                "INNER JOIN tb_member ON tb_peminjaman.`member_id`=tb_member.`id`\n" +
-                "WHERE NOT EXISTS (SELECT tb_pengembalian.`id` FROM tb_pengembalian\n" +
-                "WHERE tb_peminjaman.`id` = tb_pengembalian.`id`);";
+        sql ="SELECT tb_member.nama,tb_peminjaman.id, tb_peminjaman.tgl_kembali FROM tb_peminjaman INNER JOIN tb_member ON tb_peminjaman.member_id = tb_member.id WHERE (SELECT COUNT(tb_detail_peminjaman.id) FROM tb_detail_peminjaman WHERE tb_detail_peminjaman.peminjaman_id = tb_peminjaman.id) != (SELECT COUNT(tb_detail_pengembalian.id) FROM tb_detail_pengembalian INNER JOIN tb_pengembalian ON tb_detail_pengembalian.pengembalian_id = tb_pengembalian.id WHERE tb_pengembalian.peminjaman_id = tb_peminjaman.id);";
         
         Date tanggal = new Date();
         SimpleDateFormat dateNow = new SimpleDateFormat("yyy-MM-dd");//menentukan format tanggal (tahun-bulan-hari)

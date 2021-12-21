@@ -23,7 +23,7 @@ INNER JOIN tb_peminjaman ON tb_detail_peminjaman.peminjaman_id = tb_peminjaman.i
 INNER JOIN tb_buku ON tb_detail_peminjaman.buku_id = tb_buku.id
 INNER JOIN tb_member ON tb_peminjaman.member_id = tb_member.id
 INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id
-WHERE MONTH(tb_peminjaman.tgl_pinjam) = MONTH(CURDATE());]]>
+WHERE MONTH(tb_peminjaman.tgl_pinjam) = MONTH(CURDATE()) AND YEAR(tb_peminjaman.tgl_pinjam) = YEAR(CURDATE());]]>
 	</queryString>
 	<field name="Peminjam" class="java.lang.String"/>
 	<field name="Judul Buku" class="java.lang.String"/>

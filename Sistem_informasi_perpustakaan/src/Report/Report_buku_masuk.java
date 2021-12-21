@@ -63,7 +63,6 @@ public class Report_buku_masuk extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(300, 300));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_buat_laporan.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -109,12 +108,12 @@ public class Report_buku_masuk extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 50, 50));
 
-        jLabel4.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 0));
         jLabel4.setText("Laporan Bulanan");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 200, 20));
 
-        jLabel5.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Harrington", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 0));
         jLabel5.setText("Buku Masuk");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 140, -1));

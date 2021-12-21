@@ -260,56 +260,79 @@ public class Daftar_buku_option extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tampil_notif(){
-        String tgl = null;
-        LocalDate tgl_kembali;
-        LocalDate tgl_sekarang;
-        int jml_telat = 0;
-        
-        Connection conn = db_connection.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        String sql;
-        
-        sql ="SELECT tb_peminjaman.tgl_kembali FROM tb_peminjaman\n" +
-                "INNER JOIN tb_member ON tb_peminjaman.`member_id`=tb_member.`id`\n" +
-                "WHERE NOT EXISTS (SELECT tb_pengembalian.`id` FROM tb_pengembalian\n" +
-                "WHERE tb_peminjaman.`id` = tb_pengembalian.`id`);";
-        
-        Date tanggal = new Date();
-        SimpleDateFormat dateNow = new SimpleDateFormat("yyy-MM-dd");//menentukan format tanggal (tahun-bulan-hari)
-        String nowDate = dateNow.format(tanggal);// menyimpan tanggal sekarang ke dalam variabel yg bertipe string
-        
+            String tgl = null;
+            LocalDate tgl_kembali;
+            LocalDate tgl_sekarang;
+            int jml_telat = 0;
+            
+            Connection conn = db_connection.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            String sql = null;
+            
+            sql = "SELECT tb_peminjaman.id, tb_peminjaman.tgl_kembali FROM tb_peminjaman INNER JOIN tb_member ON tb_peminjaman.member_id = tb_member.id WHERE (SELECT COUNT(tb_detail_peminjaman.id) FROM tb_detail_peminjaman WHERE tb_detail_peminjaman.peminjaman_id = tb_peminjaman.id) != (SELECT COUNT(tb_detail_pengembalian.id) FROM tb_detail_pengembalian INNER JOIN tb_pengembalian ON tb_detail_pengembalian.pengembalian_id = tb_pengembalian.id WHERE tb_pengembalian.peminjaman_id = tb_peminjaman.id);";
+            
+            Date tanggal = new Date();
+            SimpleDateFormat dateNow = new SimpleDateFormat("yyy-MM-dd");//menentukan format tanggal (tahun-bulan-hari)
+            String nowDate = dateNow.format(tanggal);// menyimpan tanggal sekarang ke dalam variabel yg bertipe string
         try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {
-                tgl= rs.getString(1);
-                tgl_kembali = LocalDate.parse(tgl, DateTimeFormatter.ISO_DATE);
+            while(rs.next()){
+                tgl = rs.getString(2);
+                tgl_kembali = LocalDate.parse(tgl,DateTimeFormatter.ISO_DATE);
                 tgl_sekarang = LocalDate.parse(nowDate, DateTimeFormatter.ISO_DATE);
-                if (tgl_sekarang.isAfter(tgl_kembali)) {
+                if(tgl_sekarang.isAfter(tgl_kembali)){
                     jml_telat++;
                 }
+                //System.out.println("telat :" +jml_telat);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(daftar_denda.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (SQLException e) {
+            //Logger.getLogger(daftar_denda.class.getName()).log(Level.SEVERE,null,e);
+        }finally{
+            if(rs != null){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(ps != null){
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+            if(conn != null){
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
         }
         if(jml_telat>0){
-            int respon = JOptionPane.showConfirmDialog(this, "Ada "+ jml_telat +" pengembalian pinjaman yang terlambat.\nMau lihat?", "Pengembalian Terlambat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            
-            if(respon==JOptionPane.YES_OPTION){
-                daftar_pengembalian_telat kembali = new daftar_pengembalian_telat();
-                kembali.setVisible(true);
-                this.dispose();
+                int respon = JOptionPane.showConfirmDialog(this, "Ada "+ jml_telat +" pengembalian pinjaman yang terlambat.\nMau lihat?", "Pengembalian Terlambat", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                
+                if(respon==JOptionPane.YES_OPTION){
+                    daftar_pengembalian_telat kembali = new daftar_pengembalian_telat();
+                    kembali.setVisible(true);
+                    this.dispose();
+                }
+                
+                if(respon==JOptionPane.NO_OPTION){
+                    //code untuk ke jFrame pengembalian
+                    pengembalian_buku Pengembalian = new pengembalian_buku();
+                    Pengembalian.setVisible(true);
+                    this.dispose();
+                }
             }
-            
-            if(respon==JOptionPane.NO_OPTION){
-                //code untuk ke jFrame pengembalian
-                pengembalian_buku Pengembalian = new pengembalian_buku();
-                Pengembalian.setVisible(true);
-                this.dispose();
-            }
+        else{
+            jml_telat=0;
+            pengembalian_buku Pengembalian = new pengembalian_buku();
+                    Pengembalian.setVisible(true);
+                    this.dispose();
         }
-        jml_telat=0;
+            
+           
     }
     
     private void btn_daftar_bukuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_daftar_bukuMouseClicked
