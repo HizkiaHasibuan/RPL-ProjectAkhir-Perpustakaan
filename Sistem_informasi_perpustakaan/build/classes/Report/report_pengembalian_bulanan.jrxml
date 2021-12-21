@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c9dddfa-c26c-4f74-8427-66f3e0d8e3da">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -21,7 +24,7 @@ INNER JOIN tb_pengembalian ON tb_detail_pengembalian.pengembalian_id = tb_pengem
 INNER JOIN tb_peminjaman ON tb_pengembalian.peminjaman_id = tb_peminjaman.id
 INNER JOIN tb_member ON tb_peminjaman.member_id = tb_member.id
 INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id
-WHERE MONTH(tb_pengembalian.tgl_kembali) = MONTH(CURDATE());]]>
+WHERE MONTH(tb_pengembalian.tgl_kembali) = MONTH(CURDATE()) AND YEAR(tb_pengembalian.tgl_kembali) = YEAR(CURDATE());]]>
 	</queryString>
 	<field name="Peminjam" class="java.lang.String"/>
 	<field name="Judul Buku" class="java.lang.String"/>

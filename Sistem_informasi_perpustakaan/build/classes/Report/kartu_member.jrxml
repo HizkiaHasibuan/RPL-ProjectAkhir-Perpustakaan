@@ -31,19 +31,22 @@ id=$P{pid};]]>
 	</background>
 	<title>
 		<band height="79" splitType="Stretch">
-			<staticText>
-				<reportElement x="148" y="0" width="246" height="55" uuid="65a99d28-83a7-4854-857b-58a3fc598c64"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="24" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Kartu Member]]></text>
-			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="536" height="79" uuid="f24cd2f2-76b0-4e54-917b-acaa5e33c6c8"/>
+			</rectangle>
 			<staticText>
 				<reportElement x="148" y="36" width="246" height="43" uuid="75f2d18d-59a9-4668-9b55-d3ce00efa674"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Perpustakaan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="0" width="246" height="55" uuid="65a99d28-83a7-4854-857b-58a3fc598c64"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kartu Member]]></text>
 			</staticText>
 		</band>
 	</title>
