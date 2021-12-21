@@ -89,13 +89,12 @@ public class Daftar_majalah extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(250, 350));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(20, 700));
-        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBackground(new java.awt.Color(148,61,21));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N

@@ -61,7 +61,6 @@ public class Main_menu extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 500));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -109,7 +108,7 @@ public class Main_menu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yellowtail", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 0));
         jLabel1.setText("Home");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 90, 24));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 110, 24));
 
         btn_login.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 0, 51));
@@ -209,16 +208,17 @@ public class Main_menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_daftar_memberMouseClicked
 
     private void btn_loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_loginMouseClicked
-        this.dispose();
         if(isLoggedIn){
             int response = JOptionPane.showConfirmDialog(this, "Apakah anda yakin ingin log out?", "Konfirmasi Log out", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if(response == JOptionPane.YES_OPTION){
+                this.dispose();
                 login_admin.id_pegawai_logged_in = 0;
                 Main_menu main_menu = new Main_menu(false);
                 main_menu.setVisible(true);
             }
         }
         else{
+            this.dispose();
             login_admin lg_admin = new login_admin(1);
             lg_admin.setVisible(true);
         }
@@ -275,9 +275,6 @@ public class Main_menu extends javax.swing.JFrame {
     private javax.swing.JLabel btn_pencarian_buku;
     private javax.swing.JLabel btn_pendaftaran_buku;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

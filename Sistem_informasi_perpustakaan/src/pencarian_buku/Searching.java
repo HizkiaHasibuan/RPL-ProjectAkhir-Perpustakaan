@@ -104,7 +104,6 @@ public class Searching extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -137,7 +136,7 @@ public class Searching extends javax.swing.JFrame {
                 btn_searchMouseExited(evt);
             }
         });
-        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 60, -1));
+        getContentPane().add(btn_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 80, -1));
 
         validasi.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         validasi.setForeground(new java.awt.Color(255, 0, 0));

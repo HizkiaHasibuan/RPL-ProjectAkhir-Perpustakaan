@@ -60,7 +60,6 @@ public class Report_option extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
@@ -151,7 +150,7 @@ public class Report_option extends javax.swing.JFrame {
                 btn_laporan_pengembalian_bulananMouseExited(evt);
             }
         });
-        getContentPane().add(btn_laporan_pengembalian_bulanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 350, 40));
+        getContentPane().add(btn_laporan_pengembalian_bulanan, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 360, 40));
 
         btn_back.setFont(new java.awt.Font("Harrington", 1, 22)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 255));

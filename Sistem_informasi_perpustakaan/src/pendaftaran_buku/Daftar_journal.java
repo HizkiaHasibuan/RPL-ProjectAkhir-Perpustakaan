@@ -91,16 +91,15 @@ public class Daftar_journal extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel15.setFont(new java.awt.Font("Harrington", 1, 36)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Tambah Journal");
-        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 270, 60));
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 280, 60));
 
-        jPanel1.setBackground(new java.awt.Color(148,61,21,70));
+        jPanel1.setBackground(new java.awt.Color(148,61,21));
         jPanel1.setPreferredSize(new java.awt.Dimension(340, 710));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -246,7 +245,7 @@ public class Daftar_journal extends javax.swing.JFrame {
                 btn_addTag1MouseClicked(evt);
             }
         });
-        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 50, 20));
+        jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 510, 60, 20));
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));

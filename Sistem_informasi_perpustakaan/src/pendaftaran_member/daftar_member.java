@@ -218,7 +218,7 @@ public class daftar_member extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonDaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDaftarActionPerformed
-        
+        boolean ultah_isvalid = false;
         String gender;
         String nama = jTextFieldNama.getText();
         String email = jTextFieldEmail.getText();
@@ -248,13 +248,18 @@ public class daftar_member extends javax.swing.JFrame {
                 || jTextFieldEmail.getText().equals("") || jTextAreaAddress.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Pastikan Semua Data Terisi");
         }else if(ultah.isAfter(now)){
+            ultah_isvalid = false;
             JOptionPane.showMessageDialog(null,"Tanggal Ulang Tahun \nMelebihi Tanggal Sekarang");
-        } if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", jTextFieldEmail.getText()))){
+        }
+        else{
+            ultah_isvalid = true;
+        }if (!(Pattern.matches("^[a-zA-Z0-9]+[@]{1}+[a-zA-Z0-9]+[.]{1}+[a-zA-Z0-9]+$", jTextFieldEmail.getText()))){
             JOptionPane.showMessageDialog(null, "Masukkan Email dengan Benar", "Message", JOptionPane.ERROR_MESSAGE);
         }else if(jTextFieldPhone.getText().length()<10 || jTextFieldPhone.getText().length()>14){
             JOptionPane.showMessageDialog(null,"Nomor telepon Tidak Boleh Kurang Dari 10 dan Lebih dari 14");
         } else {
-            try {
+            if(ultah_isvalid){
+                try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,nama);
                 ps.setString(2,gender);
@@ -273,6 +278,8 @@ public class daftar_member extends javax.swing.JFrame {
                 Logger.getLogger(daftar_member.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+            }
+
     }//GEN-LAST:event_jButtonDaftarActionPerformed
 
     private void jComboBoxGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxGenderActionPerformed
