@@ -3,9 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/denda_buku/daftar_denda.java</file>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/peminjaman_pengembalian_buku/peminjaman_buku.java</file>
-            <file>file:/E:/rpl%20final/RPL-ProjectAkhir-Perpustakaan/Sistem_informasi_perpustakaan/src/Tag/Tag_list.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/pendaftaran_buku/Daftar_buku.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/Report/report_pengembalian_bulanan.jrxml</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/pendaftaran_buku/Daftar_majalah.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/Report/kartu_member.jrxml</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/denda_buku/denda_buku.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/denda_buku/daftar_denda.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/pendaftaran_buku/Daftar_journal.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/pendaftaran_member/daftar_member.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/Report/Report_option.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/sistem_informasi_perpustakaan/Main_menu.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/Report/report_peminjaman_bulanan.jrxml</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/peminjaman_pengembalian_buku/peminjaman_buku.java</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/Report/report_denda.jrxml</file>
+            <file>file:/E:/Tugas%20TI/Semester%203/Rekayasa%20Perangkat%20Lunak/Project/7/RPL-ProjectAkhir-Perpustakaan-main/Sistem_informasi_perpustakaan/src/login_admin/login_admin.java</file>
         </group>
     </open-files>
 </project-private>
