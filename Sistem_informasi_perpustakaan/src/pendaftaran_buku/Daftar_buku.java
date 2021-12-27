@@ -325,17 +325,17 @@ public class Daftar_buku extends javax.swing.JFrame {
         spinner_thn_terbit.setValue(2021);
         jPanel1.add(spinner_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 207, 162, -1));
 
-        validasi_thn_terbit.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
+        validasi_thn_terbit.setFont(new java.awt.Font("Harrington", 1, 10)); // NOI18N
         validasi_thn_terbit.setForeground(new java.awt.Color(255, 255, 0));
         validasi_thn_terbit.setText("Validasi Tahun Terbit");
         validasi_thn_terbit.setVisible(false);
-        jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 240, -1));
 
         validasi_no_rak.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_no_rak.setForeground(new java.awt.Color(255, 255, 0));
         validasi_no_rak.setText("Validasi No.Rak");
         validasi_no_rak.setVisible(false);
-        jPanel1.add(validasi_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
+        jPanel1.add(validasi_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 240, -1));
 
         validasi_penerbit.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_penerbit.setForeground(new java.awt.Color(255, 255, 0));
@@ -371,7 +371,7 @@ public class Daftar_buku extends javax.swing.JFrame {
         validasi_kota_terbit.setForeground(new java.awt.Color(255, 255, 0));
         validasi_kota_terbit.setText("Validasi Kota Terbit");
         validasi_kota_terbit.setVisible(false);
-        jPanel1.add(validasi_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 110, 20));
+        jPanel1.add(validasi_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 240, 20));
 
         jLabel15.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
@@ -412,7 +412,7 @@ public class Daftar_buku extends javax.swing.JFrame {
         validasi_isbn.setForeground(new java.awt.Color(255, 255, 0));
         validasi_isbn.setText("Validasi ISBN");
         validasi_isbn.setVisible(false);
-        jPanel1.add(validasi_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 90, 20));
+        jPanel1.add(validasi_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 240, 20));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -482,17 +482,29 @@ public class Daftar_buku extends javax.swing.JFrame {
         if(!judulIsValid){
             validasi_judul.setVisible(true);
         }
+        else if(judulIsValid){
+            validasi_judul.setVisible(false);
+        }
         if(!penulisIsValid){
             validasi_penulis.setText("Penulis tidak boleh kosong");
             validasi_penulis.setVisible(true);
+        }
+        else if(penulisIsValid){
+            validasi_penulis.setVisible(false);
         }
         if(!penerbitIsValid){
             validasi_penerbit.setText("Penerbit tidak boleh kosong");
             validasi_penerbit.setVisible(true);
         }
+        else if(penerbitIsValid){
+            validasi_penerbit.setVisible(false);
+        }
         if(!yearIsValid){
-            validasi_thn_terbit.setText("Tahun terbit tidak bisa melebihi tahun sekarang");
+            validasi_thn_terbit.setText("Tahun terbit melebihi tahun sekarang");
             validasi_thn_terbit.setVisible(true);
+        }
+        else if(yearIsValid){
+            validasi_thn_terbit.setVisible(false);
         }
         if(!tagIsValid){
             if(idTag1 == 0 && idTag2 == 0 && idTag3 == 0){
@@ -510,9 +522,15 @@ public class Daftar_buku extends javax.swing.JFrame {
             validasi_kota_terbit.setText("Kota Terbit tidak boleh kosong");
             validasi_kota_terbit.setVisible(true);
         }
+        else if(kotaTerbitIsValid){
+            validasi_kota_terbit.setVisible(false);
+        }
         if(!isbnIsValid){
             validasi_isbn.setText("ISBN tidak boleh kosong");
             validasi_isbn.setVisible(true);
+        }
+        else if(isbnIsValid){
+            validasi_isbn.setVisible(false);
         }
         //Disubmit kalau isian sudah valid semua
         if(judulIsValid == true && penulisIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true && kotaTerbitIsValid == true && isbnIsValid == true){
@@ -651,10 +669,21 @@ public class Daftar_buku extends javax.swing.JFrame {
     }
     private boolean titleValidation(){
         String judul = textbox_judul.getText().toLowerCase();
+        String volume = textbox_volume.getText().toLowerCase();
+        String edisi = textbox_edisi.getText().toLowerCase();
+        int isi_edisi_volume = 0;
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT id FROM tb_buku WHERE judul = ?;";
+        String sql = null;
+        if(volume.equals("") == true && edisi.equals("") == true ){
+            isi_edisi_volume = 0;
+            sql = "SELECT id FROM tb_buku WHERE judul = ?;";
+        }
+        else{
+            isi_edisi_volume = 1;
+            sql = "SELECT id FROM tb_buku WHERE judul = ? AND (volume = ? OR edisi = ?);";
+        }
         int db_id_buku = 0;
         if(judul.equals("")){
             validasi_judul.setText("Judul tidak boleh kosong");
@@ -664,6 +693,10 @@ public class Daftar_buku extends javax.swing.JFrame {
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
+                if(isi_edisi_volume == 1){
+                    ps.setString(2,volume);
+                    ps.setString(3,edisi);
+                }
                 rs = ps.executeQuery();
                 if(rs.next()){
                     db_id_buku = rs.getInt("id");

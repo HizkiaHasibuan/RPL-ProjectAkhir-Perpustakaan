@@ -143,7 +143,6 @@ public class denda_buku extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(700, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -234,7 +233,6 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonBuku1Rusak);
         jRadioButtonBuku1Rusak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku1Rusak.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1Rusak.setText("Rusak Ringan");
         jRadioButtonBuku1Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButtonBuku1Rusak.addActionListener(new java.awt.event.ActionListener() {
@@ -246,35 +244,30 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonBuku1Hilang);
         jRadioButtonBuku1Hilang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku1Hilang.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1Hilang.setText("Hilang");
         jRadioButtonBuku1Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku1Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 70, -1));
 
         buttonGroup2.add(jRadioButtonBuku2Rusak);
         jRadioButtonBuku2Rusak.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButtonBuku2Rusak.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2Rusak.setText("Rusak Ringan");
         jRadioButtonBuku2Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku2Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 110, -1));
 
         buttonGroup2.add(jRadioButtonBuku2Hilang);
         jRadioButtonBuku2Hilang.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButtonBuku2Hilang.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2Hilang.setText("Hilang");
         jRadioButtonBuku2Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku2Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 70, -1));
 
         buttonGroup3.add(jRadioButtonBuku3Rusak);
         jRadioButtonBuku3Rusak.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku3Rusak.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3Rusak.setText("Rusak Ringan");
         jRadioButtonBuku3Rusak.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku3Rusak, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 110, -1));
 
         buttonGroup3.add(jRadioButtonBuku3Hilang);
         jRadioButtonBuku3Hilang.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku3Hilang.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3Hilang.setText("Hilang");
         jRadioButtonBuku3Hilang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku3Hilang, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 70, -1));
@@ -371,7 +364,6 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonBuku1None);
         jRadioButtonBuku1None.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku1None.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1None.setSelected(true);
         jRadioButtonBuku1None.setText("None");
         jRadioButtonBuku1None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -379,7 +371,6 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup2.add(jRadioButtonBuku2None);
         jRadioButtonBuku2None.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButtonBuku2None.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2None.setSelected(true);
         jRadioButtonBuku2None.setText("None");
         jRadioButtonBuku2None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -387,7 +378,6 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup3.add(jRadioButtonBuku3None);
         jRadioButtonBuku3None.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku3None.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3None.setSelected(true);
         jRadioButtonBuku3None.setText("None");
         jRadioButtonBuku3None.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -406,7 +396,6 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButtonBuku1RusakBerat);
         jRadioButtonBuku1RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku1RusakBerat.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku1RusakBerat.setText("Rusak Berat");
         jRadioButtonBuku1RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jRadioButtonBuku1RusakBerat.addActionListener(new java.awt.event.ActionListener() {
@@ -418,14 +407,12 @@ public class denda_buku extends javax.swing.JFrame {
 
         buttonGroup3.add(jRadioButtonBuku3RusakBerat);
         jRadioButtonBuku3RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jRadioButtonBuku3RusakBerat.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku3RusakBerat.setText("Rusak Berat");
         jRadioButtonBuku3RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku3RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 100, -1));
 
         buttonGroup2.add(jRadioButtonBuku2RusakBerat);
         jRadioButtonBuku2RusakBerat.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButtonBuku2RusakBerat.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonBuku2RusakBerat.setText("Rusak Berat");
         jRadioButtonBuku2RusakBerat.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         getContentPane().add(jRadioButtonBuku2RusakBerat, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 100, -1));
@@ -655,7 +642,6 @@ public class denda_buku extends javax.swing.JFrame {
                 ps.setInt(3,id_pengembalian1);
                 ps.executeUpdate();
                 if(id_jenis_denda1 == 5 || id_jenis_denda1 == 3){
-                    System.out.println("fungsi 1 terpanggil");
                     hilang_rusak_berat(id_pengembalian1);
                 }
             }            
@@ -674,7 +660,6 @@ public class denda_buku extends javax.swing.JFrame {
                 ps.setInt(3,id_pengembalian2);
                 ps.executeUpdate();
                 if(id_jenis_denda2 == 5 || id_jenis_denda2 == 3){
-                    System.out.println("fungsi 2 terpanggil");
                     hilang_rusak_berat(id_pengembalian2);
                 }
                 }

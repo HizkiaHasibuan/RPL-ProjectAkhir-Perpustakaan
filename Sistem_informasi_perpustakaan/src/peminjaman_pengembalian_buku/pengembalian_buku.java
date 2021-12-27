@@ -110,11 +110,11 @@ public class pengembalian_buku extends javax.swing.JFrame {
         });
         getContentPane().add(textbox_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 210, -1));
 
-        validasi_id.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
+        validasi_id.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_id.setForeground(new java.awt.Color(255, 255, 0));
         validasi_id.setText("validasi_id");
         validasi_id.setVisible(false);
-        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 180, -1));
+        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -348,11 +348,6 @@ public class pengembalian_buku extends javax.swing.JFrame {
             daftar_buku_option.setVisible(true);
             }
             }
-
-            
-//            this.dispose();
-//            Daftar_buku_option daftar_buku_option = new Daftar_buku_option();
-//            daftar_buku_option.setVisible(true);
         }
     }//GEN-LAST:event_btn_submitMouseClicked
 
@@ -477,7 +472,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
                     }
                 }
                 if(member_result == 0){
-                    validasi_id.setText("Tidak ada Peminjaman yang Perlu Pengembalian Oleh Member ini");
+                    validasi_id.setText("Tidak ada peminjaman yang belum tuntas");
                     validasi_id.setVisible(true);
                     return false;
                 }

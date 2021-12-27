@@ -267,43 +267,49 @@ public class Searching extends javax.swing.JFrame {
         String text = textbox_search.getText().toLowerCase();
         String sql = null;
         //melakukan select dimana kondisi where sesuai dengan metode pencarian yang digunakan
-        if(tipe == 1){
-            if(mode == 0){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_buku.judul LIKE '%"+text+"%';";
+        switch (tipe) {
+            case 1:
+            switch (mode) {
+                case 0:
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_buku.judul LIKE '%"+text+"%';";
+                    break;
+                case 1:
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_penulis.nama LIKE '%"+text+"%';";
+                    break;
+                case 2:
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_penerbit.nama LIKE '%"+text+"%';";
+                    break;
+                default:
+                    break;
             }
-            else if(mode == 1){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_penulis.nama LIKE '%"+text+"%';";
-            }
-            else if(mode == 2){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku INNER JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 1 AND tb_penerbit.nama LIKE '%"+text+"%';";
-            }
-        }
-        else if(tipe == 2){
-            if(mode == 0){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 2 AND tb_buku.judul LIKE '%"+text+"%';";
-            }
-            else if(mode == 2){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 2 AND tb_penerbit.nama LIKE '%"+text+"%';";
-            }
-        }
-        else if(tipe == 3){
-            if(mode == 0){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_buku.judul LIKE '%"+text+"%';";
-            }
-            else if(mode == 2){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_penerbit.nama LIKE '%"+text+"%';";
-            }
-        }
-        else if(tipe == 4){
-            if(mode == 0){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.judul LIKE '%"+text+"%';";
-            }
-            else if(mode == 1){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_penulis.nama LIKE '%"+text+"%';";
-            }
-            else if(mode == 2){
-                sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_penerbit.nama LIKE '%"+text+"%';";
-            }
+break;
+
+            case 2:
+                if(mode == 0){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 2 AND tb_buku.judul LIKE '%"+text+"%';";
+                }
+                else if(mode == 2){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 2 AND tb_penerbit.nama LIKE '%"+text+"%';";
+                }   break;
+            case 3:
+                if(mode == 0){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_buku.judul LIKE '%"+text+"%';";
+                }
+                else if(mode == 2){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.tipe_buku_id = 3 AND tb_penerbit.nama LIKE '%"+text+"%';";
+                }   break;
+            case 4:
+                if(mode == 0){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_buku.judul LIKE '%"+text+"%';";
+                }
+                else if(mode == 1){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_penulis.nama LIKE '%"+text+"%';";
+                }
+                else if(mode == 2){
+                    sql ="SELECT tb_buku.id,tb_buku.judul,tb_penulis.nama,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_buku.isbn_issn,tb_tipe_buku.tipe_buku  FROM tb_buku LEFT JOIN tb_penulis ON tb_buku.penulis_id = tb_penulis.id INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE tb_penerbit.nama LIKE '%"+text+"%';";
+                }   break;
+            default:
+                break;
         }
         /*cek banyak buku dengan id tertentu yang sedang dipinjam.Kalau jumlah buku lebih banyak dari yang sedang dipinjam
           Berarti status = tersedia kalau tidak status = sedang dipinjam*/

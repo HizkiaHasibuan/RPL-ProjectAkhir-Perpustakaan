@@ -97,7 +97,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(148,61,21));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Judul Majalah");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
@@ -107,13 +107,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_judul.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, 249, -1));
 
-        validasi_judul.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_judul.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_judul.setForeground(new java.awt.Color(255, 255, 0));
         validasi_judul.setText("Validasi Judul");
         validasi_judul.setVisible(false);
         jPanel1.add(validasi_judul, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 59, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Penerbit");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
@@ -123,13 +123,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_penerbit.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_penerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 101, 249, -1));
 
-        validasi_penerbit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_penerbit.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_penerbit.setForeground(new java.awt.Color(255, 255, 0));
         validasi_penerbit.setText("Validasi Penerbit");
         validasi_penerbit.setVisible(false);
         jPanel1.add(validasi_penerbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 128, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tahun Terbit");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 151, -1, -1));
@@ -137,13 +137,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         spinner_thn_terbit.setModel(new javax.swing.SpinnerNumberModel(2021, 1, null, 1));
         jPanel1.add(spinner_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 149, 156, -1));
 
-        validasi_thn_terbit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_thn_terbit.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_thn_terbit.setForeground(new java.awt.Color(255, 255, 0));
         validasi_thn_terbit.setText("Validasi Tahun Terbit");
         validasi_thn_terbit.setVisible(false);
         jPanel1.add(validasi_thn_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 175, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Kota Terbit");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 196, -1, -1));
@@ -153,13 +153,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_kota_terbit.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 217, 249, -1));
 
-        validasi_kota_terbit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_kota_terbit.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_kota_terbit.setForeground(new java.awt.Color(255, 255, 0));
         validasi_kota_terbit.setText("Validasi Kota Terbit");
         validasi_kota_terbit.setVisible(false);
         jPanel1.add(validasi_kota_terbit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 244, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ISSN");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 265, -1, -1));
@@ -169,13 +169,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_issn.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_issn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 286, 249, -1));
 
-        validasi_issn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_issn.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_issn.setForeground(new java.awt.Color(255, 255, 0));
         validasi_issn.setText("Validasi ISSN");
         validasi_issn.setVisible(false);
         jPanel1.add(validasi_issn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 313, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Edisi");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 334, -1, -1));
@@ -185,13 +185,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_edisi.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_edisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 355, 249, -1));
 
-        validasi_edisi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        validasi_edisi.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         validasi_edisi.setForeground(new java.awt.Color(255, 255, 0));
         validasi_edisi.setText("Validasi Edisi");
         validasi_edisi.setVisible(false);
         jPanel1.add(validasi_edisi, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 382, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Jumlah");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 405, -1, -1));
@@ -199,7 +199,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         Spinner_jumlah.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanel1.add(Spinner_jumlah, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 403, 43, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("No.Rak");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 429, -1, -1));
@@ -207,12 +207,12 @@ public class Daftar_majalah extends javax.swing.JFrame {
         Spinner_no_rak.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         jPanel1.add(Spinner_no_rak, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 249, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tag Majalah");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 491, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Tag 1");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 512, -1, -1));
@@ -223,7 +223,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_tag1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_tag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 533, 249, -1));
 
-        btn_addTag1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_addTag1.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         btn_addTag1.setForeground(new java.awt.Color(255, 255, 255));
         btn_addTag1.setText("Add Tag");
         btn_addTag1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -234,7 +234,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         });
         jPanel1.add(btn_addTag1, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 512, -1, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Tag 2");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, -1, -1));
@@ -245,7 +245,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         textbox_tag2.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(textbox_tag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 586, 249, -1));
 
-        btn_addTag2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_addTag2.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         btn_addTag2.setForeground(new java.awt.Color(255, 255, 255));
         btn_addTag2.setText("Add Tag");
         btn_addTag2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -256,7 +256,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         });
         jPanel1.add(btn_addTag2, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 560, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Tag 3");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 613, -1, -1));
@@ -272,7 +272,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         });
         jPanel1.add(textbox_tag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 634, 249, -1));
 
-        btn_addTag3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_addTag3.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         btn_addTag3.setForeground(new java.awt.Color(255, 255, 255));
         btn_addTag3.setText("Add Tag");
         btn_addTag3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -283,13 +283,13 @@ public class Daftar_majalah extends javax.swing.JFrame {
         });
         jPanel1.add(btn_addTag3, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 613, -1, -1));
 
-        validasi_tag.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        validasi_tag.setForeground(new java.awt.Color(255, 255, 255));
+        validasi_tag.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
+        validasi_tag.setForeground(new java.awt.Color(255, 255, 0));
         validasi_tag.setText("Warning !");
         validasi_tag.setVisible(false);
         jPanel1.add(validasi_tag, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 661, -1, -1));
 
-        btn_back.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_back.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         btn_back.setForeground(new java.awt.Color(255, 255, 0));
         btn_back.setText("Back");
         btn_back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -305,7 +305,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         });
         jPanel1.add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 661, -1, -1));
 
-        btn_submit.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btn_submit.setFont(new java.awt.Font("Harrington", 1, 12)); // NOI18N
         btn_submit.setForeground(new java.awt.Color(255, 255, 0));
         btn_submit.setText("Submit");
         btn_submit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -388,13 +388,22 @@ public class Daftar_majalah extends javax.swing.JFrame {
         if(!judulIsValid){
             validasi_judul.setVisible(true);
         }
+        else if(judulIsValid){
+            validasi_judul.setVisible(false);
+        }
         if(!penerbitIsValid){
             validasi_penerbit.setText("Penerbit tidak boleh kosong");
             validasi_penerbit.setVisible(true);
         }
+        else if(penerbitIsValid){
+            validasi_penerbit.setVisible(false);
+        }
         if(!yearIsValid){
-            validasi_thn_terbit.setText("Tahun terbit tidak bisa melebihi tahun sekarang");
+            validasi_thn_terbit.setText("Tahun terbit melebihi tahun sekarang");
             validasi_thn_terbit.setVisible(true);
+        }
+        else if(yearIsValid){
+            validasi_thn_terbit.setVisible(false);
         }
         if(!tagIsValid){
             if(idTag1 == 0 && idTag2 == 0 && idTag3 == 0){
@@ -412,13 +421,22 @@ public class Daftar_majalah extends javax.swing.JFrame {
             validasi_kota_terbit.setText("Kota Terbit tidak boleh kosong");
             validasi_kota_terbit.setVisible(true);
         }
+        else if(kotaTerbitIsValid){
+            validasi_kota_terbit.setVisible(false);
+        }
         if(!issnIsValid){
             validasi_issn.setText("ISBN tidak boleh kosong");
             validasi_issn.setVisible(true);
         }
+        else if(issnIsValid){
+            validasi_issn.setVisible(false);
+        }
         if(!edisiIsValid){
             validasi_edisi.setText("Edisi tidak boleh kosong");
             validasi_edisi.setVisible(true);
+        }
+        else if(edisiIsValid){
+            validasi_edisi.setVisible(false);
         }
         //Disubmit kalau isian sudah valid semua
         if(judulIsValid == true && penerbitIsValid == true && tagIsValid == true && yearIsValid == true && kotaTerbitIsValid == true && issnIsValid == true && edisiIsValid == true){
@@ -442,8 +460,8 @@ public class Daftar_majalah extends javax.swing.JFrame {
             int ok = JOptionPane.showConfirmDialog(this,"Data Berhasil Diinputkan !","",JOptionPane.DEFAULT_OPTION);
             if(ok == 0 && update == false){
                 this.dispose();
-                Daftar_journal daftar_journal = new Daftar_journal();
-                daftar_journal.setVisible(true);
+                Daftar_majalah daftar_majalah = new Daftar_majalah();
+                daftar_majalah.setVisible(true);
             }
             else if(ok == 0 && update == true){
                 this.dispose();
@@ -511,10 +529,11 @@ public class Daftar_majalah extends javax.swing.JFrame {
     }
     private boolean titleValidation(){
         String judul = textbox_judul.getText().toLowerCase();
+        String edisi = textbox_edisi.getText().toLowerCase();
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT id FROM tb_buku WHERE judul = ?;";
+        String sql = "SELECT id FROM tb_buku WHERE judul = ? AND edisi = ?;";
         int db_id_buku = 0;
         if(judul.equals("")){
             validasi_judul.setText("Judul tidak boleh kosong");
@@ -524,6 +543,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
             try {
                 ps = conn.prepareStatement(sql);
                 ps.setString(1,judul);
+                ps.setString(2,edisi);
                 rs = ps.executeQuery();
                 if(rs.next()){
                     db_id_buku = rs.getInt("id");
@@ -771,7 +791,7 @@ public class Daftar_majalah extends javax.swing.JFrame {
         String penerbit = textbox_penerbit.getText().toLowerCase();
         String kota = textbox_kota_terbit.getText().toLowerCase();
         String issn = textbox_issn.getText();
-        String edisi = textbox_edisi.getText();
+        String edisi = textbox_edisi.getText().toLowerCase();
         int thn_terbit = (int) spinner_thn_terbit.getValue();
         int jumlah = (int) Spinner_jumlah.getValue();
         int no_rak = (int) Spinner_no_rak.getValue();

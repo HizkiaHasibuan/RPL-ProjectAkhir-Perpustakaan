@@ -64,7 +64,6 @@ public class peminjaman_buku extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(500, 400));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -98,7 +97,7 @@ public class peminjaman_buku extends javax.swing.JFrame {
         validasi_id.setForeground(new java.awt.Color(255, 255, 0));
         validasi_id.setText("validasi_id");
         validasi_id.setVisible(false);
-        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 200, -1));
+        getContentPane().add(validasi_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 290, -1));
 
         btn_pinjam.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         btn_pinjam.setForeground(new java.awt.Color(255, 255, 255));
