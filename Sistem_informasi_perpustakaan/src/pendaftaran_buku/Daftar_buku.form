@@ -542,7 +542,7 @@
             <Component class="javax.swing.JLabel" name="validasi_thn_terbit">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Harrington" size="12" style="1"/>
+                  <Font name="Harrington" size="10" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="ff" red="ff" type="rgb"/>
@@ -554,7 +554,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="230" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="10" y="230" width="240" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -573,7 +573,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="530" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="10" y="530" width="240" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -692,7 +692,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="290" width="110" height="20"/>
+                  <AbsoluteConstraints x="10" y="290" width="240" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -816,7 +816,7 @@
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="350" width="90" height="20"/>
+                  <AbsoluteConstraints x="10" y="350" width="240" height="20"/>
                 </Constraint>
               </Constraints>
             </Component>

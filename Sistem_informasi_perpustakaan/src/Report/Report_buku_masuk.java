@@ -147,25 +147,13 @@ public class Report_buku_masuk extends javax.swing.JFrame {
             int year = (int) spinner_tahun.getValue();
             String month_name = Month.of(month).name();
             Map<String, Object> map = new HashMap<>();
-            //Path path = Paths.get("/Report/report1.jrxml");
-            //Path real_path = path.toRealPath();
-            //String real_path_string = real_path.toString();
-            //String path = "E:\\Tugas TI\\Semester 3\\Rekayasa Perangkat Lunak\\Project\\4\\RPL-ProjectAkhir-Perpustakaan-main\\Sistem_informasi_perpustakaan\\src\\Report\\report1.jrxml";
             map.put("bulan",month);
             map.put("tahun", year);
             map.put("bulan_string", month_name);
             Connection conn = db_connection.getConnection();
-            //JasperReport jr = JasperCompileManager.compileReport(ClassLoader.getSystemResourceAsStream(path));
-            //JasperPrint jp = JasperFillManager.fillReport(jr,map,conn);
-            //JasperViewer.viewReport(jp);
-            //JasperDesign jd = JRXmlLoader.load("E:\\Tugas TI\\Semester 3\\Rekayasa Perangkat Lunak\\Project\\4\\RPL-ProjectAkhir-Perpustakaan-main\\Sistem_informasi_perpustakaan\\src\\Report\\report1.jrxml");
             JasperDesign jd = JRXmlLoader.load("src\\Report\\report_buku_masuk.jrxml");
-            //String query ="SELECT tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_buku.tgl_pendaftaran,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_tipe_buku.tipe_buku,tb_buku.isbn_issn FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id INNER JOIN tb_tipe_buku ON tb_buku.tipe_buku_id = tb_tipe_buku.id WHERE MONTH(tb_buku.tgl_pendaftaran) = $P{month} AND YEAR(tb_buku.tgl_pendaftaran) = $P{year};";
-            //JRDesignQuery updateQuery = new JRDesignQuery();
-            //updateQuery.setText(query);
             JasperReport jr = JasperCompileManager.compileReport(jd);
             JasperPrint jp = JasperFillManager.fillReport(jr, map, conn);
-            //JasperViewer jv = new JasperViewer(jp,false);
             JasperViewer.viewReport(jp,false);
         } catch (JRException ex) {
             Logger.getLogger(Report_buku_masuk.class.getName()).log(Level.SEVERE, null, ex);
