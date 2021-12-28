@@ -25,9 +25,9 @@ import sistem_informasi_perpustakaan.connection.db_connection;
  */
 public class peminjaman_buku extends javax.swing.JFrame {
     public boolean isSearchingOpen = false;
-    int idBuku1 = 0;
-    int idBuku2 = 0;
-    int idBuku3 = 0;
+    public int idBuku1 = 0;
+    public int idBuku2 = 0;
+    public int idBuku3 = 0;
     /**
      * Creates new form peminjaman_buku
      */
@@ -419,7 +419,7 @@ public class peminjaman_buku extends javax.swing.JFrame {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sql;
-        if(!textbox_buku1.getText().equals("")){
+        /*if(!textbox_buku1.getText().equals("")){
             try {
                 sql = "SELECT id FROM tb_buku WHERE judul = ?;";
                 ps = conn.prepareStatement(sql);
@@ -457,7 +457,7 @@ public class peminjaman_buku extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(peminjaman_buku.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
         if(((idBuku1 != idBuku2)&&(idBuku1 != 0 && idBuku2 != 0)) || 
            ((idBuku1 != idBuku3)&&(idBuku1 != 0 && idBuku3 != 0)) || 
            ((idBuku2 != idBuku3)&&(idBuku2 != 0 && idBuku3 != 0))){

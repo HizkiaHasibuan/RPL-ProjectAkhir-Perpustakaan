@@ -46,8 +46,10 @@ public class denda_buku extends javax.swing.JFrame {
         PreparedStatement ps;
         ResultSet rs;
         String sql;
+        String volume = "";
+        String edisi = "";
         
-        sql ="select tb_detail_pengembalian.`id`, judul from tb_detail_pengembalian\n" +
+        sql ="select tb_detail_pengembalian.`id`, judul, volume, edisi from tb_detail_pengembalian\n" +
                 "inner join tb_buku on tb_detail_pengembalian.`buku_id`=tb_buku.`id`\n" +
                 "where tb_detail_pengembalian.`pengembalian_id`=" + id_pengembalian +";";
         try {
@@ -55,16 +57,58 @@ public class denda_buku extends javax.swing.JFrame {
             rs = ps.executeQuery();
             while(rs.next()){
                 if(indeks==1){
-                    jTextFieldBuku1.setText(rs.getString(2));
+                    volume = rs.getString(3);
+                    edisi = rs.getString(4);
+                    if(volume == null && edisi != null){
+                        jTextFieldBuku1.setText(rs.getString(2) +" edisi "+edisi);
+                    }
+                    else if(volume != null && edisi == null){
+                        jTextFieldBuku1.setText(rs.getString(2) + " vol."+volume);
+                    }
+                    else if(volume == null && edisi == null){
+                        jTextFieldBuku1.setText(rs.getString(2));
+                    }
+                    else{
+                        jTextFieldBuku1.setText(rs.getString(2) + " vol."+volume+" edisi "+edisi);
+                    }
+                    //jTextFieldBuku1.setText(rs.getString(2));
                     this.id_pengembalian1=rs.getInt(1);
                 }                
                 if(indeks==2){
-                    jTextFieldBuku2.setText(rs.getString(2));
+                    volume = rs.getString(3);
+                    edisi = rs.getString(4);
+                    if(volume == null && edisi != null){
+                        jTextFieldBuku2.setText(rs.getString(2) +" edisi "+edisi);
+                    }
+                    else if(volume != null && edisi == null){
+                        jTextFieldBuku2.setText(rs.getString(2) + " vol."+volume);
+                    }
+                    else if(volume == null && edisi == null){
+                        jTextFieldBuku2.setText(rs.getString(2));
+                    }
+                    else{
+                        jTextFieldBuku2.setText(rs.getString(2) + " vol."+volume+" edisi "+edisi);
+                    }
+                    //jTextFieldBuku2.setText(rs.getString(2));
                     this.id_pengembalian2=rs.getInt(1);
                     jml_buku_telat++;
                 }
                 if(indeks==3){
-                    jTextFieldBuku3.setText(rs.getString(2));
+                    volume = rs.getString(3);
+                    edisi = rs.getString(4);
+                    if(volume == null && edisi != null){
+                        jTextFieldBuku3.setText(rs.getString(2) +" edisi "+edisi);
+                    }
+                    else if(volume != null && edisi == null){
+                        jTextFieldBuku3.setText(rs.getString(2) + " vol."+volume);
+                    }
+                    else if(volume == null && edisi == null){
+                        jTextFieldBuku3.setText(rs.getString(2));
+                    }
+                    else{
+                        jTextFieldBuku3.setText(rs.getString(2) + " vol."+volume+" edisi "+edisi);
+                    }
+                    //jTextFieldBuku3.setText(rs.getString(2));
                     this.id_pengembalian3=rs.getInt(1);
                     jml_buku_telat++;
                 }

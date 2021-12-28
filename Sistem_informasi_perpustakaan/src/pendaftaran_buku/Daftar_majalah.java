@@ -912,76 +912,76 @@ public class Daftar_majalah extends javax.swing.JFrame {
         
     }
     //untuk submit data tag ke tabel tb_tag_buku
-    private void submitTag(){
-        ArrayList<Integer> tag_id = new ArrayList<Integer>();
-        Connection conn = db_connection.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String judul = textbox_judul.getText().toLowerCase();
-        String sql = "SELECT id FROM tb_buku WHERE judul = ?;";
-        if(idTag1 != 0){
-            tag_id.add(idTag1);
-        }
-        if(idTag2 != 0){
-            tag_id.add(idTag2);
-        }
-        if(idTag3 != 0){
-            tag_id.add(idTag3);
-        }
-        try {
-            ps = conn.prepareStatement(sql);
-            ps.setString(1,judul);
-            rs = ps.executeQuery();
-            if(rs.next()){
-                id_buku = rs.getInt("id");
+        private void submitTag(){
+            ArrayList<Integer> tag_id = new ArrayList<Integer>();
+            Connection conn = db_connection.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            String judul = textbox_judul.getText().toLowerCase();
+            String sql = "SELECT id FROM tb_buku WHERE judul = ? AND edisi = ?;";
+            if(idTag1 != 0){
+                tag_id.add(idTag1);
             }
-        } catch (Exception e) {
-        }
-        sql = "INSERT INTO tb_tag_buku (buku_id,tag_id) VALUES (?,?);";
-        try {
-            //dilakukan perulangan for each untuk memasukan semua data tag yang ada di array list ke database
-            for(int id_tag : tag_id){
+            if(idTag2 != 0){
+                tag_id.add(idTag2);
+            }
+            if(idTag3 != 0){
+                tag_id.add(idTag3);
+            }
+            try {
                 ps = conn.prepareStatement(sql);
-                ps.setInt(1,id_buku);
-                ps.setInt(2,id_tag);
-                ps.executeUpdate();
+                ps.setString(1,judul);
+                rs = ps.executeQuery();
+                if(rs.next()){
+                    id_buku = rs.getInt("id");
+                }
+            } catch (Exception e) {
             }
-        } catch (Exception e) {
+            sql = "INSERT INTO tb_tag_buku (buku_id,tag_id) VALUES (?,?);";
+            try {
+                //dilakukan perulangan for each untuk memasukan semua data tag yang ada di array list ke database
+                for(int id_tag : tag_id){
+                    ps = conn.prepareStatement(sql);
+                    ps.setInt(1,id_buku);
+                    ps.setInt(2,id_tag);
+                    ps.executeUpdate();
+                }
+            } catch (Exception e) {
+            }
+            finally{
+                if(rs != null){
+                    try {
+                        rs.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(ps != null){
+                    try {
+                        ps.close();
+                    } catch (SQLException e) {
+                    }
+                }
+                if(conn != null){
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                    }
+                }
+            }
+
         }
-        finally{
-            if(rs != null){
-                try {
-                    rs.close();
-                } catch (SQLException e) {
-                }
-            }
-            if(ps != null){
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-            if(conn != null){
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
-        
-    }
     /*fungsi untuk mengisi semua isian kalau ada perubahan data buku
     jadi data buku sudah langsung dapat terlihat dan tinggal diganti*/
-    public void prepareUpdate(String judul){
+    public void prepareUpdate(int id){
         int iteration = 0;//menentukan sudah iterasi ke berapa untuk tag (karena jumlah max tag 3 max iterasi adalah 3 kali (bernilai max 2)
         update = true;
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_buku.isbn_issn,tb_buku.edisi FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id WHERE tb_buku.judul = ?;";
+        String sql = "SELECT tb_buku.id,tb_buku.judul,tb_penerbit.nama,tb_buku.tahun_terbit,tb_buku.jumlah,tb_rak.no_rak,tb_kota_terbit.nama_kota,tb_buku.isbn_issn,tb_buku.edisi FROM tb_buku INNER JOIN tb_penerbit ON tb_buku.penerbit_id = tb_penerbit.id INNER JOIN tb_rak ON tb_buku.rak_id = tb_rak.id INNER JOIN tb_kota_terbit ON tb_buku.kota_terbit_id = tb_kota_terbit.id WHERE tb_buku.id = ?;";
         try {            
             ps = conn.prepareStatement(sql);
-            ps.setString(1,judul);
+            ps.setInt(1,id);
             rs = ps.executeQuery();
             if(rs.next()){
                 id_buku = rs.getInt(1);

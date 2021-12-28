@@ -485,6 +485,8 @@ public class pengembalian_buku extends javax.swing.JFrame {
         Connection conn = db_connection.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
+        String volume = "";
+        String edisi = "";
         String sql = "SELECT tb_peminjaman.id FROM tb_peminjaman WHERE tb_peminjaman.member_id = ? ORDER BY tb_peminjaman.id DESC LIMIT 1;";
         try {
             ps = conn.prepareStatement(sql);
@@ -517,7 +519,7 @@ public class pengembalian_buku extends javax.swing.JFrame {
             }
         }
         conn = db_connection.getConnection();
-        sql = "SELECT tb_detail_peminjaman.buku_id,tb_buku.judul FROM tb_detail_peminjaman INNER JOIN tb_buku ON tb_detail_peminjaman.buku_id = tb_buku.id WHERE tb_detail_peminjaman.peminjaman_id = ? AND tb_detail_peminjaman.status_buku = 'dipinjam';";
+        sql = "SELECT tb_detail_peminjaman.buku_id,tb_buku.judul,tb_buku.volume,tb_buku.edisi FROM tb_detail_peminjaman INNER JOIN tb_buku ON tb_detail_peminjaman.buku_id = tb_buku.id WHERE tb_detail_peminjaman.peminjaman_id = ? AND tb_detail_peminjaman.status_buku = 'dipinjam';";
         try{
             ps = conn.prepareStatement(sql);
             ps.setInt(1,id_peminjaman);
@@ -525,15 +527,54 @@ public class pengembalian_buku extends javax.swing.JFrame {
             while(rs.next()){
                 if(iteration == 0){
                     idBuku1 = rs.getInt(1);
-                    textbox_buku1.setText(rs.getString(2));
+                    volume = rs.getString(3);
+                    edisi = rs.getString(4);
+                    if(volume == null && edisi != null){
+                        textbox_buku1.setText(rs.getString(2) +" edisi "+edisi);
+                    }
+                    else if(volume != null && edisi == null){
+                        textbox_buku1.setText(rs.getString(2) + " vol."+volume);
+                    }
+                    else if(volume == null && edisi == null){
+                        textbox_buku1.setText(rs.getString(2));
+                    }
+                    else{
+                        textbox_buku1.setText(rs.getString(2) + " vol."+volume+" edisi "+edisi);
+                    }
                 }
                 else if(iteration == 1){
                     idBuku2 = rs.getInt(1);
-                    textbox_buku2.setText(rs.getString(2));
+                    volume = rs.getString(3);
+                    edisi = rs.getString(4);
+                    if(volume == null && edisi != null){
+                        textbox_buku2.setText(rs.getString(2) +" edisi "+edisi);
+                    }
+                    else if(volume != null && edisi == null){
+                        textbox_buku2.setText(rs.getString(2) + " vol."+volume);
+                    }
+                    else if(volume == null && edisi == null){
+                        textbox_buku2.setText(rs.getString(2));
+                    }
+                    else{
+                        textbox_buku2.setText(rs.getString(2) + " vol."+volume+" edisi "+edisi);
+                    }
                 }
                 else if(iteration == 2){
                     idBuku3 = rs.getInt(1);
-                    textbox_buku3.setText(rs.getString(2));
+                    volume = rs.getString(3);
+                    edisi = rs.getString(4);
+                    if(volume == null && edisi != null){
+                        textbox_buku3.setText(rs.getString(2) +" edisi "+edisi);
+                    }
+                    else if(volume != null && edisi == null){
+                        textbox_buku3.setText(rs.getString(2) + " vol."+volume);
+                    }
+                    else if(volume == null && edisi == null){
+                        textbox_buku3.setText(rs.getString(2));
+                    }
+                    else{
+                        textbox_buku3.setText(rs.getString(2) + " vol."+volume+" edisi "+edisi);
+                    }
                 }
                 iteration++;
             }
